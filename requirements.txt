@@ -1,0 +1,9 @@
+langchain
+langchain-core
+langchain-community
+langchain-groq
+langgraph
+psycopg2-binary
+python-dotenv
+SQLAlchemy
+
