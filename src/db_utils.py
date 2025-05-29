@@ -1,4 +1,6 @@
-from config import db, logger, DB_SCHEMA
+from sqlalchemy import text  # Add this import
+from typing import Union, List, Dict
+from config import db, logger, DB_SCHEMA, engine  # Ensure engine is imported from config
 
 def get_dynamic_schema_representation(target_schema: str = DB_SCHEMA) -> str:
     """Fetches the schema representation for the specified schema using SQLDatabase methods.
@@ -23,32 +25,47 @@ def get_dynamic_schema_representation(target_schema: str = DB_SCHEMA) -> str:
         logger.error(f"Error fetching schema for schema {target_schema}: {e}", exc_info=True)
         return f"Error: Could not fetch schema information. {e}"
 
-def safe_db_run(query: str) -> str:
-    """Executes a SQL query safely using db.run_no_throw and logs the interaction.
+def safe_db_run(query: str) -> Union[List[Dict], str]:
+    """Executes a SQL query safely and returns structured data or error message.
 
     Args:
         query: The SQL query string to execute.
 
     Returns:
-        The query result as a string, or an error message string if execution fails.
+        List of dictionaries (rows) for successful SELECT queries,
+        execution message for other queries, or error string.
     """
     logger.info(f"Executing SQL query: {query}")
     try:
-        result = db.run_no_throw(query)
-        if result is None or result == "":
-             # run_no_throw might return empty string or None on error/no result
-             # Check for specific error patterns if possible, otherwise assume success with no data
-             logger.warning(f"Query executed successfully but returned no result or an empty string: {query}")
-             # Depending on how run_no_throw behaves with different errors, you might need more specific error checks here.
-             # For now, return a standard message for empty results.
-             return "Query executed successfully, but no data was returned."
-        logger.info(f"Query result: {result}")
-        return str(result) # Ensure result is always a string
+        with engine.connect() as conn:
+            result = conn.execute(text(query))
+            
+            # Return structured data for SELECT queries
+            if query.strip().upper().startswith("SELECT"):
+                columns = result.keys()
+                return [dict(zip(columns, row)) for row in result]
+            
+            # For non-SELECT queries, return execution confirmation
+            conn.commit()
+            return f"Query executed successfully: {result.rowcount} rows affected."
+            
     except Exception as e:
-        # This catch block might be redundant if run_no_throw truly catches all exceptions
-        # But it's good practice for unexpected issues.
-        logger.error(f"Unexpected error during query execution: {query}\nError: {e}", exc_info=True)
-        return f"Error: An unexpected error occurred during query execution. {e}"
+        logger.error(f"Error executing query: {query}\nError: {e}", exc_info=True)
+        return f"Error: {str(e)}"
+    finally:
+        # Ensure connection is closed
+        if 'conn' in locals() and conn:  # Check if connection exists
+            conn.close()
+# Example usage (for testing purposes)
+if __name__ == "__main__":
+    print("--- Testing Dynamic Schema Fetching ---")
+    schema_info = get_dynamic_schema_representation()
+    print(schema_info)
+
+    print("\n--- Testing Safe DB Run (Example Query) ---")
+    test_query = f"SELECT * FROM {DB_SCHEMA}.customers LIMIT 2;"
+    result = safe_db_run(test_query)
+    print("Structured result:", result)
 
 # Example usage (for testing purposes)
 if __name__ == "__main__":

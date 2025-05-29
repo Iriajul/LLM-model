@@ -7,6 +7,7 @@ if __name__ == "__main__":
     # --- Example Usage ---
     # Replace this with the question you want to ask
     # Example questions based on the original project's test cases:
+    #question = "List all customers name and email address"
     #question = "List sales representatives and the number of orders they handled in their first year"
     #question = "Which product category has the highest return on stock investment?" # Might be hard without specific ROI definition
     #question = "Identify the products that show a consistent month-over-month revenue growth in the last 2 year"
@@ -14,13 +15,14 @@ if __name__ == "__main__":
     #question = "Show the cumulative revenue by month for each product category. "
     #question = "Show all orders where a discount was applied (discount_percentage > 0), including order id, customer name, and discount amount."
     #question = "Classify each order as small, medium or large based on the total amount"
-    question = "List each customer’s most recent order along with their previous order date"
+    #question = "List each customer’s most recent order along with their previous order date"
     #question = "Show each revenue trend over time for each supplier, grouped by quarter"
     #question = "Find the average commission earned by each sales representative per region based on actual sales."
-    #question = " For each product, show the average discount applied and the effective price after discount, sorted by discount descending. "
+    #question = "For each product, show the average discount applied and the effective price after discount, sorted by discount descending. "
     #question = "For each sales representative, calculate their total sales revenue and compare it to their annual target."
     #question = " Which customers placed more than 3 orders in the last 2 years and have an average order value greater than $500?"
     #question = "Determine the average delivery delay per shipping method order date vs delivery date and rank them by efficiency."
+    question = "Show me the available tables name"
     logger.info(f"User Question: {question}")
 
     # Prepare the initial state for the graph

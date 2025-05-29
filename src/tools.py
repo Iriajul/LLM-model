@@ -1,17 +1,24 @@
 from langchain_core.tools import tool
 from db_utils import safe_db_run, logger
+from typing import Union, List, Dict
 
 @tool
-def execute_sql_query(query: str) -> str:
-    """Executes a given PostgreSQL query against the database and returns the result or an error message.
-    Use this tool to run the generated SQL query.
-    Input must be a single, valid PostgreSQL query string.
+def execute_sql_query(query: str) -> Union[List[Dict], str]:
+    """Executes a PostgreSQL query and returns structured data or error message.
+    
+    Args:
+        query: Valid PostgreSQL query string
+        
+    Returns:
+        List of dictionaries (for SELECT queries) or execution message/error string
     """
     logger.info(f"Tool 'execute_sql_query' invoked with query: {query}")
-    # The actual execution and error handling happen within safe_db_run
-    result = safe_db_run(query)
-    return result
-
+    try:
+        result = safe_db_run(query)
+        return result
+    except Exception as e:
+        logger.error(f"Unexpected error in execute_sql_query: {e}")
+        return f"Error: Failed to execute query - {str(e)}"
 # You could add other tools here if needed, e.g., a tool to list tables
 # directly if the LLM needs it explicitly, although fetching the schema
 # representation beforehand is generally preferred.

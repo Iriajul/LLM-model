@@ -1,8 +1,12 @@
-from typing import TypedDict, Annotated, List, Any
+import decimal
+from typing import TypedDict, Annotated, List, Any, Optional, Union
 from langgraph.graph import StateGraph, END, START
 from langgraph.graph.message import add_messages
 from langchain_core.messages import HumanMessage, AIMessage, ToolMessage
 from pydantic import BaseModel, Field
+import datetime
+import re
+import json
 
 from config import llm, logger, DB_SCHEMA
 from db_utils import get_dynamic_schema_representation
@@ -10,7 +14,7 @@ from prompts import sql_generation_prompt, sql_correction_prompt, final_answer_p
 from tools import execute_sql_query
 
 import ast
-import json
+import requests
 
 # --- State Definition ---
 class WorkflowState(TypedDict):
@@ -19,69 +23,79 @@ class WorkflowState(TypedDict):
     db_schema: str
     generated_sql: str
     db_result: str | None
+    raw_db_result: Optional[Union[list, dict]]
     error_message: str | None
     correction_attempts: int
 
 # --- Constants ---
-MAX_CORRECTION_ATTEMPTS = 2
-MAX_ROWS_FOR_LLM = 20    # Lowered for safety
-MAX_COLS_FOR_LLM = 20     # Lowered for safety
-MAX_DB_RESULT_STRING_LENGTH = 6000  # Absolute safety net (tokens ~= chars for prompt)
+MAX_CORRECTION_ATTEMPTS = 3
+MAX_ROWS_FOR_LLM = 20
+MAX_COLS_FOR_LLM = 20
+MAX_DB_RESULT_STRING_LENGTH = 6000
+
+def is_complex_query(sql: str) -> bool:
+    """Detects analytical/complex SQL features"""
+    complex_patterns = [
+        r'\bJOIN\b', r'\bGROUP BY\b', r'\bPARTITION BY\b',
+        r'\bWITH\b.+?\bAS\b',  # CTE detection
+        r'\bOVER\(\)', r'\bRANK\(\)', r'\bDENSE_RANK\(\)',
+        r'\bCASE\b', r'\bUNION\b', r'\bHAVING\b',
+        r'\bWINDOW\b', r'\bEXISTS\b', r'\bSUBQUERY\b'
+    ]
+    sql_upper = sql.upper()
+    return any(re.search(pattern, sql_upper) for pattern in complex_patterns)
 
 def is_db_error(result: str | None) -> bool:
     if result is None:
         return False
     return isinstance(result, str) and result.strip().startswith("Error:")
 
-def truncate_db_result_for_llm(db_result):
-    """
-    Truncate the DB result for the LLM, both by rows, columns, and string length.
-    Always returns a reasonably small string and a notice if truncation occurred.
-    """
+def truncate_db_result_for_llm(db_result, state: WorkflowState):
+    """Truncate results for LLM input"""
     if not db_result:
         return db_result, ""
+    
     rows = None
     was_truncated = False
     try:
-        # Try JSON first
         if isinstance(db_result, str) and db_result.strip().startswith("[") and db_result.strip().endswith("]"):
             rows = json.loads(db_result)
         else:
             rows = ast.literal_eval(db_result) if isinstance(db_result, str) else db_result
     except Exception:
-        # If cannot parse, treat as a single string (maybe summary, just string slice)
         db_result_str = str(db_result)
         if len(db_result_str) > MAX_DB_RESULT_STRING_LENGTH:
-            was_truncated = True
             return (
-                db_result_str[:MAX_DB_RESULT_STRING_LENGTH] + f"\n... (truncated, output too large)",
+                db_result_str[:MAX_DB_RESULT_STRING_LENGTH] + "\n... (truncated)",
                 "Results truncated to fit the LLM input limit."
             )
         return db_result_str, ""
-    # Truncate rows
+    
+    # Auto-export trigger for large results
+    if isinstance(rows, list) and len(rows) > MAX_ROWS_FOR_LLM:
+        pass  # We always export now
+    
     num_rows = len(rows)
     truncated_rows = rows[:MAX_ROWS_FOR_LLM]
-    # Truncate columns
     result_rows = []
     for r in truncated_rows:
         if isinstance(r, (list, tuple)):
             result_rows.append(list(r)[:MAX_COLS_FOR_LLM])
         elif isinstance(r, dict):
-            # only take up to N key/value pairs
             result_rows.append({k: r[k] for k in list(r)[:MAX_COLS_FOR_LLM]})
         else:
             result_rows.append(r)
+    
     result_str = json.dumps(result_rows, default=str, ensure_ascii=False, indent=2)
-    # Absolute fallback: limit result_str length
     if len(result_str) > MAX_DB_RESULT_STRING_LENGTH:
         was_truncated = True
-        result_str = result_str[:MAX_DB_RESULT_STRING_LENGTH] + "\n... (truncated, output too large)"
+        result_str = result_str[:MAX_DB_RESULT_STRING_LENGTH] + "\n... (truncated)"
+    
     notice = ""
     if num_rows > MAX_ROWS_FOR_LLM or was_truncated:
         notice = (
-            f"Showing only the first {min(num_rows,MAX_ROWS_FOR_LLM)} out of {num_rows} rows, "
-            f"and only the first {MAX_COLS_FOR_LLM} columns per row. "
-            "Please refine your query for more specific results."
+            f"Showing first {min(num_rows, MAX_ROWS_FOR_LLM)} of {num_rows} rows, "
+            f"first {MAX_COLS_FOR_LLM} columns. Download full results below."
         )
     return result_str, notice
 
@@ -127,41 +141,112 @@ def generate_sql_node(state: WorkflowState) -> WorkflowState:
 
 def execute_sql_node(state: WorkflowState) -> WorkflowState:
     sql_query = state["generated_sql"]
+    
     logger.info(f"Attempting to execute SQL: {sql_query}")
     if not sql_query:
         logger.warning("No SQL query to execute.")
-        return {**state, "db_result": "Error: No SQL query was generated.", "error_message": "No SQL query generated."}
+        return {**state, "db_result": "Error: No SQL query generated.", "error_message": "No SQL query generated."}
+
     tool_call_msg = AIMessage(content="", tool_calls=[{
         "name": execute_sql_query.name,
         "args": {"query": sql_query},
         "id": "tool_exec_sql_1"
     }])
+    
     tool_result = execute_sql_query.invoke({"query": sql_query})
     tool_response_msg = ToolMessage(content=str(tool_result), tool_call_id="tool_exec_sql_1")
-    logger.info(f"SQL execution result: {tool_result}")
-    messages = state["messages"] + [tool_call_msg, tool_response_msg]
-    return {**state, "db_result": str(tool_result), "messages": messages}
+    
+    # ALWAYS store raw result if available
+    state["raw_db_result"] = tool_result if isinstance(tool_result, (list, dict)) else None
+    
+    return {
+        **state,
+        "db_result": str(tool_result),
+        "messages": state["messages"] + [tool_call_msg, tool_response_msg]
+    }
 
 def format_final_answer_node(state: WorkflowState) -> WorkflowState:
     logger.info("Formatting final answer...")
     db_result = state.get("db_result", "No result found.")
+    
     if is_db_error(db_result):
         logger.warning("Cannot format final answer due to previous DB error.")
-        final_answer_content = state.get("error_message", "An error occurred during processing.")
+        final_answer_content = state.get("error_message", "Processing error occurred.")
     elif db_result is None:
-        final_answer_content = "No data was returned from the database."
+        final_answer_content = "No database results found."
     else:
-        truncated_result, notice = truncate_db_result_for_llm(db_result)
+        download_links = ""
+        export_attempted = False
+        
+        # ALWAYS attempt export if raw result exists
+        if state.get("raw_db_result"):
+            try:
+                # Custom JSON serializer for datetime objects
+                def json_serial(obj):
+                    if isinstance(obj, (datetime.datetime, datetime.date)):
+                        return obj.isoformat()
+                    elif isinstance(obj, decimal.Decimal):
+                        return float(obj)
+                    raise TypeError(f"Type {type(obj)} not serializable")
+                
+                # Serialize data with datetime handling
+                serialized_data = json.dumps(
+                    {"data": state["raw_db_result"]},
+                    default=json_serial
+                )
+                
+                # Send to export API
+                response = requests.post(
+                    "http://localhost:8000/export",
+                    data=serialized_data,
+                    headers={'Content-Type': 'application/json'}
+                )
+                
+                if response.status_code == 200:
+                    links = response.json()
+                    download_links = (
+                        "\n\nDownload Full Results:\n"
+                        f"- CSV: http://localhost:8000{links['csv_url']}\n"
+                        f"- Excel: http://localhost:8000{links['excel_url']}"
+                    )
+                    export_attempted = True
+                else:
+                    logger.error(f"Export API error: {response.status_code}")
+            except Exception as e:
+                logger.error(f"Export failed: {e}")
+                # Still show download prompt if data exists
+                if state.get("raw_db_result"):
+                    download_links = (
+                        "\n\n Full results available but export service failed. "
+                        "Try refining your query or contact support."
+                    )
+        
+        # Generate summary for all results
+        truncated_result, notice = truncate_db_result_for_llm(db_result, state)
         prompt_input = {
             "user_input": state["user_input"],
-            "db_result": (notice + "\n" if notice else "") + truncated_result
+            "db_result": f"{notice}\n{truncated_result}" if notice else truncated_result
         }
-        prompt_value = final_answer_prompt.invoke(prompt_input)
-        llm_response = llm.invoke(prompt_value)
-        final_answer_content = llm_response.content.strip()
+        llm_response = llm.invoke(final_answer_prompt.invoke(prompt_input))
+        summary_content = llm_response.content.strip()
+        
+        # For non-exportable results, explain why
+        if not export_attempted and not download_links:
+            if state.get("raw_db_result") is None:
+                download_links = "\n\n Full download not available (non-dataset result)"
+            elif not state.get("raw_db_result"):
+                download_links = "\n\n Full download not available (empty dataset)"
+        
+        # FINAL CONTENT (always include summary + download info)
+        final_answer_content = f"{summary_content}{download_links}"
+
     logger.info(f"Formatted Answer: {final_answer_content}")
-    messages = state["messages"] + [AIMessage(content=final_answer_content)]
-    return {**state, "messages": messages}
+    return {
+        **state,
+        "messages": state["messages"] + [AIMessage(content=final_answer_content)]
+    }
+
+# ... [correction_node, handle_error_node, decision functions remain unchanged] ...
 
 def correction_node(state: WorkflowState) -> WorkflowState:
     logger.warning(f"SQL execution failed. Attempting correction (Attempt {state['correction_attempts'] + 1}).")

@@ -14,7 +14,7 @@ USER QUESTION:
 GUIDELINES:
 - Output ONLY the SQL query. Do not include explanations, commentary, markdown, or any text other than the SQL query itself.
 - Ensure the query is valid for PostgreSQL.
-- If the user asks for a specific number of results, use that number. Otherwise, LIMIT the results to 5.
+- If the user asks for a specific number of results, use that number. 
 - Order results by a relevant column to provide meaningful output (e.g., ORDER BY total_amount DESC, ORDER BY order_date ASC).
 - Never SELECT *. Only select the columns necessary to answer the question.
 - If the question cannot be answered with the given schema, generate a query that returns an empty result set (e.g., SELECT NULL WHERE 1=0), but DO NOT explain why.
