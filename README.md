@@ -13,6 +13,7 @@ This project implements a Natural Language to SQL (NL2SQL) system using LangChai
 └── src/                  # Source code directory
     ├── __init__.py
     ├── config.py         # Configuration loading, LLM/DB initialization, logging setup
+    ├── export_api.py      #Include FastApi
     ├── db_utils.py       # Dynamic schema fetching, safe query execution
     ├── prompts.py        # LLM prompt templates
     ├── tools.py          # LangChain tool definitions
@@ -77,4 +78,5 @@ This project implements a Natural Language to SQL (NL2SQL) system using LangChai
 4.  The generated query is executed against the database using the tool defined in `tools.py`.
 5.  If the query fails, a correction loop attempts to fix the SQL using the LLM and the error message.
 6.  Once a query executes successfully, the results are passed to the LLM again with a formatting prompt to generate a user-friendly natural language answer.
+7.  And it can now give download link csv/excel for download raw postgresql data.
 
