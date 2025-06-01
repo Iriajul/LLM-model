@@ -22,14 +22,13 @@ if __name__ == "__main__":
     #question = "For each sales representative, calculate their total sales revenue and compare it to their annual target."
     #question = " Which customers placed more than 3 orders in the last 2 years and have an average order value greater than $500?"
     #question = "Determine the average delivery delay per shipping method order date vs delivery date and rank them by efficiency."
-    question = "Show me the available tables name"
+    #question = "Show me the suppliers tables data"
+    question = "Show me the products tables data"
     logger.info(f"User Question: {question}")
 
     # Prepare the initial state for the graph
-    # Only 'user_input' is strictly required to start
     initial_state: WorkflowState = {
         "user_input": question,
-        # The rest will be populated by the graph nodes
         "messages": [],
         "db_schema": "",
         "generated_sql": "",
@@ -40,11 +39,8 @@ if __name__ == "__main__":
 
     try:
         # Invoke the LangGraph application
-        # The `stream` method can be used for observing intermediate steps,
-        # but `invoke` is simpler for getting the final state.
         final_state = app.invoke(initial_state)
 
-        # Extract the final message (usually the formatted answer or error)
         if final_state and final_state.get("messages"):
             final_message = final_state["messages"][-1]
             if hasattr(final_message, 'content'):
