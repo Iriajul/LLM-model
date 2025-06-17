@@ -32,26 +32,6 @@ The NL2SQL Application is a robust system that translates natural language quest
     ├── workflow.py       # LangGraph state machine definition
     └── main.py           # Example entry point for running the workflow
 ```
-## Architecture Overview
-
-graph TD
-    A[User Question] --> B(NL2SQL Workflow)
-    B --> C{Schema Fetch}
-    C --> D[SQL Generation]
-    D --> E[SQL Validation]
-    E --> F[Query Execution]
-    F --> G{Success?}
-    G -->|Yes| H[Result Formatting]
-    G -->|No| I[Error Correction]
-    I --> F
-    H --> J[Final Answer]
-    J --> K[Export Service]
-    K --> L[Download Links]
-    
-    M[Redis Cache] --> C
-    M --> F
-    N[PostgreSQL] --> F
-
 ## Setup
 
 1.  **Prerequisites:**
