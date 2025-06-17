@@ -1,6 +1,18 @@
 # NL2SQL Project with Dynamic Schema and Llama-3-70B
 
-This project implements a Natural Language to SQL (NL2SQL) system using LangChain, LangGraph, Groq (for Llama-3-70B access), and PostgreSQL. It dynamically fetches database schema information to guide the LLM in generating SQL queries.
+## Overview
+
+The NL2SQL Application is a robust system that translates natural language questions into SQL queries, executes them against a PostgreSQL database, and presents results in a user-friendly format. Built with security and efficiency in mind, it features:
+
+    * Natural Language to SQL conversion using LLMs
+
+    * Secure query execution with multiple safety layers
+
+    * Redis caching for improved performance
+
+    * Export functionality for result sharing
+
+    * Comprehensive monitoring and health checks
 
 ## Project Structure
 
@@ -20,6 +32,25 @@ This project implements a Natural Language to SQL (NL2SQL) system using LangChai
     ├── workflow.py       # LangGraph state machine definition
     └── main.py           # Example entry point for running the workflow
 ```
+## Architecture Overview
+
+graph TD
+    A[User Question] --> B(NL2SQL Workflow)
+    B --> C{Schema Fetch}
+    C --> D[SQL Generation]
+    D --> E[SQL Validation]
+    E --> F[Query Execution]
+    F --> G{Success?}
+    G -->|Yes| H[Result Formatting]
+    G -->|No| I[Error Correction]
+    I --> F
+    H --> J[Final Answer]
+    J --> K[Export Service]
+    K --> L[Download Links]
+    
+    M[Redis Cache] --> C
+    M --> F
+    N[PostgreSQL] --> F
 
 ## Setup
 
