@@ -203,3 +203,10 @@ async def download_file(
 async def health_check():
     """Security-neutral health check"""
     return JSONResponse(content={"status": "ok", "timestamp": datetime.utcnow().isoformat()})
+
+@app.get("/")
+async def root():
+    return JSONResponse(content={
+        "message": "Welcome to the NL2SQL Export API",
+        "available_endpoints": ["/export", "/download/{file_id}.{format}", "/health", "/docs"]
+    })

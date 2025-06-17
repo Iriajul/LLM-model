@@ -7,7 +7,7 @@ from langchain_core.messages import HumanMessage, AIMessage, ToolMessage
 import datetime
 import re
 import json
-
+from db_utils import cached_query_execution, analyze_query_complexity
 from config import llm, logger, DB_SCHEMA
 from db_utils import get_dynamic_schema_representation, is_safe_sql
 from prompts import sql_generation_prompt, sql_correction_prompt, final_answer_prompt
@@ -148,6 +148,11 @@ def execute_sql_node(state: WorkflowState) -> WorkflowState:
             ]
         }
     
+    # NEW: Analyze query complexity and warn user
+    complexity = analyze_query_complexity(sql_query)
+    if complexity["warnings"]:
+        logger.info(f"Query complexity warnings: {complexity['warnings']}")
+    
     logger.info(f"Executing SQL: {sql_query}")
     try:
         tool_call_msg = AIMessage(content="", tool_calls=[{
@@ -156,7 +161,8 @@ def execute_sql_node(state: WorkflowState) -> WorkflowState:
             "id": "tool_exec_sql_1"
         }])
         
-        tool_result = execute_sql_query.invoke({"query": sql_query})
+        # Use cached execution instead of direct execution
+        tool_result = cached_query_execution(sql_query)
         tool_response_msg = ToolMessage(content=str(tool_result), tool_call_id="tool_exec_sql_1")
         
         # Store raw result for export
