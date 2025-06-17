@@ -27,10 +27,11 @@ def get_env_variable(var_name: str) -> str:
 # Logging Configuration
 # ──────────────────────────────────────────────────────────────────────────────
 
-LOG_DIR = "/home/ubuntu/nl2sql_project/logs"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+LOG_DIR = os.path.join(BASE_DIR, "logs")  # ← Cross-platform safe, uses local project folder
+
 os.makedirs(LOG_DIR, exist_ok=True)
 LOG_FILE = os.path.join(LOG_DIR, "nl2sql_app.log")
-
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",

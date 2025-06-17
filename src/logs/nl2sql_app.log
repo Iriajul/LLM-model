@@ -1,0 +1,819 @@
+2025-06-17 23:53:19,806 - config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-17 23:53:19,961 - config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-17 23:53:19,961 - config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-17 23:53:20,663 - config - INFO - LLM initialized successfully.
+2025-06-17 23:53:20,663 - config - INFO - Connecting to Redis: localhost:6379
+2025-06-17 23:53:20,686 - config - INFO - Redis connection established successfully.
+2025-06-17 23:53:20,765 - config - INFO - LangGraph workflow compiled successfully.
+2025-06-17 23:53:20,765 - config - INFO - Starting NL2SQL application example...
+2025-06-17 23:53:20,766 - config - INFO - User Question: Determine the average delivery delay per shipping method order date vs delivery date and rank them by efficiency.
+2025-06-17 23:53:20,769 - config - INFO - Workflow started.
+2025-06-17 23:53:20,769 - config - INFO - Fetching database schema...
+2025-06-17 23:53:20,770 - config - INFO - Fetching dynamic schema representation for schema: info
+2025-06-17 23:53:20,772 - config - INFO - Successfully fetched schema for tables: ['customers', 'order_details', 'orders', 'products', 'sales_representative', 'suppliers']
+2025-06-17 23:53:20,772 - config - INFO - Query execution time - schema_fetch: 0.00s
+2025-06-17 23:53:20,772 - config - INFO - Schema cached successfully
+2025-06-17 23:53:20,773 - config - INFO - Generating SQL query...
+2025-06-17 23:53:21,437 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-17 23:53:21,437 - config - INFO - Generated SQL: SELECT 
+    o.shipping_method, 
+    AVG(o.order_date - o.shipping_date) AS avg_delivery_delay, 
+    RANK() OVER (ORDER BY AVG(o.order_date - o.shipping_date)) AS efficiency_rank
+FROM 
+    info.orders o
+GROUP BY 
+    o.shipping_method
+ORDER BY 
+    efficiency_rank;
+2025-06-17 23:53:21,446 - config - INFO - Executing SQL: SELECT 
+    o.shipping_method, 
+    AVG(o.order_date - o.shipping_date) AS avg_delivery_delay, 
+    RANK() OVER (ORDER BY AVG(o.order_date - o.shipping_date)) AS efficiency_rank
+FROM 
+    info.orders o
+GROUP BY 
+    o.shipping_method
+ORDER BY 
+    efficiency_rank;
+2025-06-17 23:53:21,447 - config - INFO - Validating SQL query: SELECT 
+    o.shipping_method, 
+    AVG(o.order_date - o.shipping_date) AS avg_delivery_delay, 
+    RANK() OVER (ORDER BY AVG(o.order_date - o.shipping_date)) AS efficiency_rank
+FROM 
+    info.orders o
+GROUP BY 
+    o.shipping_method
+ORDER BY 
+    efficiency_rank;
+2025-06-17 23:53:21,457 - config - ERROR - Error executing query: SELECT 
+    o.shipping_method, 
+    AVG(o.order_date - o.shipping_date) AS avg_delivery_delay, 
+    RANK() OVER (ORDER BY AVG(o.order_date - o.shipping_date)) AS efficiency_rank
+FROM 
+    info.orders o
+GROUP BY 
+    o.shipping_method
+ORDER BY 
+    efficiency_rank;
+Error: (psycopg2.errors.UndefinedColumn) column o.shipping_date does not exist
+LINE 3:     AVG(o.order_date - o.shipping_date) AS avg_delivery_dela...
+                               ^
+
+[SQL: SELECT 
+    o.shipping_method, 
+    AVG(o.order_date - o.shipping_date) AS avg_delivery_delay, 
+    RANK() OVER (ORDER BY AVG(o.order_date - o.shipping_date)) AS efficiency_rank
+FROM 
+    info.orders o
+GROUP BY 
+    o.shipping_method
+ORDER BY 
+    efficiency_rank;]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Traceback (most recent call last):
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedColumn: column o.shipping_date does not exist
+LINE 3:     AVG(o.order_date - o.shipping_date) AS avg_delivery_dela...
+                               ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\nl2sql_manus\src\db_utils.py", line 173, in safe_db_run
+    result = conn.execute(stmt, params) if params else conn.execute(stmt)
+                                                       ^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1415, in execute
+    return meth(
+           ^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 523, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1637, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1842, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1982, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2351, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedColumn) column o.shipping_date does not exist
+LINE 3:     AVG(o.order_date - o.shipping_date) AS avg_delivery_dela...
+                               ^
+
+[SQL: SELECT 
+    o.shipping_method, 
+    AVG(o.order_date - o.shipping_date) AS avg_delivery_delay, 
+    RANK() OVER (ORDER BY AVG(o.order_date - o.shipping_date)) AS efficiency_rank
+FROM 
+    info.orders o
+GROUP BY 
+    o.shipping_method
+ORDER BY 
+    efficiency_rank;]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-06-17 23:53:21,464 - config - WARNING - Attempting SQL correction (Attempt 1/3)
+2025-06-17 23:53:22,888 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-17 23:53:23,595 - config - INFO - Corrected SQL: SELECT 
+    o.shipping_method, 
+    AVG(o.order_date - (SELECT order_date FROM info.orders WHERE order_id = o.order_id)) AS avg_delivery_delay, 
+    RANK() OVER (ORDER BY AVG(o.order_date - (SELECT order_date FROM info.orders WHERE order_id = o.order_id))) AS efficiency_rank
+FROM 
+    info.orders o
+GROUP BY 
+    o.shipping_method
+ORDER BY 
+    efficiency_rank;
+2025-06-17 23:53:23,595 - config - INFO - Executing SQL: SELECT 
+    o.shipping_method, 
+    AVG(o.order_date - (SELECT order_date FROM info.orders WHERE order_id = o.order_id)) AS avg_delivery_delay, 
+    RANK() OVER (ORDER BY AVG(o.order_date - (SELECT order_date FROM info.orders WHERE order_id = o.order_id))) AS efficiency_rank
+FROM 
+    info.orders o
+GROUP BY 
+    o.shipping_method
+ORDER BY 
+    efficiency_rank;
+2025-06-17 23:53:23,595 - config - INFO - Validating SQL query: SELECT 
+    o.shipping_method, 
+    AVG(o.order_date - (SELECT order_date FROM info.orders WHERE order_id = o.order_id)) AS avg_delivery_delay, 
+    RANK() OVER (ORDER BY AVG(o.order_date - (SELECT order_date FROM info.orders WHERE order_id = o.order_id))) AS efficiency_rank
+FROM 
+    info.orders o
+GROUP BY 
+    o.shipping_method
+ORDER BY 
+    efficiency_rank;
+2025-06-17 23:53:23,626 - config - INFO - Query result cached successfully
+2025-06-17 23:53:23,627 - config - INFO - Formatting final answer...
+2025-06-17 23:53:26,440 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-17 23:53:26,441 - config - INFO - Formatted Answer: Based on the provided database result, all shipping methods (Express, International, Next Day, and Standard) have the same average delivery delay, which is essentially zero. Therefore, they are all equally efficient and ranked 1 in terms of efficiency.
+
+Download Full Results:
+- CSV: http://localhost:8000/download/fe608c6e5d144d7e9e126780c94fa98a.csv
+- Excel: http://localhost:8000/download/fe608c6e5d144d7e9e126780c94fa98a.xlsx
+2025-06-17 23:53:26,443 - config - INFO - Final Answer: Based on the provided database result, all shipping methods (Express, International, Next Day, and Standard) have the same average delivery delay, which is essentially zero. Therefore, they are all equally efficient and ranked 1 in terms of efficiency.
+
+Download Full Results:
+- CSV: http://localhost:8000/download/fe608c6e5d144d7e9e126780c94fa98a.csv
+- Excel: http://localhost:8000/download/fe608c6e5d144d7e9e126780c94fa98a.xlsx
+2025-06-17 23:53:26,443 - config - INFO - NL2SQL application example finished.
+2025-06-17 23:58:07,842 - config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-17 23:58:07,990 - config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-17 23:58:07,990 - config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-17 23:58:08,687 - config - INFO - LLM initialized successfully.
+2025-06-17 23:58:08,687 - config - INFO - Connecting to Redis: localhost:6379
+2025-06-17 23:58:08,708 - config - INFO - Redis connection established successfully.
+2025-06-17 23:58:08,789 - config - INFO - LangGraph workflow compiled successfully.
+2025-06-17 23:58:08,789 - config - INFO - Starting NL2SQL application example...
+2025-06-17 23:58:08,789 - config - INFO - User Question: Show me the customers name who work for this company with 2 years
+2025-06-17 23:58:08,792 - config - INFO - Workflow started.
+2025-06-17 23:58:08,793 - config - INFO - Fetching database schema...
+2025-06-17 23:58:08,793 - config - INFO - Schema loaded from cache
+2025-06-17 23:58:08,794 - config - INFO - Generating SQL query...
+2025-06-17 23:58:09,842 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-17 23:58:09,846 - config - INFO - Generated SQL: SELECT c.first_name, first_name 
+FROM info.customers c 
+JOIN info.orders o ON c.customer_id = o.customer_id) 
+JOIN info.sales_representative s ON o.sales_rep_id = s.sales_rep_id 
+WHERE s.company_name = 'this company' AND s.hire_date >= CURRENT_DATE - INTERVAL '2 year';
+2025-06-17 23:58:09,851 - config - INFO - Executing SQL: SELECT c.first_name, first_name 
+FROM info.customers c 
+JOIN info.orders o ON c.customer_id = o.customer_id) 
+JOIN info.sales_representative s ON o.sales_rep_id = s.sales_rep_id 
+WHERE s.company_name = 'this company' AND s.hire_date >= CURRENT_DATE - INTERVAL '2 year';
+2025-06-17 23:58:09,851 - config - INFO - Validating SQL query: SELECT c.first_name, first_name 
+FROM info.customers c 
+JOIN info.orders o ON c.customer_id = o.customer_id) 
+JOIN info.sales_representative s ON o.sales_rep_id = s.sales_rep_id 
+WHERE s.company_name = 'this company' AND s.hire_date >= CURRENT_DATE - INTERVAL '2 year';
+2025-06-17 23:58:09,853 - config - ERROR - Error executing query: SELECT c.first_name, first_name 
+FROM info.customers c 
+JOIN info.orders o ON c.customer_id = o.customer_id) 
+JOIN info.sales_representative s ON o.sales_rep_id = s.sales_rep_id 
+WHERE s.company_name = 'this company' AND s.hire_date >= CURRENT_DATE - INTERVAL '2 year';
+Error: (psycopg2.errors.SyntaxError) syntax error at or near ")"
+LINE 3: JOIN info.orders o ON c.customer_id = o.customer_id) 
+                                                           ^
+
+[SQL: SELECT c.first_name, first_name 
+FROM info.customers c 
+JOIN info.orders o ON c.customer_id = o.customer_id) 
+JOIN info.sales_representative s ON o.sales_rep_id = s.sales_rep_id 
+WHERE s.company_name = 'this company' AND s.hire_date >= CURRENT_DATE - INTERVAL '2 year';]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Traceback (most recent call last):
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.SyntaxError: syntax error at or near ")"
+LINE 3: JOIN info.orders o ON c.customer_id = o.customer_id) 
+                                                           ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\nl2sql_manus\src\db_utils.py", line 173, in safe_db_run
+    result = conn.execute(stmt, params) if params else conn.execute(stmt)
+                                                       ^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1415, in execute
+    return meth(
+           ^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 523, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1637, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1842, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1982, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2351, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.SyntaxError) syntax error at or near ")"
+LINE 3: JOIN info.orders o ON c.customer_id = o.customer_id) 
+                                                           ^
+
+[SQL: SELECT c.first_name, first_name 
+FROM info.customers c 
+JOIN info.orders o ON c.customer_id = o.customer_id) 
+JOIN info.sales_representative s ON o.sales_rep_id = s.sales_rep_id 
+WHERE s.company_name = 'this company' AND s.hire_date >= CURRENT_DATE - INTERVAL '2 year';]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-06-17 23:58:09,861 - config - WARNING - Attempting SQL correction (Attempt 1/3)
+2025-06-17 23:58:10,641 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-17 23:58:10,642 - config - INFO - Corrected SQL: SELECT c.first_name, c.last_name 
+FROM info.customers c 
+JOIN info.orders o ON c.customer_id = o.customer_id 
+JOIN info.sales_representative s ON o.sales_rep_id = s.sales_rep_id 
+WHERE s.company_name IS NULL AND o.order_date >= CURRENT_DATE - INTERVAL '2 year';
+2025-06-17 23:58:10,643 - config - INFO - Executing SQL: SELECT c.first_name, c.last_name 
+FROM info.customers c 
+JOIN info.orders o ON c.customer_id = o.customer_id 
+JOIN info.sales_representative s ON o.sales_rep_id = s.sales_rep_id 
+WHERE s.company_name IS NULL AND o.order_date >= CURRENT_DATE - INTERVAL '2 year';
+2025-06-17 23:58:10,643 - config - INFO - Validating SQL query: SELECT c.first_name, c.last_name 
+FROM info.customers c 
+JOIN info.orders o ON c.customer_id = o.customer_id 
+JOIN info.sales_representative s ON o.sales_rep_id = s.sales_rep_id 
+WHERE s.company_name IS NULL AND o.order_date >= CURRENT_DATE - INTERVAL '2 year';
+2025-06-17 23:58:10,645 - config - ERROR - Error executing query: SELECT c.first_name, c.last_name 
+FROM info.customers c 
+JOIN info.orders o ON c.customer_id = o.customer_id 
+JOIN info.sales_representative s ON o.sales_rep_id = s.sales_rep_id 
+WHERE s.company_name IS NULL AND o.order_date >= CURRENT_DATE - INTERVAL '2 year';
+Error: (psycopg2.errors.UndefinedColumn) column s.company_name does not exist
+LINE 5: WHERE s.company_name IS NULL AND o.order_date >= CURRENT_DAT...
+              ^
+
+[SQL: SELECT c.first_name, c.last_name 
+FROM info.customers c 
+JOIN info.orders o ON c.customer_id = o.customer_id 
+JOIN info.sales_representative s ON o.sales_rep_id = s.sales_rep_id 
+WHERE s.company_name IS NULL AND o.order_date >= CURRENT_DATE - INTERVAL '2 year';]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Traceback (most recent call last):
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedColumn: column s.company_name does not exist
+LINE 5: WHERE s.company_name IS NULL AND o.order_date >= CURRENT_DAT...
+              ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\nl2sql_manus\src\db_utils.py", line 173, in safe_db_run
+    result = conn.execute(stmt, params) if params else conn.execute(stmt)
+                                                       ^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1415, in execute
+    return meth(
+           ^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 523, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1637, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1842, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1982, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2351, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedColumn) column s.company_name does not exist
+LINE 5: WHERE s.company_name IS NULL AND o.order_date >= CURRENT_DAT...
+              ^
+
+[SQL: SELECT c.first_name, c.last_name 
+FROM info.customers c 
+JOIN info.orders o ON c.customer_id = o.customer_id 
+JOIN info.sales_representative s ON o.sales_rep_id = s.sales_rep_id 
+WHERE s.company_name IS NULL AND o.order_date >= CURRENT_DATE - INTERVAL '2 year';]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-06-17 23:58:10,651 - config - WARNING - Attempting SQL correction (Attempt 2/3)
+2025-06-17 23:58:11,380 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-17 23:58:11,380 - config - INFO - Corrected SQL: SELECT c.first_name, c.last_name 
+FROM info.customers c 
+JOIN info.orders o ON c.customer_id = o.customer_id 
+JOIN info.sales_representative s ON o.sales_rep_id = s.sales_rep_id 
+WHERE o.order_date >= CURRENT_DATE - INTERVAL '2 year';
+2025-06-17 23:58:11,380 - config - INFO - Executing SQL: SELECT c.first_name, c.last_name 
+FROM info.customers c 
+JOIN info.orders o ON c.customer_id = o.customer_id 
+JOIN info.sales_representative s ON o.sales_rep_id = s.sales_rep_id 
+WHERE o.order_date >= CURRENT_DATE - INTERVAL '2 year';
+2025-06-17 23:58:11,380 - config - INFO - Validating SQL query: SELECT c.first_name, c.last_name 
+FROM info.customers c 
+JOIN info.orders o ON c.customer_id = o.customer_id 
+JOIN info.sales_representative s ON o.sales_rep_id = s.sales_rep_id 
+WHERE o.order_date >= CURRENT_DATE - INTERVAL '2 year';
+2025-06-17 23:58:11,389 - config - INFO - Query result cached successfully
+2025-06-17 23:58:11,391 - config - INFO - Formatting final answer...
+2025-06-17 23:58:14,617 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-17 23:58:14,617 - config - INFO - Formatted Answer: Here is the answer to the user's original question:
+
+The customers who work for this company with 2 years are: Robert Garcia, Amanda Thompson, Kimberly Moore, Xiu Hernandez, Carlos Liu, Andrew Liu, Anthony Sanchez, Melissa Patel, Jennifer Khan, Wei Mitchell, Matthew Jones, Carlos Smith, Robert Singh, Christopher Wu, Patricia Zhu, Donna Hernandez, Kimberly White, and Jessica Sharma.
+
+Download Full Results:
+- CSV: http://localhost:8000/download/3a7a5b89dd5f4c67a3640effb8a2991e.csv
+- Excel: http://localhost:8000/download/3a7a5b89dd5f4c67a3640effb8a2991e.xlsx
+2025-06-17 23:58:14,621 - config - INFO - Final Answer: Here is the answer to the user's original question:
+
+The customers who work for this company with 2 years are: Robert Garcia, Amanda Thompson, Kimberly Moore, Xiu Hernandez, Carlos Liu, Andrew Liu, Anthony Sanchez, Melissa Patel, Jennifer Khan, Wei Mitchell, Matthew Jones, Carlos Smith, Robert Singh, Christopher Wu, Patricia Zhu, Donna Hernandez, Kimberly White, and Jessica Sharma.
+
+Download Full Results:
+- CSV: http://localhost:8000/download/3a7a5b89dd5f4c67a3640effb8a2991e.csv
+- Excel: http://localhost:8000/download/3a7a5b89dd5f4c67a3640effb8a2991e.xlsx
+2025-06-17 23:58:14,622 - config - INFO - NL2SQL application example finished.
+2025-06-17 23:58:45,082 - config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-17 23:58:45,232 - config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-17 23:58:45,232 - config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-17 23:58:45,923 - config - INFO - LLM initialized successfully.
+2025-06-17 23:58:45,923 - config - INFO - Connecting to Redis: localhost:6379
+2025-06-17 23:58:45,923 - config - INFO - Redis connection established successfully.
+2025-06-17 23:58:46,016 - config - INFO - LangGraph workflow compiled successfully.
+2025-06-17 23:58:46,016 - config - INFO - Starting NL2SQL application example...
+2025-06-17 23:58:46,016 - config - INFO - User Question: Show me the customers name who work for this company with 10 years
+2025-06-17 23:58:46,020 - config - INFO - Workflow started.
+2025-06-17 23:58:46,020 - config - INFO - Fetching database schema...
+2025-06-17 23:58:46,020 - config - INFO - Schema loaded from cache
+2025-06-17 23:58:46,020 - config - INFO - Generating SQL query...
+2025-06-17 23:58:46,643 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-17 23:58:46,652 - config - INFO - Generated SQL: SELECT c.first_name, first_name 
+FROM info.customers c 
+JOIN info.orders o ON c.customer_id = o.customer_id) 
+JOIN info.sales_representative s ON o.sales_rep_id = s.sales_rep_id 
+WHERE EXTRACT(YEAR FROM AGE(CURRENT_DATE, s.hire_date)) = 10;
+2025-06-17 23:58:46,655 - config - INFO - Executing SQL: SELECT c.first_name, first_name 
+FROM info.customers c 
+JOIN info.orders o ON c.customer_id = o.customer_id) 
+JOIN info.sales_representative s ON o.sales_rep_id = s.sales_rep_id 
+WHERE EXTRACT(YEAR FROM AGE(CURRENT_DATE, s.hire_date)) = 10;
+2025-06-17 23:58:46,655 - config - INFO - Validating SQL query: SELECT c.first_name, first_name 
+FROM info.customers c 
+JOIN info.orders o ON c.customer_id = o.customer_id) 
+JOIN info.sales_representative s ON o.sales_rep_id = s.sales_rep_id 
+WHERE EXTRACT(YEAR FROM AGE(CURRENT_DATE, s.hire_date)) = 10;
+2025-06-17 23:58:46,657 - config - ERROR - Error executing query: SELECT c.first_name, first_name 
+FROM info.customers c 
+JOIN info.orders o ON c.customer_id = o.customer_id) 
+JOIN info.sales_representative s ON o.sales_rep_id = s.sales_rep_id 
+WHERE EXTRACT(YEAR FROM AGE(CURRENT_DATE, s.hire_date)) = 10;
+Error: (psycopg2.errors.SyntaxError) syntax error at or near ")"
+LINE 3: JOIN info.orders o ON c.customer_id = o.customer_id) 
+                                                           ^
+
+[SQL: SELECT c.first_name, first_name 
+FROM info.customers c 
+JOIN info.orders o ON c.customer_id = o.customer_id) 
+JOIN info.sales_representative s ON o.sales_rep_id = s.sales_rep_id 
+WHERE EXTRACT(YEAR FROM AGE(CURRENT_DATE, s.hire_date)) = 10;]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Traceback (most recent call last):
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.SyntaxError: syntax error at or near ")"
+LINE 3: JOIN info.orders o ON c.customer_id = o.customer_id) 
+                                                           ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\nl2sql_manus\src\db_utils.py", line 173, in safe_db_run
+    result = conn.execute(stmt, params) if params else conn.execute(stmt)
+                                                       ^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1415, in execute
+    return meth(
+           ^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 523, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1637, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1842, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1982, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2351, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.SyntaxError) syntax error at or near ")"
+LINE 3: JOIN info.orders o ON c.customer_id = o.customer_id) 
+                                                           ^
+
+[SQL: SELECT c.first_name, first_name 
+FROM info.customers c 
+JOIN info.orders o ON c.customer_id = o.customer_id) 
+JOIN info.sales_representative s ON o.sales_rep_id = s.sales_rep_id 
+WHERE EXTRACT(YEAR FROM AGE(CURRENT_DATE, s.hire_date)) = 10;]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-06-17 23:58:46,664 - config - WARNING - Attempting SQL correction (Attempt 1/3)
+2025-06-17 23:58:47,194 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-17 23:58:47,194 - config - INFO - Corrected SQL: SELECT c.first_name, c.last_name 
+FROM info.customers c 
+JOIN info.orders o ON c.customer_id = o.customer_id 
+JOIN info.sales_representative s ON o.sales_rep_id = s.sales_rep_id 
+WHERE EXTRACT(YEAR FROM AGE(CURRENT_DATE, s.hire_date)) = 10;
+2025-06-17 23:58:47,194 - config - INFO - Executing SQL: SELECT c.first_name, c.last_name 
+FROM info.customers c 
+JOIN info.orders o ON c.customer_id = o.customer_id 
+JOIN info.sales_representative s ON o.sales_rep_id = s.sales_rep_id 
+WHERE EXTRACT(YEAR FROM AGE(CURRENT_DATE, s.hire_date)) = 10;
+2025-06-17 23:58:47,194 - config - INFO - Validating SQL query: SELECT c.first_name, c.last_name 
+FROM info.customers c 
+JOIN info.orders o ON c.customer_id = o.customer_id 
+JOIN info.sales_representative s ON o.sales_rep_id = s.sales_rep_id 
+WHERE EXTRACT(YEAR FROM AGE(CURRENT_DATE, s.hire_date)) = 10;
+2025-06-17 23:58:47,200 - config - INFO - Query result cached successfully
+2025-06-17 23:58:47,204 - config - INFO - Formatting final answer...
+2025-06-17 23:58:47,539 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-17 23:58:47,539 - config - INFO - Formatted Answer: There are no customers who work for this company with 10 years of service.
+2025-06-17 23:58:47,539 - config - INFO - Final Answer: There are no customers who work for this company with 10 years of service.
+2025-06-17 23:58:47,539 - config - INFO - NL2SQL application example finished.
+2025-06-17 23:58:57,273 - config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-17 23:58:57,425 - config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-17 23:58:57,426 - config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-17 23:58:58,126 - config - INFO - LLM initialized successfully.
+2025-06-17 23:58:58,127 - config - INFO - Connecting to Redis: localhost:6379
+2025-06-17 23:58:58,128 - config - INFO - Redis connection established successfully.
+2025-06-17 23:58:58,205 - config - INFO - LangGraph workflow compiled successfully.
+2025-06-17 23:58:58,205 - config - INFO - Starting NL2SQL application example...
+2025-06-17 23:58:58,205 - config - INFO - User Question: Show me the customers name who work for this company with 5 years
+2025-06-17 23:58:58,208 - config - INFO - Workflow started.
+2025-06-17 23:58:58,209 - config - INFO - Fetching database schema...
+2025-06-17 23:58:58,210 - config - INFO - Schema loaded from cache
+2025-06-17 23:58:58,210 - config - INFO - Generating SQL query...
+2025-06-17 23:58:58,913 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-17 23:58:58,919 - config - INFO - Generated SQL: SELECT c.first_name, first_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr.sales_rep_id = o.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';
+2025-06-17 23:58:58,921 - config - INFO - Executing SQL: SELECT c.first_name, first_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr.sales_rep_id = o.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';
+2025-06-17 23:58:58,921 - config - INFO - Validating SQL query: SELECT c.first_name, first_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr.sales_rep_id = o.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';
+2025-06-17 23:58:58,924 - config - ERROR - Error executing query: SELECT c.first_name, first_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr.sales_rep_id = o.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';
+Error: (psycopg2.errors.SyntaxError) syntax error at or near "."
+LINE 4: JOIN info.sales_representative sr.sales_rep_id = o.sales_rep...
+                                         ^
+
+[SQL: SELECT c.first_name, first_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr.sales_rep_id = o.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Traceback (most recent call last):
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.SyntaxError: syntax error at or near "."
+LINE 4: JOIN info.sales_representative sr.sales_rep_id = o.sales_rep...
+                                         ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\nl2sql_manus\src\db_utils.py", line 173, in safe_db_run
+    result = conn.execute(stmt, params) if params else conn.execute(stmt)
+                                                       ^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1415, in execute
+    return meth(
+           ^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 523, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1637, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1842, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1982, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2351, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.SyntaxError) syntax error at or near "."
+LINE 4: JOIN info.sales_representative sr.sales_rep_id = o.sales_rep...
+                                         ^
+
+[SQL: SELECT c.first_name, first_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr.sales_rep_id = o.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-06-17 23:58:58,932 - config - WARNING - Attempting SQL correction (Attempt 1/3)
+2025-06-17 23:58:59,439 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-17 23:58:59,440 - config - INFO - Corrected SQL: SELECT c.first_name, c.last_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr ON o.sales_rep_id = sr.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';
+2025-06-17 23:58:59,441 - config - INFO - Executing SQL: SELECT c.first_name, c.last_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr ON o.sales_rep_id = sr.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';
+2025-06-17 23:58:59,442 - config - INFO - Validating SQL query: SELECT c.first_name, c.last_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr ON o.sales_rep_id = sr.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';
+2025-06-17 23:58:59,455 - config - INFO - Query result cached successfully
+2025-06-17 23:58:59,459 - config - INFO - Formatting final answer...
+2025-06-17 23:59:02,335 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-17 23:59:02,336 - config - INFO - Formatted Answer: Here are the customers' names who work for this company: Karen Chen, Joshua Liu, Michael Jackson, Donald Wang, Linda Liu, Robert Garcia, Amanda Thompson, Ali Anderson, William Hall, Kimberly Moore, Michael Singh, Xiu Hernandez, Andrew Hernandez, Xiu Gomez, Deborah Singh, Donald Garcia, Carlos Liu, Andrew Liu, and Anthony Sanchez.
+
+Download Full Results:
+- CSV: http://localhost:8000/download/57626c1c7d16403fbd58c5538dca98a8.csv
+- Excel: http://localhost:8000/download/57626c1c7d16403fbd58c5538dca98a8.xlsx
+2025-06-17 23:59:02,337 - config - INFO - Final Answer: Here are the customers' names who work for this company: Karen Chen, Joshua Liu, Michael Jackson, Donald Wang, Linda Liu, Robert Garcia, Amanda Thompson, Ali Anderson, William Hall, Kimberly Moore, Michael Singh, Xiu Hernandez, Andrew Hernandez, Xiu Gomez, Deborah Singh, Donald Garcia, Carlos Liu, Andrew Liu, and Anthony Sanchez.
+
+Download Full Results:
+- CSV: http://localhost:8000/download/57626c1c7d16403fbd58c5538dca98a8.csv
+- Excel: http://localhost:8000/download/57626c1c7d16403fbd58c5538dca98a8.xlsx
+2025-06-17 23:59:02,337 - config - INFO - NL2SQL application example finished.
+2025-06-18 00:01:56,052 - config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-18 00:01:56,203 - config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-18 00:01:56,203 - config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-18 00:01:56,893 - config - INFO - LLM initialized successfully.
+2025-06-18 00:01:56,893 - config - INFO - Connecting to Redis: localhost:6379
+2025-06-18 00:01:56,909 - config - INFO - Redis connection established successfully.
+2025-06-18 00:01:56,986 - config - INFO - LangGraph workflow compiled successfully.
+2025-06-18 00:01:56,986 - config - INFO - Starting NL2SQL application example...
+2025-06-18 00:01:56,986 - config - INFO - User Question: For each product, show the average discount applied and the effective price after discount, sorted by discount descending. 
+2025-06-18 00:01:56,989 - config - INFO - Workflow started.
+2025-06-18 00:01:56,989 - config - INFO - Fetching database schema...
+2025-06-18 00:01:56,989 - config - INFO - Schema loaded from cache
+2025-06-18 00:01:56,989 - config - INFO - Generating SQL query...
+2025-06-18 00:01:57,864 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-18 00:01:57,870 - config - INFO - Generated SQL: SELECT 
+    p.product_id, 
+    AVG(od.discount_amount) AS avg_discount, 
+    p.price - AVG(od.discount_amount) AS effective_price
+FROM 
+    info.order_details od 
+    ON od.product_id = od.product_id
+JOIN 
+    info.products p 
+    ON p.product_id = od.product_id
+GROUP BY 
+    p.product_id
+ORDER BY 
+    avg_discount DESC;
+2025-06-18 00:01:57,873 - config - INFO - Executing SQL: SELECT 
+    p.product_id, 
+    AVG(od.discount_amount) AS avg_discount, 
+    p.price - AVG(od.discount_amount) AS effective_price
+FROM 
+    info.order_details od 
+    ON od.product_id = od.product_id
+JOIN 
+    info.products p 
+    ON p.product_id = od.product_id
+GROUP BY 
+    p.product_id
+ORDER BY 
+    avg_discount DESC;
+2025-06-18 00:01:57,874 - config - INFO - Validating SQL query: SELECT 
+    p.product_id, 
+    AVG(od.discount_amount) AS avg_discount, 
+    p.price - AVG(od.discount_amount) AS effective_price
+FROM 
+    info.order_details od 
+    ON od.product_id = od.product_id
+JOIN 
+    info.products p 
+    ON p.product_id = od.product_id
+GROUP BY 
+    p.product_id
+ORDER BY 
+    avg_discount DESC;
+2025-06-18 00:01:57,876 - config - ERROR - Error executing query: SELECT 
+    p.product_id, 
+    AVG(od.discount_amount) AS avg_discount, 
+    p.price - AVG(od.discount_amount) AS effective_price
+FROM 
+    info.order_details od 
+    ON od.product_id = od.product_id
+JOIN 
+    info.products p 
+    ON p.product_id = od.product_id
+GROUP BY 
+    p.product_id
+ORDER BY 
+    avg_discount DESC;
+Error: (psycopg2.errors.SyntaxError) syntax error at or near "ON"
+LINE 7:     ON od.product_id = od.product_id
+            ^
+
+[SQL: SELECT 
+    p.product_id, 
+    AVG(od.discount_amount) AS avg_discount, 
+    p.price - AVG(od.discount_amount) AS effective_price
+FROM 
+    info.order_details od 
+    ON od.product_id = od.product_id
+JOIN 
+    info.products p 
+    ON p.product_id = od.product_id
+GROUP BY 
+    p.product_id
+ORDER BY 
+    avg_discount DESC;]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Traceback (most recent call last):
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.SyntaxError: syntax error at or near "ON"
+LINE 7:     ON od.product_id = od.product_id
+            ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\nl2sql_manus\src\db_utils.py", line 173, in safe_db_run
+    result = conn.execute(stmt, params) if params else conn.execute(stmt)
+                                                       ^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1415, in execute
+    return meth(
+           ^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 523, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1637, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1842, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1982, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2351, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.SyntaxError) syntax error at or near "ON"
+LINE 7:     ON od.product_id = od.product_id
+            ^
+
+[SQL: SELECT 
+    p.product_id, 
+    AVG(od.discount_amount) AS avg_discount, 
+    p.price - AVG(od.discount_amount) AS effective_price
+FROM 
+    info.order_details od 
+    ON od.product_id = od.product_id
+JOIN 
+    info.products p 
+    ON p.product_id = od.product_id
+GROUP BY 
+    p.product_id
+ORDER BY 
+    avg_discount DESC;]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-06-18 00:01:57,883 - config - WARNING - Attempting SQL correction (Attempt 1/3)
+2025-06-18 00:01:58,412 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-18 00:01:58,413 - config - INFO - Corrected SQL: SELECT 
+    p.product_id, 
+    AVG(od.discount_amount) AS avg_discount, 
+    p.price - AVG(od.discount_amount) AS effective_price
+FROM 
+    info.order_details od 
+JOIN 
+    info.products p 
+ON p.product_id = od.product_id
+GROUP BY 
+    p.product_id
+ORDER BY 
+    avg_discount DESC;
+2025-06-18 00:01:58,414 - config - INFO - Executing SQL: SELECT 
+    p.product_id, 
+    AVG(od.discount_amount) AS avg_discount, 
+    p.price - AVG(od.discount_amount) AS effective_price
+FROM 
+    info.order_details od 
+JOIN 
+    info.products p 
+ON p.product_id = od.product_id
+GROUP BY 
+    p.product_id
+ORDER BY 
+    avg_discount DESC;
+2025-06-18 00:01:58,414 - config - INFO - Validating SQL query: SELECT 
+    p.product_id, 
+    AVG(od.discount_amount) AS avg_discount, 
+    p.price - AVG(od.discount_amount) AS effective_price
+FROM 
+    info.order_details od 
+JOIN 
+    info.products p 
+ON p.product_id = od.product_id
+GROUP BY 
+    p.product_id
+ORDER BY 
+    avg_discount DESC;
+2025-06-18 00:01:58,436 - config - INFO - Query result cached successfully
+2025-06-18 00:01:58,440 - config - INFO - Formatting final answer...
+2025-06-18 00:02:01,534 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-18 00:02:01,534 - config - INFO - Formatted Answer: Here is the answer to the user's original question:
+
+The average discount applied and effective price after discount for each product, sorted by discount in descending order, are as follows: 
+
+P0969 has an average discount of 2912.64 and an effective price of -2702.13. 
+P0649 has an average discount of 2790.74 and an effective price of -2456.71. 
+P0077 has an average discount of 2768.8 and an effective price of -1772.84. 
+...and so on, with the rest of the products following in descending order of discount.
+
+Download Full Results:
+- CSV: http://localhost:8000/download/7c1d5dcc30ba41c3852951147cfcc4cf.csv
+- Excel: http://localhost:8000/download/7c1d5dcc30ba41c3852951147cfcc4cf.xlsx
+2025-06-18 00:02:01,538 - config - INFO - Final Answer: Here is the answer to the user's original question:
+
+The average discount applied and effective price after discount for each product, sorted by discount in descending order, are as follows: 
+
+P0969 has an average discount of 2912.64 and an effective price of -2702.13. 
+P0649 has an average discount of 2790.74 and an effective price of -2456.71. 
+P0077 has an average discount of 2768.8 and an effective price of -1772.84. 
+...and so on, with the rest of the products following in descending order of discount.
+
+Download Full Results:
+- CSV: http://localhost:8000/download/7c1d5dcc30ba41c3852951147cfcc4cf.csv
+- Excel: http://localhost:8000/download/7c1d5dcc30ba41c3852951147cfcc4cf.xlsx
+2025-06-18 00:02:01,538 - config - INFO - NL2SQL application example finished.

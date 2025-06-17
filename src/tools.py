@@ -20,4 +20,3 @@ def execute_sql_query(query: str) -> Union[List[Dict], str]:
         logger.error(f"Unexpected error in execute_sql_query: {e}")
         return f"Error: Failed to execute query - {str(e)}"
 
-

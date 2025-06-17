@@ -18,12 +18,13 @@ if __name__ == "__main__":
     #question = "List each customer’s most recent order along with their previous order date"
     #question = "Show each revenue trend over time for each supplier, grouped by quarter"
     #question = "Find the average commission earned by each sales representative per region based on actual sales."
-    #question = "For each product, show the average discount applied and the effective price after discount, sorted by discount descending. "
+    question = "For each product, show the average discount applied and the effective price after discount, sorted by discount descending. "
     #question = "For each sales representative, calculate their total sales revenue and compare it to their annual target."
     #question = " Which customers placed more than 3 orders in the last 2 years and have an average order value greater than $500?"
-    question = "Determine the average delivery delay per shipping method order date vs delivery date and rank them by efficiency."
+    #question = "Determine the average delivery delay per shipping method order date vs delivery date and rank them by efficiency."
     #question = "Show me the suppliers tables data"
     #question = "Show me the products tables data"
+    #question= "Show me the customers name who work for this company with 5 years"
     logger.info(f"User Question: {question}")
 
     # Prepare the initial state for the graph

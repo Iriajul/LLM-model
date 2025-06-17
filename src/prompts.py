@@ -94,4 +94,3 @@ Do not add explanations or commentary.
 query_check_prompt = ChatPromptTemplate.from_messages([
     ("system", query_check_system),
 ])
-
