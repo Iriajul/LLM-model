@@ -62,13 +62,17 @@ This project implements a Natural Language to SQL (NL2SQL) system using LangChai
 
 1.  Ensure your PostgreSQL database server is running and accessible with the credentials provided in `.env`.
 2.  Make sure your virtual environment is activated.
-3.  Run the main script from the project's root directory:
+3.  Start the Export API service:
+     ```bash
+    uvicorn export_api:app --reload --port 8000
+    ```  
+4.  Run the main script from the project's root directory:
     ```bash
     python src/main.py
     ```
-4.  The script will execute the default example query ("List products with stock level below 50") defined in `src/main.py`. You can modify this query in the `main.py` file to ask different questions.
-5.  The application will log its progress to both the console and the `logs/nl2sql_app.log` file.
-6.  The final natural language answer generated from the database results will be printed to the console.
+5.  The script will execute the default example query ("List products with stock level below 50") defined in `src/main.py`. You can modify this query in the `main.py` file to ask different questions.
+6.  The application will log its progress to both the console and the `logs/nl2sql_app.log` file.
+7.  The final natural language answer generated from the database results will be printed to the console.
 
 ## How it Works
 
