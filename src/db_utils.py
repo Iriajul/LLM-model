@@ -54,6 +54,7 @@ def get_query_hash(query: str) -> str:
 # ==============================
 def analyze_query_complexity(query: str) -> Dict:
     query_upper = query.upper()
+    query_upper = re.sub(r'\(.*?\)', '', query_upper) 
     warnings = []
 
     complexity = {
@@ -78,7 +79,7 @@ def analyze_query_complexity(query: str) -> Dict:
     total_joins = sum(len(re.findall(p, query_upper)) for p in join_patterns)
     complexity["join_count"] = total_joins
 
-    if total_joins >= 4:
+    if total_joins >= 8:
         complexity["has_multiple_joins"] = True
         complexity["is_expensive"] = True
         complexity["estimated_cost"] = "high"

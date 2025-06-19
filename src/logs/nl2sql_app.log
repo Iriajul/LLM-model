@@ -817,3 +817,2798 @@ Download Full Results:
 - CSV: http://localhost:8000/download/7c1d5dcc30ba41c3852951147cfcc4cf.csv
 - Excel: http://localhost:8000/download/7c1d5dcc30ba41c3852951147cfcc4cf.xlsx
 2025-06-18 00:02:01,538 - config - INFO - NL2SQL application example finished.
+2025-06-18 00:22:20,362 - config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-18 00:22:20,537 - config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-18 00:22:20,541 - config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-18 00:22:21,204 - config - INFO - LLM initialized successfully.
+2025-06-18 00:22:21,204 - config - INFO - Connecting to Redis: localhost:6379
+2025-06-18 00:22:21,208 - config - INFO - Redis connection established successfully.
+2025-06-18 00:22:21,286 - config - INFO - LangGraph workflow compiled successfully.
+2025-06-18 00:26:03,535 - config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-18 00:26:03,805 - config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-18 00:26:03,805 - config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-18 00:26:04,472 - config - INFO - LLM initialized successfully.
+2025-06-18 00:26:04,472 - config - INFO - Connecting to Redis: localhost:6379
+2025-06-18 00:26:04,493 - config - INFO - Redis connection established successfully.
+2025-06-18 00:26:04,567 - config - INFO - LangGraph workflow compiled successfully.
+2025-06-18 00:27:04,757 - config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-18 00:27:04,923 - config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-18 00:27:04,923 - config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-18 00:27:05,594 - config - INFO - LLM initialized successfully.
+2025-06-18 00:27:05,594 - config - INFO - Connecting to Redis: localhost:6379
+2025-06-18 00:27:05,609 - config - INFO - Redis connection established successfully.
+2025-06-18 00:27:05,681 - config - INFO - LangGraph workflow compiled successfully.
+2025-06-18 00:27:12,761 - config - INFO - Validating SQL query: SELECT 1 AS status
+2025-06-18 00:27:12,762 - config - WARNING - SQL blocked - missing required schema prefix 'INFO.'
+2025-06-18 00:27:12,762 - config - CRITICAL - Blocked potentially unsafe query: SELECT 1 AS status
+2025-06-18 00:27:14,519 - config - INFO - Validating SQL query: SELECT 1 AS status
+2025-06-18 00:27:14,519 - config - WARNING - SQL blocked - missing required schema prefix 'INFO.'
+2025-06-18 00:27:14,519 - config - CRITICAL - Blocked potentially unsafe query: SELECT 1 AS status
+2025-06-18 00:27:46,376 - config - INFO - Workflow started.
+2025-06-18 00:27:46,376 - config - INFO - Fetching database schema...
+2025-06-18 00:27:46,376 - config - INFO - Schema loaded from cache
+2025-06-18 00:27:46,376 - config - INFO - Generating SQL query...
+2025-06-18 00:27:46,940 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-18 00:27:46,946 - config - INFO - Generated SQL: SELECT customer_id, first_name, last_name, email, city, country, join_date 
+FROM info.customers;
+2025-06-18 00:27:46,948 - config - INFO - Executing SQL: SELECT customer_id, first_name, last_name, email, city, country, join_date 
+FROM info.customers;
+2025-06-18 00:27:46,949 - config - INFO - Validating SQL query: SELECT customer_id, first_name, last_name, email, city, country, join_date 
+FROM info.customers;
+2025-06-18 00:27:46,957 - config - INFO - Query result cached successfully
+2025-06-18 00:27:46,963 - config - INFO - Formatting final answer...
+2025-06-18 00:27:50,018 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-18 00:27:50,018 - config - INFO - Formatted Answer: Here is the customers table data:
+
+The table has 20 rows, with customer information including customer ID, name, email, city, country, and join date. The customers are from various countries such as Australia, USA, UK, India, and China.
+
+Download Full Results:
+- CSV: http://localhost:8000/download/7243427438504066b571fa2cf2725af3.csv
+- Excel: http://localhost:8000/download/7243427438504066b571fa2cf2725af3.xlsx
+2025-06-18 00:28:19,135 - config - INFO - Validating SQL query: SELECT 1 AS status
+2025-06-18 00:28:19,136 - config - WARNING - SQL blocked - missing required schema prefix 'INFO.'
+2025-06-18 00:28:19,136 - config - CRITICAL - Blocked potentially unsafe query: SELECT 1 AS status
+2025-06-18 00:29:16,014 - config - INFO - Workflow started.
+2025-06-18 00:29:16,014 - config - INFO - Fetching database schema...
+2025-06-18 00:29:16,014 - config - INFO - Schema loaded from cache
+2025-06-18 00:29:16,014 - config - INFO - Generating SQL query...
+2025-06-18 00:29:16,529 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-18 00:29:16,529 - config - INFO - Generated SQL: SELECT customer_id, first_name, last_name, email, city, country, join_date 
+FROM info.customers;
+2025-06-18 00:29:16,529 - config - INFO - Executing SQL: SELECT customer_id, first_name, last_name, email, city, country, join_date 
+FROM info.customers;
+2025-06-18 00:29:16,529 - config - INFO - Query result loaded from cache
+2025-06-18 00:29:16,533 - config - INFO - Formatting final answer...
+2025-06-18 00:29:19,305 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-18 00:29:19,305 - config - INFO - Formatted Answer: Here is the customers table data:
+
+The table has 20 rows, with customer information including customer ID, name, email, city, country, and join date. The customers are from various countries such as Australia, USA, UK, India, and China.
+
+Download Full Results:
+- CSV: http://localhost:8000/download/a188d9c1ef8b4c2a8835814c17ed3535.csv
+- Excel: http://localhost:8000/download/a188d9c1ef8b4c2a8835814c17ed3535.xlsx
+2025-06-18 00:32:07,679 - config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-18 00:32:07,797 - config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-18 00:32:07,798 - config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-18 00:32:08,367 - config - INFO - LLM initialized successfully.
+2025-06-18 00:32:08,367 - config - INFO - Connecting to Redis: localhost:6379
+2025-06-18 00:32:08,391 - config - INFO - Redis connection established successfully.
+2025-06-18 00:32:08,406 - config - INFO - LangGraph workflow compiled successfully.
+2025-06-18 00:32:11,814 - config - INFO - Validating SQL query: SELECT 1 AS status
+2025-06-18 00:32:11,815 - config - WARNING - SQL blocked - missing required schema prefix 'INFO.'
+2025-06-18 00:32:11,815 - config - CRITICAL - Blocked potentially unsafe query: SELECT 1 AS status
+2025-06-18 00:32:36,726 - config - INFO - Workflow started.
+2025-06-18 00:32:36,727 - config - INFO - Fetching database schema...
+2025-06-18 00:32:36,728 - config - INFO - Schema loaded from cache
+2025-06-18 00:32:36,729 - config - INFO - Generating SQL query...
+2025-06-18 00:32:37,268 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-18 00:32:37,269 - config - INFO - Generated SQL: SELECT supplier_id, company_name, contact_person, email, phone, website, country, city, partnership_date, payment_terms, credit_limit, rating, status 
+FROM info.suppliers;
+2025-06-18 00:32:37,270 - config - INFO - Executing SQL: SELECT supplier_id, company_name, contact_person, email, phone, website, country, city, partnership_date, payment_terms, credit_limit, rating, status 
+FROM info.suppliers;
+2025-06-18 00:32:37,271 - config - INFO - Validating SQL query: SELECT supplier_id, company_name, contact_person, email, phone, website, country, city, partnership_date, payment_terms, credit_limit, rating, status 
+FROM info.suppliers;
+2025-06-18 00:32:37,275 - config - INFO - Query result cached successfully
+2025-06-18 00:32:37,277 - config - INFO - Formatting final answer...
+2025-06-18 00:32:40,339 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-18 00:32:40,379 - config - INFO - Formatted Answer: Here is the suppliers table data:
+
+The table has 15 suppliers, with IDs ranging from S001 to S015. The suppliers are from various countries including China, Germany, UK, USA, and Japan. The table shows company names, contact information, partnership dates, payment terms, credit limits, ratings, and status.
+
+Download Full Results:
+- CSV: http://localhost:8000/download/ece4bf33f4fc4e22a90af3b55984eb8b.csv
+- Excel: http://localhost:8000/download/ece4bf33f4fc4e22a90af3b55984eb8b.xlsx
+2025-06-18 00:32:42,320 - config - INFO - Validating SQL query: SELECT 1 AS status
+2025-06-18 00:32:42,320 - config - WARNING - SQL blocked - missing required schema prefix 'INFO.'
+2025-06-18 00:32:42,320 - config - CRITICAL - Blocked potentially unsafe query: SELECT 1 AS status
+2025-06-18 00:32:52,502 - config - INFO - Workflow started.
+2025-06-18 00:32:52,503 - config - INFO - Fetching database schema...
+2025-06-18 00:32:52,503 - config - INFO - Schema loaded from cache
+2025-06-18 00:32:52,504 - config - INFO - Generating SQL query...
+2025-06-18 00:32:53,805 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-18 00:32:53,806 - config - INFO - Generated SQL: SELECT supplier_id, company_name, contact_person, email, phone, website, country, city, partnership_date, payment_terms, credit_limit, rating, status 
+FROM info.suppliers;
+2025-06-18 00:32:53,806 - config - INFO - Executing SQL: SELECT supplier_id, company_name, contact_person, email, phone, website, country, city, partnership_date, payment_terms, credit_limit, rating, status 
+FROM info.suppliers;
+2025-06-18 00:32:53,807 - config - INFO - Query result loaded from cache
+2025-06-18 00:32:53,809 - config - INFO - Formatting final answer...
+2025-06-18 00:32:56,620 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-18 00:32:56,621 - config - INFO - Formatted Answer: Here is the suppliers table data:
+
+The table has 15 suppliers, with IDs ranging from S001 to S015. The suppliers are from various countries including China, Germany, UK, USA, and Japan. The table shows company names, contact information, partnership dates, payment terms, credit limits, ratings, and status.
+
+Download Full Results:
+- CSV: http://localhost:8000/download/b6e671b3680c40ca938b0434afaff315.csv
+- Excel: http://localhost:8000/download/b6e671b3680c40ca938b0434afaff315.xlsx
+2025-06-18 00:33:04,049 - config - INFO - Validating SQL query: SELECT 1 AS status
+2025-06-18 00:33:04,049 - config - WARNING - SQL blocked - missing required schema prefix 'INFO.'
+2025-06-18 00:33:04,050 - config - CRITICAL - Blocked potentially unsafe query: SELECT 1 AS status
+2025-06-18 00:33:47,565 - config - INFO - Workflow started.
+2025-06-18 00:33:47,565 - config - INFO - Fetching database schema...
+2025-06-18 00:33:47,565 - config - INFO - Schema loaded from cache
+2025-06-18 00:33:47,565 - config - INFO - Generating SQL query...
+2025-06-18 00:33:49,106 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-18 00:33:49,110 - config - INFO - Generated SQL: SELECT supplier_id, company_name, contact_person, email, phone, website, country, city, partnership_date, payment_terms, credit_limit, rating, status 
+FROM info.suppliers;
+2025-06-18 00:33:49,110 - config - INFO - Executing SQL: SELECT supplier_id, company_name, contact_person, email, phone, website, country, city, partnership_date, payment_terms, credit_limit, rating, status 
+FROM info.suppliers;
+2025-06-18 00:33:49,110 - config - INFO - Query result loaded from cache
+2025-06-18 00:33:49,110 - config - INFO - Formatting final answer...
+2025-06-18 00:33:51,920 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-18 00:33:51,936 - config - INFO - Formatted Answer: Here is the suppliers table data:
+
+The table has 15 suppliers, with IDs ranging from S001 to S015. The suppliers are from various countries including China, Germany, UK, USA, and Japan. The table shows company names, contact information, partnership dates, payment terms, credit limits, ratings, and status.
+
+Download Full Results:
+- CSV: http://localhost:8000/download/f13135b56d674c5d82ba64ee62063ed9.csv
+- Excel: http://localhost:8000/download/f13135b56d674c5d82ba64ee62063ed9.xlsx
+2025-06-18 00:34:05,687 - config - INFO - Validating SQL query: SELECT 1 AS status
+2025-06-18 00:34:05,687 - config - WARNING - SQL blocked - missing required schema prefix 'INFO.'
+2025-06-18 00:34:05,687 - config - CRITICAL - Blocked potentially unsafe query: SELECT 1 AS status
+2025-06-18 00:36:30,303 - config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-18 00:36:30,424 - config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-18 00:36:30,425 - config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-18 00:36:30,966 - config - INFO - LLM initialized successfully.
+2025-06-18 00:36:30,966 - config - INFO - Connecting to Redis: localhost:6379
+2025-06-18 00:36:30,985 - config - INFO - Redis connection established successfully.
+2025-06-18 00:36:31,005 - config - INFO - LangGraph workflow compiled successfully.
+2025-06-18 00:36:33,902 - config - INFO - Validating SQL query: SELECT 1 AS status FROM info.dummy_table
+2025-06-18 00:36:33,905 - config - ERROR - Error executing query: SELECT 1 AS status FROM info.dummy_table
+Error: (psycopg2.errors.UndefinedTable) relation "info.dummy_table" does not exist
+LINE 1: SELECT 1 AS status FROM info.dummy_table
+                                ^
+
+[SQL: SELECT 1 AS status FROM info.dummy_table]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Traceback (most recent call last):
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedTable: relation "info.dummy_table" does not exist
+LINE 1: SELECT 1 AS status FROM info.dummy_table
+                                ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\nl2sql_manus\src\db_utils.py", line 173, in safe_db_run
+    result = conn.execute(stmt, params) if params else conn.execute(stmt)
+                                                       ^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1415, in execute
+    return meth(
+           ^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 523, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1637, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1842, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1982, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2351, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedTable) relation "info.dummy_table" does not exist
+LINE 1: SELECT 1 AS status FROM info.dummy_table
+                                ^
+
+[SQL: SELECT 1 AS status FROM info.dummy_table]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-06-18 00:36:49,045 - config - INFO - Workflow started.
+2025-06-18 00:36:49,045 - config - INFO - Fetching database schema...
+2025-06-18 00:36:49,047 - config - INFO - Schema loaded from cache
+2025-06-18 00:36:49,048 - config - INFO - Generating SQL query...
+2025-06-18 00:36:49,551 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-18 00:36:49,552 - config - INFO - Generated SQL: SELECT first_name, last_name FROM info.customers;
+2025-06-18 00:36:49,553 - config - INFO - Executing SQL: SELECT first_name, last_name FROM info.customers;
+2025-06-18 00:36:49,554 - config - INFO - Validating SQL query: SELECT first_name, last_name FROM info.customers;
+2025-06-18 00:36:49,558 - config - INFO - Query result cached successfully
+2025-06-18 00:36:49,560 - config - INFO - Formatting final answer...
+2025-06-18 00:36:52,552 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-18 00:36:52,553 - config - INFO - Formatted Answer: Here are the customers' names:
+
+1. James Diaz
+2. Matthew Gonzalez
+4. Karen Davis
+5. Kevin Liu
+6. Kumar Sharma
+7. Robert Gonzalez
+8. Christopher Wang
+9. Elizabeth Hall
+10. Ahmed Martinez
+11. Carol Flores
+12. Michael Gomez
+13. William Zhang
+14. Amanda Thompson
+15. Melissa Williams
+16. George Zhou
+17. Carol Liu
+18. Robert Williams
+19. Mary Martin
+20. Deborah Mitchell
+
+Download Full Results:
+- CSV: http://localhost:8000/download/cac0671489ce4215b94953d9a9b03de6.csv
+- Excel: http://localhost:8000/download/cac0671489ce4215b94953d9a9b03de6.xlsx
+2025-06-18 00:36:54,126 - config - INFO - Validating SQL query: SELECT 1 AS status FROM info.dummy_table
+2025-06-18 00:36:54,127 - config - ERROR - Error executing query: SELECT 1 AS status FROM info.dummy_table
+Error: (psycopg2.errors.UndefinedTable) relation "info.dummy_table" does not exist
+LINE 1: SELECT 1 AS status FROM info.dummy_table
+                                ^
+
+[SQL: SELECT 1 AS status FROM info.dummy_table]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Traceback (most recent call last):
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedTable: relation "info.dummy_table" does not exist
+LINE 1: SELECT 1 AS status FROM info.dummy_table
+                                ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\nl2sql_manus\src\db_utils.py", line 173, in safe_db_run
+    result = conn.execute(stmt, params) if params else conn.execute(stmt)
+                                                       ^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1415, in execute
+    return meth(
+           ^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 523, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1637, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1842, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1982, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2351, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedTable) relation "info.dummy_table" does not exist
+LINE 1: SELECT 1 AS status FROM info.dummy_table
+                                ^
+
+[SQL: SELECT 1 AS status FROM info.dummy_table]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-06-18 00:36:55,980 - config - INFO - Workflow started.
+2025-06-18 00:36:55,980 - config - INFO - Fetching database schema...
+2025-06-18 00:36:55,981 - config - INFO - Schema loaded from cache
+2025-06-18 00:36:55,982 - config - INFO - Generating SQL query...
+2025-06-18 00:36:56,400 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-18 00:36:56,400 - config - INFO - Generated SQL: SELECT first_name, last_name FROM info.customers;
+2025-06-18 00:36:56,400 - config - INFO - Executing SQL: SELECT first_name, last_name FROM info.customers;
+2025-06-18 00:36:56,400 - config - INFO - Query result loaded from cache
+2025-06-18 00:36:56,404 - config - INFO - Formatting final answer...
+2025-06-18 00:36:59,141 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-18 00:36:59,145 - config - INFO - Formatted Answer: Here are the customers' names:
+
+1. James Diaz
+2. Matthew Gonzalez
+4. Karen Davis
+5. Kevin Liu
+6. Kumar Sharma
+7. Robert Gonzalez
+8. Christopher Wang
+9. Elizabeth Hall
+10. Ahmed Martinez
+11. Carol Flores
+12. Michael Gomez
+13. William Zhang
+14. Amanda Thompson
+15. Melissa Williams
+16. George Zhou
+17. Carol Liu
+18. Robert Williams
+19. Mary Martin
+20. Deborah Mitchell
+
+Download Full Results:
+- CSV: http://localhost:8000/download/332879fee87a444090bcd6e9a62fdf0c.csv
+- Excel: http://localhost:8000/download/332879fee87a444090bcd6e9a62fdf0c.xlsx
+2025-06-18 00:37:08,109 - config - INFO - Validating SQL query: SELECT 1 AS status FROM info.dummy_table
+2025-06-18 00:37:08,109 - config - ERROR - Error executing query: SELECT 1 AS status FROM info.dummy_table
+Error: (psycopg2.errors.UndefinedTable) relation "info.dummy_table" does not exist
+LINE 1: SELECT 1 AS status FROM info.dummy_table
+                                ^
+
+[SQL: SELECT 1 AS status FROM info.dummy_table]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Traceback (most recent call last):
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedTable: relation "info.dummy_table" does not exist
+LINE 1: SELECT 1 AS status FROM info.dummy_table
+                                ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\nl2sql_manus\src\db_utils.py", line 173, in safe_db_run
+    result = conn.execute(stmt, params) if params else conn.execute(stmt)
+                                                       ^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1415, in execute
+    return meth(
+           ^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 523, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1637, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1842, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1982, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2351, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedTable) relation "info.dummy_table" does not exist
+LINE 1: SELECT 1 AS status FROM info.dummy_table
+                                ^
+
+[SQL: SELECT 1 AS status FROM info.dummy_table]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-06-18 00:40:15,683 - config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-18 00:40:15,922 - config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-18 00:40:15,922 - config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-18 00:40:16,579 - config - INFO - LLM initialized successfully.
+2025-06-18 00:40:16,579 - config - INFO - Connecting to Redis: localhost:6379
+2025-06-18 00:40:16,598 - config - INFO - Redis connection established successfully.
+2025-06-18 00:40:16,617 - config - INFO - LangGraph workflow compiled successfully.
+2025-06-18 00:40:49,346 - config - INFO - Workflow started.
+2025-06-18 00:40:49,346 - config - INFO - Fetching database schema...
+2025-06-18 00:40:49,351 - config - INFO - Schema loaded from cache
+2025-06-18 00:40:49,351 - config - INFO - Generating SQL query...
+2025-06-18 00:40:50,876 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-18 00:40:50,876 - config - INFO - Generated SQL: SELECT NULL WHERE 1=0;
+2025-06-18 00:40:50,878 - config - WARNING - SQL blocked - missing required schema prefix 'INFO.'
+2025-06-18 00:40:50,878 - config - CRITICAL - Blocked potentially dangerous SQL query
+2025-06-18 00:40:50,879 - config - INFO - Formatting final answer...
+2025-06-18 00:40:50,879 - config - WARNING - Cannot format answer due to error: Blocked potentially dangerous SQL query
+2025-06-18 00:41:18,740 - config - INFO - Workflow started.
+2025-06-18 00:41:18,741 - config - INFO - Fetching database schema...
+2025-06-18 00:41:18,742 - config - INFO - Schema loaded from cache
+2025-06-18 00:41:18,742 - config - INFO - Generating SQL query...
+2025-06-18 00:41:20,023 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-18 00:41:20,242 - config - INFO - Generated SQL: SELECT 
+    o.order_id, 
+        o.customer_id, 
+        o.order_date, 
+        o.total_amount, 
+        CASE 
+            WHEN o.total_amount < 100 THEN 'small' 
+            WHEN o.total_amount < 500 THEN 'medium' 
+            ELSE 'large' 
+        END AS order_size 
+FROM 
+    info.orders o 
+ORDER BY 
+    o.total_amount DESC;
+2025-06-18 00:41:20,243 - config - INFO - Executing SQL: SELECT 
+    o.order_id, 
+        o.customer_id, 
+        o.order_date, 
+        o.total_amount, 
+        CASE 
+            WHEN o.total_amount < 100 THEN 'small' 
+            WHEN o.total_amount < 500 THEN 'medium' 
+            ELSE 'large' 
+        END AS order_size 
+FROM 
+    info.orders o 
+ORDER BY 
+    o.total_amount DESC;
+2025-06-18 00:41:20,244 - config - INFO - Validating SQL query: SELECT 
+    o.order_id, 
+        o.customer_id, 
+        o.order_date, 
+        o.total_amount, 
+        CASE 
+            WHEN o.total_amount < 100 THEN 'small' 
+            WHEN o.total_amount < 500 THEN 'medium' 
+            ELSE 'large' 
+        END AS order_size 
+FROM 
+    info.orders o 
+ORDER BY 
+    o.total_amount DESC;
+2025-06-18 00:41:20,270 - config - INFO - Query result cached successfully
+2025-06-18 00:41:20,281 - config - INFO - Formatting final answer...
+2025-06-18 00:41:23,406 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-18 00:41:23,407 - config - INFO - Formatted Answer: Based on the provided database result, it appears that all orders have a total amount above 4956.92, which can be classified as large orders. Therefore, all orders in this result set can be categorized as large.
+
+Download Full Results:
+- CSV: http://localhost:8000/download/30ed5dd3f7bb42fa974ccf3379a5c93e.csv
+- Excel: http://localhost:8000/download/30ed5dd3f7bb42fa974ccf3379a5c93e.xlsx
+2025-06-18 00:41:39,440 - config - INFO - Validating SQL query: SELECT 1 AS status
+2025-06-18 00:41:39,440 - config - WARNING - SQL blocked - missing required schema prefix 'INFO.'
+2025-06-18 00:41:39,440 - config - CRITICAL - Blocked potentially unsafe query: SELECT 1 AS status
+2025-06-18 00:41:44,060 - config - INFO - Workflow started.
+2025-06-18 00:41:44,060 - config - INFO - Fetching database schema...
+2025-06-18 00:41:44,061 - config - INFO - Schema loaded from cache
+2025-06-18 00:41:44,062 - config - INFO - Generating SQL query...
+2025-06-18 00:41:45,940 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-18 00:41:45,941 - config - INFO - Generated SQL: SELECT 
+    o.order_id, 
+        o.customer_id, 
+        o.order_date, 
+        o.total_amount, 
+        CASE 
+            WHEN o.total_amount < 100 THEN 'small' 
+            WHEN o.total_amount < 500 THEN 'medium' 
+            ELSE 'large' 
+        END AS order_size 
+FROM 
+    info.orders o 
+ORDER BY 
+    o.total_amount DESC;
+2025-06-18 00:41:45,942 - config - INFO - Executing SQL: SELECT 
+    o.order_id, 
+        o.customer_id, 
+        o.order_date, 
+        o.total_amount, 
+        CASE 
+            WHEN o.total_amount < 100 THEN 'small' 
+            WHEN o.total_amount < 500 THEN 'medium' 
+            ELSE 'large' 
+        END AS order_size 
+FROM 
+    info.orders o 
+ORDER BY 
+    o.total_amount DESC;
+2025-06-18 00:41:45,943 - config - INFO - Query result loaded from cache
+2025-06-18 00:41:45,951 - config - INFO - Formatting final answer...
+2025-06-18 00:41:48,784 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-18 00:41:48,785 - config - INFO - Formatted Answer: Based on the provided database result, it appears that all orders have a total amount above 4956.92, which can be classified as large orders. Therefore, all orders in this result set can be categorized as large.
+
+Download Full Results:
+- CSV: http://localhost:8000/download/265b31abfd254c1395e670db48e8bf49.csv
+- Excel: http://localhost:8000/download/265b31abfd254c1395e670db48e8bf49.xlsx
+2025-06-18 00:41:53,769 - config - INFO - Validating SQL query: SELECT 1 AS status
+2025-06-18 00:41:53,769 - config - WARNING - SQL blocked - missing required schema prefix 'INFO.'
+2025-06-18 00:41:53,770 - config - CRITICAL - Blocked potentially unsafe query: SELECT 1 AS status
+2025-06-18 00:43:13,980 - config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-18 00:43:14,128 - config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-18 00:43:14,128 - config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-18 00:43:14,827 - config - INFO - LLM initialized successfully.
+2025-06-18 00:43:14,827 - config - INFO - Connecting to Redis: localhost:6379
+2025-06-18 00:43:14,829 - config - INFO - Redis connection established successfully.
+2025-06-18 00:43:14,907 - config - INFO - LangGraph workflow compiled successfully.
+2025-06-18 00:43:14,907 - config - INFO - Starting NL2SQL application example...
+2025-06-18 00:43:14,907 - config - INFO - User Question: Show me the customers birth date
+2025-06-18 00:43:14,910 - config - INFO - Workflow started.
+2025-06-18 00:43:14,911 - config - INFO - Fetching database schema...
+2025-06-18 00:43:14,912 - config - INFO - Schema loaded from cache
+2025-06-18 00:43:14,913 - config - INFO - Generating SQL query...
+2025-06-18 00:43:15,650 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-18 00:43:15,655 - config - INFO - Generated SQL: SELECT NULL WHERE 1=0;
+2025-06-18 00:43:15,656 - config - WARNING - SQL blocked - missing required schema prefix 'INFO.'
+2025-06-18 00:43:15,657 - config - CRITICAL - Blocked potentially dangerous SQL query
+2025-06-18 00:43:15,658 - config - INFO - Formatting final answer...
+2025-06-18 00:43:15,658 - config - WARNING - Cannot format answer due to error: Blocked potentially dangerous SQL query
+2025-06-18 00:43:15,659 - config - INFO - Final Answer: Sorry, I encountered an error: Blocked potentially dangerous SQL query
+2025-06-18 00:43:15,659 - config - INFO - NL2SQL application example finished.
+2025-06-18 00:53:39,410 - config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-18 00:53:39,554 - config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-18 00:53:39,554 - config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-18 00:53:40,267 - config - INFO - LLM initialized successfully.
+2025-06-18 00:53:40,267 - config - INFO - Connecting to Redis: localhost:6379
+2025-06-18 00:53:40,281 - config - INFO - Redis connection established successfully.
+2025-06-18 00:53:40,357 - config - INFO - LangGraph workflow compiled successfully.
+2025-06-18 00:53:40,357 - config - INFO - Starting NL2SQL application example...
+2025-06-18 00:53:40,357 - config - INFO - User Question: Show me the customers birth date
+2025-06-18 00:53:40,361 - config - INFO - Workflow started.
+2025-06-18 00:53:40,361 - config - INFO - Fetching database schema...
+2025-06-18 00:53:40,361 - config - INFO - Fetching dynamic schema representation for schema: info
+2025-06-18 00:53:40,365 - config - INFO - Successfully fetched schema for tables: ['customers', 'order_details', 'orders', 'products', 'sales_representative', 'suppliers']
+2025-06-18 00:53:40,365 - config - INFO - Query execution time - schema_fetch: 0.00s
+2025-06-18 00:53:40,365 - config - INFO - Schema cached successfully
+2025-06-18 00:53:40,368 - config - INFO - Generating SQL query...
+2025-06-18 00:53:40,854 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-18 00:53:40,859 - config - INFO - Generated SQL: SELECT NULL WHERE 1=0;
+2025-06-18 00:53:40,864 - config - INFO - Executing SQL: SELECT NULL WHERE 1=0;
+2025-06-18 00:53:40,865 - config - INFO - Validating SQL query: SELECT NULL WHERE 1=0;
+2025-06-18 00:53:40,866 - config - INFO - Query result cached successfully
+2025-06-18 00:53:40,867 - config - INFO - Formatting final answer...
+2025-06-18 00:53:41,197 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-18 00:53:41,205 - config - INFO - Formatted Answer: The customer's birth date is not available.
+2025-06-18 00:53:41,205 - config - INFO - Final Answer: The customer's birth date is not available.
+2025-06-18 00:53:41,207 - config - INFO - NL2SQL application example finished.
+2025-06-18 00:55:44,756 - config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-18 00:55:44,906 - config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-18 00:55:44,906 - config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-18 00:55:45,595 - config - INFO - LLM initialized successfully.
+2025-06-18 00:55:45,595 - config - INFO - Connecting to Redis: localhost:6379
+2025-06-18 00:55:45,617 - config - INFO - Redis connection established successfully.
+2025-06-18 00:55:45,710 - config - INFO - LangGraph workflow compiled successfully.
+2025-06-18 00:55:45,710 - config - INFO - Starting NL2SQL application example...
+2025-06-18 00:55:45,710 - config - INFO - User Question: Show me the available tabes names in the database
+2025-06-18 00:55:45,714 - config - INFO - Workflow started.
+2025-06-18 00:55:45,714 - config - INFO - Fetching database schema...
+2025-06-18 00:55:45,718 - config - INFO - Schema loaded from cache
+2025-06-18 00:55:45,718 - config - INFO - Generating SQL query...
+2025-06-18 00:55:46,436 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-18 00:55:46,440 - config - INFO - Generated SQL: SELECT table_name 
+FROM information_schema.tables 
+WHERE table_schema = 'info';
+2025-06-18 00:55:46,448 - config - INFO - Executing SQL: SELECT table_name 
+FROM information_schema.tables 
+WHERE table_schema = 'info';
+2025-06-18 00:55:46,450 - config - INFO - Validating SQL query: SELECT table_name 
+FROM information_schema.tables 
+WHERE table_schema = 'info';
+2025-06-18 00:55:46,457 - config - INFO - Query result cached successfully
+2025-06-18 00:55:46,461 - config - INFO - Formatting final answer...
+2025-06-18 00:55:49,152 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-18 00:55:49,152 - config - INFO - Formatted Answer: Here are the available table names in the database: sales_representative, suppliers, orders, customers, products, and order_details.
+
+Download Full Results:
+- CSV: http://localhost:8000/download/9e40319ef3dc485f85b45cb55ba292d6.csv
+- Excel: http://localhost:8000/download/9e40319ef3dc485f85b45cb55ba292d6.xlsx
+2025-06-18 00:55:49,152 - config - INFO - Final Answer: Here are the available table names in the database: sales_representative, suppliers, orders, customers, products, and order_details.
+
+Download Full Results:
+- CSV: http://localhost:8000/download/9e40319ef3dc485f85b45cb55ba292d6.csv
+- Excel: http://localhost:8000/download/9e40319ef3dc485f85b45cb55ba292d6.xlsx
+2025-06-18 00:55:49,152 - config - INFO - NL2SQL application example finished.
+2025-06-18 00:56:01,703 - config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-18 00:56:01,837 - config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-18 00:56:01,837 - config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-18 00:56:02,407 - config - INFO - LLM initialized successfully.
+2025-06-18 00:56:02,408 - config - INFO - Connecting to Redis: localhost:6379
+2025-06-18 00:56:02,409 - config - INFO - Redis connection established successfully.
+2025-06-18 00:56:02,432 - config - INFO - LangGraph workflow compiled successfully.
+2025-06-18 00:56:14,386 - config - INFO - Workflow started.
+2025-06-18 00:56:14,386 - config - INFO - Fetching database schema...
+2025-06-18 00:56:14,387 - config - INFO - Schema loaded from cache
+2025-06-18 00:56:14,388 - config - INFO - Generating SQL query...
+2025-06-18 00:56:15,142 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-18 00:56:15,143 - config - INFO - Generated SQL: SELECT table_name 
+FROM information_schema.tables 
+WHERE table_schema = 'info';
+2025-06-18 00:56:15,144 - config - INFO - Executing SQL: SELECT table_name 
+FROM information_schema.tables 
+WHERE table_schema = 'info';
+2025-06-18 00:56:15,144 - config - INFO - Query result loaded from cache
+2025-06-18 00:56:15,145 - config - INFO - Formatting final answer...
+2025-06-18 00:56:17,637 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-18 00:56:17,639 - config - INFO - Formatted Answer: Here are the available table names: sales_representative, suppliers, orders, customers, products, and order_details.
+
+Download Full Results:
+- CSV: http://localhost:8000/download/c62a642d2a3947d0b68daa004a18be20.csv
+- Excel: http://localhost:8000/download/c62a642d2a3947d0b68daa004a18be20.xlsx
+2025-06-18 00:57:31,930 - config - INFO - Validating SQL query: SELECT 1 AS status
+2025-06-18 00:59:31,655 - config - INFO - Validating SQL query: SELECT 1 AS status
+2025-06-18 00:59:33,489 - config - INFO - Workflow started.
+2025-06-18 00:59:33,489 - config - INFO - Fetching database schema...
+2025-06-18 00:59:33,489 - config - INFO - Schema loaded from cache
+2025-06-18 00:59:33,489 - config - INFO - Generating SQL query...
+2025-06-18 00:59:34,278 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-18 00:59:34,278 - config - INFO - Generated SQL: SELECT table_name 
+FROM information_schema.tables 
+WHERE table_schema = 'info';
+2025-06-18 00:59:34,283 - config - INFO - Executing SQL: SELECT table_name 
+FROM information_schema.tables 
+WHERE table_schema = 'info';
+2025-06-18 00:59:34,283 - config - INFO - Query result loaded from cache
+2025-06-18 00:59:34,284 - config - INFO - Formatting final answer...
+2025-06-18 00:59:36,903 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-18 00:59:36,903 - config - INFO - Formatted Answer: Here are the available table names: sales_representative, suppliers, orders, customers, products, and order_details.
+
+Download Full Results:
+- CSV: http://localhost:8000/download/c312447dbe5c4b9da466291e721a10af.csv
+- Excel: http://localhost:8000/download/c312447dbe5c4b9da466291e721a10af.xlsx
+2025-06-18 01:03:14,094 - config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-18 01:03:14,227 - config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-18 01:03:14,227 - config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-18 01:03:14,825 - config - INFO - LLM initialized successfully.
+2025-06-18 01:03:14,825 - config - INFO - Connecting to Redis: localhost:6379
+2025-06-18 01:03:14,847 - config - INFO - Redis connection established successfully.
+2025-06-18 01:03:14,863 - config - INFO - LangGraph workflow compiled successfully.
+2025-06-18 01:03:23,642 - config - INFO - Validating SQL query: SELECT 1 AS status
+2025-06-18 01:03:56,277 - config - INFO - Workflow started.
+2025-06-18 01:03:56,282 - config - INFO - Fetching database schema...
+2025-06-18 01:03:56,282 - config - INFO - Schema loaded from cache
+2025-06-18 01:03:56,284 - config - INFO - Generating SQL query...
+2025-06-18 01:03:57,627 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-18 01:03:57,627 - config - INFO - Generated SQL: SELECT first_name, last_name 
+FROM info.customers 
+WHERE lower(first_name) = 'jhon';
+2025-06-18 01:03:57,627 - config - INFO - Executing SQL: SELECT first_name, last_name 
+FROM info.customers 
+WHERE lower(first_name) = 'jhon';
+2025-06-18 01:03:57,629 - config - INFO - Validating SQL query: SELECT first_name, last_name 
+FROM info.customers 
+WHERE lower(first_name) = 'jhon';
+2025-06-18 01:03:57,638 - config - INFO - Query result cached successfully
+2025-06-18 01:03:57,642 - config - INFO - Formatting final answer...
+2025-06-18 01:03:57,977 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-18 01:03:57,981 - config - INFO - Formatted Answer: There is no customer with the name "Jhon".
+2025-06-18 01:04:06,310 - config - INFO - Workflow started.
+2025-06-18 01:04:06,310 - config - INFO - Fetching database schema...
+2025-06-18 01:04:06,314 - config - INFO - Schema loaded from cache
+2025-06-18 01:04:06,315 - config - INFO - Generating SQL query...
+2025-06-18 01:04:06,383 - config - INFO - Workflow started.
+2025-06-18 01:04:06,383 - config - INFO - Fetching database schema...
+2025-06-18 01:04:06,383 - config - INFO - Schema loaded from cache
+2025-06-18 01:04:06,387 - config - INFO - Generating SQL query...
+2025-06-18 01:04:06,789 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-18 01:04:06,789 - config - INFO - Generated SQL: SELECT first_name, last_name 
+FROM info.customers 
+WHERE first_name = 'John';
+2025-06-18 01:04:06,789 - config - INFO - Executing SQL: SELECT first_name, last_name 
+FROM info.customers 
+WHERE first_name = 'John';
+2025-06-18 01:04:06,789 - config - INFO - Validating SQL query: SELECT first_name, last_name 
+FROM info.customers 
+WHERE first_name = 'John';
+2025-06-18 01:04:06,793 - config - INFO - Query result cached successfully
+2025-06-18 01:04:06,793 - config - INFO - Formatting final answer...
+2025-06-18 01:04:06,810 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-18 01:04:06,811 - config - INFO - Generated SQL: SELECT first_name, last_name 
+FROM info.customers 
+WHERE first_name = 'John';
+2025-06-18 01:04:06,813 - config - INFO - Executing SQL: SELECT first_name, last_name 
+FROM info.customers 
+WHERE first_name = 'John';
+2025-06-18 01:04:06,814 - config - INFO - Query result loaded from cache
+2025-06-18 01:04:06,814 - config - INFO - Formatting final answer...
+2025-06-18 01:04:09,610 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-18 01:04:09,610 - config - INFO - Formatted Answer: There are 18 customers whose first name is John, and their last names are: Thomas, Davis, Miller, Patel, Huang, Singh, Gupta, Ramirez, Jackson, Torres, Thompson, Johnson, Wang, Sanchez, Brown, and Lee.
+
+Download Full Results:
+- CSV: http://localhost:8000/download/89d6dd7b247f40cfb1a3865a4ed6449c.csv
+- Excel: http://localhost:8000/download/89d6dd7b247f40cfb1a3865a4ed6449c.xlsx
+2025-06-18 01:04:09,667 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-18 01:04:09,667 - config - INFO - Formatted Answer: There are 18 customers whose first name is John, and their last names are: Thomas, Davis, Miller, Patel, Huang, Singh, Gupta, Ramirez, Jackson, Torres, Thompson, Johnson, Wang, Sanchez, Brown, and Lee.
+
+Download Full Results:
+- CSV: http://localhost:8000/download/cf898795b4434bf8a2541849092914f1.csv
+- Excel: http://localhost:8000/download/cf898795b4434bf8a2541849092914f1.xlsx
+2025-06-18 01:04:27,993 - config - INFO - Workflow started.
+2025-06-18 01:04:27,994 - config - INFO - Fetching database schema...
+2025-06-18 01:04:27,994 - config - INFO - Schema loaded from cache
+2025-06-18 01:04:27,995 - config - INFO - Generating SQL query...
+2025-06-18 01:04:28,425 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-18 01:04:28,426 - config - INFO - Generated SQL: SELECT first_name, last_name 
+FROM info.customers 
+WHERE first_name = 'John';
+2025-06-18 01:04:28,427 - config - INFO - Executing SQL: SELECT first_name, last_name 
+FROM info.customers 
+WHERE first_name = 'John';
+2025-06-18 01:04:28,427 - config - INFO - Query result loaded from cache
+2025-06-18 01:04:28,428 - config - INFO - Formatting final answer...
+2025-06-18 01:04:30,994 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-18 01:04:30,995 - config - INFO - Formatted Answer: There are 18 customers whose first name is John, and their last names are: Thomas, Davis, Miller, Patel, Huang, Singh, Gupta, Ramirez, Jackson, Torres, Thompson, Johnson, Wang, Sanchez, Brown, and Lee.
+
+Download Full Results:
+- CSV: http://localhost:8000/download/a57be63ce78b4f57badd79d4bf6b967c.csv
+- Excel: http://localhost:8000/download/a57be63ce78b4f57badd79d4bf6b967c.xlsx
+2025-06-18 10:31:56,441 - config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-18 10:31:56,656 - config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-18 10:31:56,656 - config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-18 10:31:57,350 - config - INFO - LLM initialized successfully.
+2025-06-18 10:31:57,350 - config - INFO - Connecting to Redis: localhost:6379
+2025-06-18 10:31:57,360 - config - INFO - Redis connection established successfully.
+2025-06-18 10:31:57,473 - config - INFO - LangGraph workflow compiled successfully.
+2025-06-18 10:32:27,316 - config - INFO - Workflow started.
+2025-06-18 10:32:27,316 - config - INFO - Fetching database schema...
+2025-06-18 10:32:27,316 - config - INFO - Fetching dynamic schema representation for schema: info
+2025-06-18 10:32:27,316 - config - INFO - Successfully fetched schema for tables: ['customers', 'order_details', 'orders', 'products', 'sales_representative', 'suppliers']
+2025-06-18 10:32:27,316 - config - INFO - Query execution time - schema_fetch: 0.00s
+2025-06-18 10:32:27,316 - config - INFO - Schema cached successfully
+2025-06-18 10:32:27,329 - config - INFO - Generating SQL query...
+2025-06-18 10:32:28,639 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-18 10:32:28,646 - config - INFO - Generated SQL: SELECT 
+    sr.sales_rep_id, 
+    COUNT(o.order_id) AS num_orders_in_first_year
+FROM 
+    info.sales_representative sr
+JOIN 
+    info.orders o ON sr.sales_rep_id = o.sales_rep_id
+WHERE 
+    o.order_date BETWEEN sr.hire_date AND sr.hire_date + INTERVAL '1 year'
+GROUP BY 
+    sr.sales_rep_id
+ORDER BY 
+    num_orders_in_first_year DESC;
+2025-06-18 10:32:28,650 - config - INFO - Executing SQL: SELECT 
+    sr.sales_rep_id, 
+    COUNT(o.order_id) AS num_orders_in_first_year
+FROM 
+    info.sales_representative sr
+JOIN 
+    info.orders o ON sr.sales_rep_id = o.sales_rep_id
+WHERE 
+    o.order_date BETWEEN sr.hire_date AND sr.hire_date + INTERVAL '1 year'
+GROUP BY 
+    sr.sales_rep_id
+ORDER BY 
+    num_orders_in_first_year DESC;
+2025-06-18 10:32:28,651 - config - INFO - Validating SQL query: SELECT 
+    sr.sales_rep_id, 
+    COUNT(o.order_id) AS num_orders_in_first_year
+FROM 
+    info.sales_representative sr
+JOIN 
+    info.orders o ON sr.sales_rep_id = o.sales_rep_id
+WHERE 
+    o.order_date BETWEEN sr.hire_date AND sr.hire_date + INTERVAL '1 year'
+GROUP BY 
+    sr.sales_rep_id
+ORDER BY 
+    num_orders_in_first_year DESC;
+2025-06-18 10:32:28,661 - config - INFO - Query result cached successfully
+2025-06-18 10:32:28,662 - config - INFO - Formatting final answer...
+2025-06-18 10:32:31,716 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-18 10:32:31,716 - config - INFO - Formatted Answer: Here is the answer to the user's question:
+
+Here is the list of sales representatives and the number of orders they handled in their first year: 
+
+SR020 handled 54 orders, SR016 handled 52 orders, SR018 handled 51 orders, SR006 handled 51 orders, SR002 handled 51 orders, SR005 handled 43 orders, SR012 handled 37 orders, SR017 handled 29 orders, SR003 handled 26 orders, SR014 handled 20 orders, SR019 handled 16 orders, and SR011 handled 2 orders.
+
+Download Full Results:
+- CSV: http://localhost:8000/download/4fae921e6fad4ef284a0ec0e7106cca4.csv
+- Excel: http://localhost:8000/download/4fae921e6fad4ef284a0ec0e7106cca4.xlsx
+2025-06-18 10:32:45,150 - config - INFO - Validating SQL query: SELECT 1 AS status
+2025-06-18 10:32:46,472 - config - INFO - Validating SQL query: SELECT 1 AS status
+2025-06-18 10:32:47,743 - config - INFO - Workflow started.
+2025-06-18 10:32:47,743 - config - INFO - Fetching database schema...
+2025-06-18 10:32:47,743 - config - INFO - Schema loaded from cache
+2025-06-18 10:32:47,743 - config - INFO - Generating SQL query...
+2025-06-18 10:32:49,025 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-18 10:32:49,026 - config - INFO - Generated SQL: SELECT 
+    sr.sales_rep_id, 
+    COUNT(o.order_id) AS num_orders_in_first_year
+FROM 
+    info.sales_representative sr
+JOIN 
+    info.orders o ON sr.sales_rep_id = o.sales_rep_id
+WHERE 
+    o.order_date BETWEEN sr.hire_date AND sr.hire_date + INTERVAL '1 year'
+GROUP BY 
+    sr.sales_rep_id
+ORDER BY 
+    num_orders_in_first_year DESC;
+2025-06-18 10:32:49,028 - config - INFO - Executing SQL: SELECT 
+    sr.sales_rep_id, 
+    COUNT(o.order_id) AS num_orders_in_first_year
+FROM 
+    info.sales_representative sr
+JOIN 
+    info.orders o ON sr.sales_rep_id = o.sales_rep_id
+WHERE 
+    o.order_date BETWEEN sr.hire_date AND sr.hire_date + INTERVAL '1 year'
+GROUP BY 
+    sr.sales_rep_id
+ORDER BY 
+    num_orders_in_first_year DESC;
+2025-06-18 10:32:49,028 - config - INFO - Query result loaded from cache
+2025-06-18 10:32:49,030 - config - INFO - Formatting final answer...
+2025-06-18 10:32:51,866 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-18 10:32:51,866 - config - INFO - Formatted Answer: Here is the answer to the user's question:
+
+Here is the list of sales representatives and the number of orders they handled in their first year: 
+
+SR020 handled 54 orders, SR016 handled 52 orders, SR018 handled 51 orders, SR006 handled 51 orders, SR002 handled 51 orders, SR005 handled 43 orders, SR012 handled 37 orders, SR017 handled 29 orders, SR003 handled 26 orders, SR014 handled 20 orders, SR019 handled 16 orders, and SR011 handled 2 orders.
+
+Download Full Results:
+- CSV: http://localhost:8000/download/37c41096912444fd86ca1de41c3ad8fa.csv
+- Excel: http://localhost:8000/download/37c41096912444fd86ca1de41c3ad8fa.xlsx
+2025-06-18 10:34:15,705 - config - INFO - Workflow started.
+2025-06-18 10:34:15,705 - config - INFO - Fetching database schema...
+2025-06-18 10:34:15,705 - config - INFO - Schema loaded from cache
+2025-06-18 10:34:15,705 - config - INFO - Generating SQL query...
+2025-06-18 10:34:16,508 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-18 10:34:16,510 - config - INFO - Generated SQL: SELECT 
+    sr.first_name, 
+    COUNT(o.order_id) 
+FROM 
+    info.sales_representative sr 
+JOIN 
+    info.orders o ON sr.sales_rep_id = o.sales_rep_id 
+WHERE 
+    o.order_date >= sr.hire_date AND o.order_date < sr.hire_date + INTERVAL '1 year' 
+GROUP BY 
+    sr.first_name 
+ORDER BY 
+    COUNT(o.order_id) DESC;
+2025-06-18 10:34:16,511 - config - INFO - Executing SQL: SELECT 
+    sr.first_name, 
+    COUNT(o.order_id) 
+FROM 
+    info.sales_representative sr 
+JOIN 
+    info.orders o ON sr.sales_rep_id = o.sales_rep_id 
+WHERE 
+    o.order_date >= sr.hire_date AND o.order_date < sr.hire_date + INTERVAL '1 year' 
+GROUP BY 
+    sr.first_name 
+ORDER BY 
+    COUNT(o.order_id) DESC;
+2025-06-18 10:34:16,511 - config - INFO - Validating SQL query: SELECT 
+    sr.first_name, 
+    COUNT(o.order_id) 
+FROM 
+    info.sales_representative sr 
+JOIN 
+    info.orders o ON sr.sales_rep_id = o.sales_rep_id 
+WHERE 
+    o.order_date >= sr.hire_date AND o.order_date < sr.hire_date + INTERVAL '1 year' 
+GROUP BY 
+    sr.first_name 
+ORDER BY 
+    COUNT(o.order_id) DESC;
+2025-06-18 10:34:16,518 - config - INFO - Query result cached successfully
+2025-06-18 10:34:16,519 - config - INFO - Formatting final answer...
+2025-06-18 10:34:20,069 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-18 10:34:20,073 - config - INFO - Formatted Answer: Here is the answer to the user's original question:
+
+Here is the list of sales representatives' names and the number of orders they handled in their first year: 
+
+Ashley handled 54 orders, Donna handled 52 orders, Helen handled 51 orders, Sandra handled 51 orders, Kimberly handled 51 orders, Andrew handled 43 orders, Robert handled 36 orders, Linda handled 29 orders, James handled 26 orders, John handled 20 orders, Jennifer handled 16 orders, and Susan handled 2 orders.
+
+Download Full Results:
+- CSV: http://localhost:8000/download/34c54c00284241228cad51b69a08cb53.csv
+- Excel: http://localhost:8000/download/34c54c00284241228cad51b69a08cb53.xlsx
+2025-06-18 10:35:14,890 - config - INFO - Workflow started.
+2025-06-18 10:35:14,892 - config - INFO - Fetching database schema...
+2025-06-18 10:35:14,893 - config - INFO - Schema loaded from cache
+2025-06-18 10:35:14,894 - config - INFO - Generating SQL query...
+2025-06-18 10:35:16,100 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-18 10:35:16,101 - config - INFO - Generated SQL: SELECT NULL WHERE 1=0;
+2025-06-18 10:35:16,101 - config - INFO - Executing SQL: SELECT NULL WHERE 1=0;
+2025-06-18 10:35:16,102 - config - INFO - Validating SQL query: SELECT NULL WHERE 1=0;
+2025-06-18 10:35:16,103 - config - INFO - Query result cached successfully
+2025-06-18 10:35:16,104 - config - INFO - Formatting final answer...
+2025-06-18 10:35:16,429 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-18 10:35:16,430 - config - INFO - Formatted Answer: There is no data to display.
+2025-06-18 10:35:25,803 - config - INFO - Validating SQL query: SELECT 1 AS status
+2025-06-18 10:35:46,489 - config - INFO - Workflow started.
+2025-06-18 10:35:46,490 - config - INFO - Fetching database schema...
+2025-06-18 10:35:46,492 - config - INFO - Schema loaded from cache
+2025-06-18 10:35:46,492 - config - INFO - Generating SQL query...
+2025-06-18 10:35:48,586 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-18 10:35:48,587 - config - INFO - Generated SQL: ALTER TABLE info.customers ADD COLUMN sales REAL;
+2025-06-18 10:35:48,588 - config - WARNING - Blocked dangerous SQL pattern: \bALTER\b
+2025-06-18 10:35:48,588 - config - CRITICAL - Blocked potentially dangerous SQL query
+2025-06-18 10:35:48,589 - config - INFO - Formatting final answer...
+2025-06-18 10:35:48,589 - config - WARNING - Cannot format answer due to error: Blocked potentially dangerous SQL query
+2025-06-18 10:37:20,294 - config - INFO - Workflow started.
+2025-06-18 10:37:20,298 - config - INFO - Fetching database schema...
+2025-06-18 10:37:20,298 - config - INFO - Schema loaded from cache
+2025-06-18 10:37:20,298 - config - INFO - Generating SQL query...
+2025-06-18 10:37:21,178 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+2025-06-18 10:37:21,181 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 0.489979 seconds
+2025-06-18 10:37:21,947 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+2025-06-18 10:37:21,948 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 0.943248 seconds
+2025-06-18 10:37:23,164 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+2025-06-18 10:37:23,164 - config - ERROR - SQL generation failed: no healthy upstream
+2025-06-18 10:37:23,164 - config - CRITICAL - Blocked potentially dangerous SQL query
+2025-06-18 10:37:23,164 - config - INFO - Formatting final answer...
+2025-06-18 10:37:23,164 - config - WARNING - Cannot format answer due to error: Blocked potentially dangerous SQL query
+2025-06-18 10:37:44,637 - config - INFO - Workflow started.
+2025-06-18 10:37:44,637 - config - INFO - Fetching database schema...
+2025-06-18 10:37:44,637 - config - INFO - Schema loaded from cache
+2025-06-18 10:37:44,641 - config - INFO - Generating SQL query...
+2025-06-18 10:37:46,367 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+2025-06-18 10:37:46,367 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 0.456463 seconds
+2025-06-18 10:37:48,864 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+2025-06-18 10:37:48,864 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 0.784310 seconds
+2025-06-18 10:37:49,949 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+2025-06-18 10:37:49,950 - config - ERROR - SQL generation failed: no healthy upstream
+2025-06-18 10:37:49,950 - config - CRITICAL - Blocked potentially dangerous SQL query
+2025-06-18 10:37:49,951 - config - INFO - Formatting final answer...
+2025-06-18 10:37:49,951 - config - WARNING - Cannot format answer due to error: Blocked potentially dangerous SQL query
+2025-06-18 10:38:55,550 - config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-18 10:38:55,664 - config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-18 10:38:55,665 - config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-18 10:38:56,176 - config - INFO - LLM initialized successfully.
+2025-06-18 10:38:56,176 - config - INFO - Connecting to Redis: localhost:6379
+2025-06-18 10:38:56,189 - config - INFO - Redis connection established successfully.
+2025-06-18 10:38:56,216 - config - INFO - LangGraph workflow compiled successfully.
+2025-06-18 10:38:56,255 - config - INFO - Workflow started.
+2025-06-18 10:38:56,256 - config - INFO - Fetching database schema...
+2025-06-18 10:38:56,259 - config - INFO - Schema loaded from cache
+2025-06-18 10:38:56,259 - config - INFO - Generating SQL query...
+2025-06-18 10:38:58,333 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-18 10:38:58,333 - config - INFO - Generated SQL: SELECT 
+    s.company_name, 
+    s.company_name, 
+    SUM(od.final_amount) AS total_revenue, 
+    CASE 
+        WHEN SUM(od.final_amount) > (SELECT AVG(total_revenue) FROM (
+            SELECT 
+                SUM(od.final_amount) AS total_revenue 
+            FROM 
+                info.order_details od 
+            JOIN 
+                info.products p ON od.product_id = p.product_id 
+            JOIN 
+                info.suppliers s ON p.supplier_id = s.supplier_id 
+            GROUP BY 
+                s.supplier_id 
+        ) AS subquery) THEN 'Top' 
+        WHEN SUM(od.final_amount) < (SELECT AVG(total_revenue) FROM (
+            SELECT 
+                SUM(od.final_amount) AS total_revenue 
+            FROM 
+                info.order_details od 
+            JOIN 
+                info.products p ON od.product_id = p.product_id 
+            JOIN 
+                info.suppliers s ON p.supplier_id = s.supplier_id 
+            GROUP BY 
+                s.supplier_id 
+        ) AS subquery) THEN 'Low' 
+        ELSE 'Average' 
+    END AS performance_category 
+FROM 
+    info.order_details od 
+JOIN 
+    info.products p ON od.product_id = p.product_id 
+JOIN 
+    info.suppliers s ON p.supplier_id = s.supplier_id 
+GROUP BY 
+    s.supplier_id, 
+    s.company_name 
+ORDER BY 
+    total_revenue DESC;
+2025-06-18 10:38:58,337 - config - WARNING - Query blocked due to high complexity: {'is_expensive': True, 'join_count': 6, 'has_cross_join': False, 'has_multiple_joins': True, 'estimated_cost': 'high', 'warnings': ['Multiple joins detected']}
+2025-06-18 10:38:58,337 - config - CRITICAL - Blocked potentially dangerous SQL query
+2025-06-18 10:38:58,337 - config - INFO - Formatting final answer...
+2025-06-18 10:38:58,337 - config - WARNING - Cannot format answer due to error: Blocked potentially dangerous SQL query
+2025-06-18 10:41:55,925 - config - INFO - Workflow started.
+2025-06-18 10:41:55,925 - config - INFO - Fetching database schema...
+2025-06-18 10:41:55,925 - config - INFO - Schema loaded from cache
+2025-06-18 10:41:55,928 - config - INFO - Generating SQL query...
+2025-06-18 10:41:57,559 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-18 10:41:57,559 - config - INFO - Generated SQL: SELECT 
+    s.company_name, 
+    s.company_name, 
+    SUM(od.final_amount) AS total_revenue, 
+    CASE 
+        WHEN SUM(od.final_amount) > (SELECT AVG(total_revenue) FROM (
+            SELECT 
+                SUM(od.final_amount) AS total_revenue 
+            FROM 
+                info.order_details od 
+            JOIN 
+                info.products p ON od.product_id = p.product_id 
+            JOIN 
+                info.suppliers s ON p.supplier_id = s.supplier_id 
+            GROUP BY 
+                s.supplier_id 
+        ) AS subquery) THEN 'Top' 
+        WHEN SUM(od.final_amount) < (SELECT AVG(total_revenue) FROM (
+            SELECT 
+                SUM(od.final_amount) AS total_revenue 
+            FROM 
+                info.order_details od 
+            JOIN 
+                info.products p ON od.product_id = p.product_id 
+            JOIN 
+                info.suppliers s ON p.supplier_id = s.supplier_id 
+            GROUP BY 
+                s.supplier_id 
+        ) AS subquery) THEN 'Low' 
+        ELSE 'Average' 
+    END AS performance_category 
+FROM 
+    info.order_details od 
+JOIN 
+    info.products p ON od.product_id = p.product_id 
+JOIN 
+    info.suppliers s ON p.supplier_id = s.supplier_id 
+GROUP BY 
+    s.supplier_id, 
+    s.company_name 
+ORDER BY 
+    total_revenue DESC;
+2025-06-18 10:41:57,562 - config - WARNING - Query blocked due to high complexity: {'is_expensive': True, 'join_count': 6, 'has_cross_join': False, 'has_multiple_joins': True, 'estimated_cost': 'high', 'warnings': ['Multiple joins detected']}
+2025-06-18 10:41:57,562 - config - CRITICAL - Blocked potentially dangerous SQL query
+2025-06-18 10:41:57,562 - config - INFO - Formatting final answer...
+2025-06-18 10:41:57,562 - config - WARNING - Cannot format answer due to error: Blocked potentially dangerous SQL query
+2025-06-18 10:42:32,724 - config - INFO - Workflow started.
+2025-06-18 10:42:32,728 - config - INFO - Fetching database schema...
+2025-06-18 10:42:32,728 - config - INFO - Schema loaded from cache
+2025-06-18 10:42:32,728 - config - INFO - Generating SQL query...
+2025-06-18 10:42:34,171 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-18 10:42:34,171 - config - INFO - Generated SQL: SELECT 
+    s.company_name, 
+    SUM(od.final_amount) AS total_revenue, 
+    CASE 
+        WHEN SUM(od.final_amount) > (SELECT AVG(total_revenue) FROM (
+            SELECT 
+                SUM(od.final_amount) AS total_revenue 
+            FROM 
+                info.order_details od 
+            JOIN 
+                info.products p ON od.product_id = p.product_id 
+            JOIN 
+                info.suppliers s ON p.supplier_id = s.supplier_id 
+            GROUP BY 
+                s.supplier_id) AS subquery) THEN 'Top' 
+        WHEN SUM(od.final_amount) = (SELECT AVG(total_revenue) FROM (
+            SELECT 
+                SUM(od.final_amount) AS total_revenue 
+            FROM 
+                info.order_details od 
+            JOIN 
+                info.products p ON od.product_id = p.product_id 
+            JOIN 
+                info.suppliers s ON p.supplier_id = s.supplier_id 
+            GROUP BY 
+                s.supplier_id) AS subquery) THEN 'Average' 
+        ELSE 'Low' 
+    END AS performance_category 
+FROM 
+    info.order_details od 
+JOIN 
+    info.products p ON od.product_id = p.product_id 
+JOIN 
+    info.suppliers s ON p.supplier_id = s.supplier_id 
+GROUP BY 
+    s.supplier_id, 
+    s.company_name 
+ORDER BY 
+    total_revenue DESC;
+2025-06-18 10:42:34,175 - config - WARNING - Query blocked due to high complexity: {'is_expensive': True, 'join_count': 6, 'has_cross_join': False, 'has_multiple_joins': True, 'estimated_cost': 'high', 'warnings': ['Multiple joins detected']}
+2025-06-18 10:42:34,175 - config - CRITICAL - Blocked potentially dangerous SQL query
+2025-06-18 10:42:34,175 - config - INFO - Formatting final answer...
+2025-06-18 10:42:34,175 - config - WARNING - Cannot format answer due to error: Blocked potentially dangerous SQL query
+2025-06-18 10:43:57,529 - config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-18 10:43:57,674 - config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-18 10:43:57,674 - config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-18 10:43:58,368 - config - INFO - LLM initialized successfully.
+2025-06-18 10:43:58,368 - config - INFO - Connecting to Redis: localhost:6379
+2025-06-18 10:43:58,384 - config - INFO - Redis connection established successfully.
+2025-06-18 10:43:58,462 - config - INFO - LangGraph workflow compiled successfully.
+2025-06-18 10:43:58,462 - config - INFO - Starting NL2SQL application example...
+2025-06-18 10:43:58,463 - config - INFO - User Question: Categorize each supplier as Top, Average, or Low performer based on total revenue from their products.
+2025-06-18 10:43:58,465 - config - INFO - Workflow started.
+2025-06-18 10:43:58,466 - config - INFO - Fetching database schema...
+2025-06-18 10:43:58,466 - config - INFO - Schema loaded from cache
+2025-06-18 10:43:58,467 - config - INFO - Generating SQL query...
+2025-06-18 10:44:00,429 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-18 10:44:00,437 - config - INFO - Generated SQL: SELECT 
+    s.company_name, 
+    SUM(od.final_amount) AS total_revenue, 
+    CASE 
+        WHEN SUM(od.final_amount) > (SELECT AVG(total_revenue) FROM (
+            SELECT 
+                SUM(od.final_amount) AS total_revenue 
+            FROM 
+                info.order_details od 
+            JOIN 
+                info.products p ON od.product_id = p.product_id 
+            JOIN 
+                info.suppliers s ON p.supplier_id = s.supplier_id 
+            GROUP BY 
+                s.supplier_id) AS subquery) THEN 'Top' 
+        WHEN SUM(od.final_amount) = (SELECT AVG(total_revenue) FROM (
+            SELECT 
+                SUM(od.final_amount) AS total_revenue 
+            FROM 
+                info.order_details od 
+            JOIN 
+                info.products p ON od.product_id = p.product_id 
+            JOIN 
+                info.suppliers s ON p.supplier_id = s.supplier_id 
+            GROUP BY 
+                s.supplier_id) AS subquery) THEN 'Average' 
+        ELSE 'Low' 
+    END AS performance_category 
+FROM 
+    info.order_details od 
+JOIN 
+    info.products p ON od.product_id = p.product_id 
+JOIN 
+    info.suppliers s ON p.supplier_id = s.supplier_id 
+GROUP BY 
+    s.supplier_id, 
+    s.company_name 
+ORDER BY 
+    total_revenue DESC;
+2025-06-18 10:44:00,445 - config - WARNING - Query blocked due to high complexity: {'is_expensive': True, 'join_count': 6, 'has_cross_join': False, 'has_multiple_joins': True, 'estimated_cost': 'high', 'warnings': ['Multiple joins detected']}
+2025-06-18 10:44:00,445 - config - CRITICAL - Blocked potentially dangerous SQL query
+2025-06-18 10:44:00,446 - config - INFO - Formatting final answer...
+2025-06-18 10:44:00,446 - config - WARNING - Cannot format answer due to error: Blocked potentially dangerous SQL query
+2025-06-18 10:44:00,448 - config - INFO - Final Answer: Sorry, I encountered an error: Blocked potentially dangerous SQL query
+2025-06-18 10:44:00,448 - config - INFO - NL2SQL application example finished.
+2025-06-18 10:44:50,822 - config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-18 10:44:50,963 - config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-18 10:44:50,963 - config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-18 10:44:51,651 - config - INFO - LLM initialized successfully.
+2025-06-18 10:44:51,651 - config - INFO - Connecting to Redis: localhost:6379
+2025-06-18 10:44:51,663 - config - INFO - Redis connection established successfully.
+2025-06-18 10:44:51,736 - config - INFO - LangGraph workflow compiled successfully.
+2025-06-18 10:44:51,736 - config - INFO - Starting NL2SQL application example...
+2025-06-18 10:44:51,736 - config - INFO - User Question: Categorize each supplier as Top, Average, or Low performer based on total revenue from their products.
+2025-06-18 10:44:51,741 - config - INFO - Workflow started.
+2025-06-18 10:44:51,741 - config - INFO - Fetching database schema...
+2025-06-18 10:44:51,741 - config - INFO - Schema loaded from cache
+2025-06-18 10:44:51,741 - config - INFO - Generating SQL query...
+2025-06-18 10:44:52,922 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-18 10:44:52,929 - config - INFO - Generated SQL: SELECT 
+    s.company_name, 
+    SUM(od.final_amount) AS total_revenue, 
+    CASE 
+        WHEN SUM(od.final_amount) > (SELECT AVG(total_revenue) FROM (
+            SELECT 
+                SUM(od.final_amount) AS total_revenue 
+            FROM 
+                info.order_details od 
+            JOIN 
+                info.products p ON od.product_id = p.product_id 
+            JOIN 
+                info.suppliers s ON p.supplier_id = s.supplier_id 
+            GROUP BY 
+                s.supplier_id) AS subquery) THEN 'Top' 
+        WHEN SUM(od.final_amount) = (SELECT AVG(total_revenue) FROM (
+            SELECT 
+                SUM(od.final_amount) AS total_revenue 
+            FROM 
+                info.order_details od 
+            JOIN 
+                info.products p ON od.product_id = p.product_id 
+            JOIN 
+                info.suppliers s ON p.supplier_id = s.supplier_id 
+            GROUP BY 
+                s.supplier_id) AS subquery) THEN 'Average' 
+        ELSE 'Low' 
+    END AS performance_category 
+FROM 
+    info.order_details od 
+JOIN 
+    info.products p ON od.product_id = p.product_id 
+JOIN 
+    info.suppliers s ON p.supplier_id = s.supplier_id 
+GROUP BY 
+    s.supplier_id, 
+    s.company_name 
+ORDER BY 
+    total_revenue DESC;
+2025-06-18 10:44:52,932 - config - WARNING - Query blocked due to high complexity: {'is_expensive': True, 'join_count': 6, 'has_cross_join': False, 'has_multiple_joins': True, 'estimated_cost': 'high', 'warnings': ['Multiple joins detected']}
+2025-06-18 10:44:52,932 - config - CRITICAL - Blocked potentially dangerous SQL query
+2025-06-18 10:44:52,933 - config - INFO - Formatting final answer...
+2025-06-18 10:44:52,933 - config - WARNING - Cannot format answer due to error: Blocked potentially dangerous SQL query
+2025-06-18 10:44:52,935 - config - INFO - Final Answer: Sorry, I encountered an error: Blocked potentially dangerous SQL query
+2025-06-18 10:44:52,935 - config - INFO - NL2SQL application example finished.
+2025-06-18 17:29:13,158 - config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-18 17:29:13,307 - config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-18 17:29:13,307 - config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-18 17:29:13,997 - config - INFO - LLM initialized successfully.
+2025-06-18 17:29:13,997 - config - INFO - Connecting to Redis: localhost:6379
+2025-06-18 17:29:13,997 - config - INFO - Redis connection established successfully.
+2025-06-18 17:29:14,094 - config - INFO - LangGraph workflow compiled successfully.
+2025-06-18 17:29:14,095 - config - INFO - Starting NL2SQL application example...
+2025-06-18 17:29:14,095 - config - INFO - User Question: Categorize each supplier as Top, Average, or Low performer based on total revenue from their products.
+2025-06-18 17:29:14,098 - config - INFO - Workflow started.
+2025-06-18 17:29:14,099 - config - INFO - Fetching database schema...
+2025-06-18 17:29:14,099 - config - INFO - Fetching dynamic schema representation for schema: info
+2025-06-18 17:29:14,102 - config - INFO - Successfully fetched schema for tables: ['customers', 'order_details', 'orders', 'products', 'sales_representative', 'suppliers']
+2025-06-18 17:29:14,102 - config - INFO - Query execution time - schema_fetch: 0.00s
+2025-06-18 17:29:14,103 - config - INFO - Schema cached successfully
+2025-06-18 17:29:14,104 - config - INFO - Generating SQL query...
+2025-06-18 17:29:15,392 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-18 17:29:15,399 - config - INFO - Generated SQL: SELECT 
+    s.company_name, 
+    SUM(od.final_amount) AS total_revenue, 
+    CASE 
+        WHEN SUM(od.final_amount) > (SELECT AVG(total_revenue) FROM (
+            SELECT 
+                SUM(od.final_amount) AS total_revenue 
+            FROM 
+                info.order_details od 
+            JOIN 
+                info.products p ON od.product_id = p.product_id 
+            JOIN 
+                info.suppliers s ON p.supplier_id = s.supplier_id 
+            GROUP BY 
+                s.supplier_id) AS subquery) THEN 'Top' 
+        WHEN SUM(od.final_amount) = (SELECT AVG(total_revenue) FROM (
+            SELECT 
+                SUM(od.final_amount) AS total_revenue 
+            FROM 
+                info.order_details od 
+            JOIN 
+                info.products p ON od.product_id = p.product_id 
+            JOIN 
+                info.suppliers s ON p.supplier_id = s.supplier_id 
+            GROUP BY 
+                s.supplier_id) AS subquery) THEN 'Average' 
+        ELSE 'Low' 
+    END AS performance_category 
+FROM 
+    info.order_details od 
+JOIN 
+    info.products p ON od.product_id = p.product_id 
+JOIN 
+    info.suppliers s ON p.supplier_id = s.supplier_id 
+GROUP BY 
+    s.supplier_id, 
+    s.company_name 
+ORDER BY 
+    total_revenue DESC;
+2025-06-18 17:29:15,400 - config - INFO - Executing SQL: SELECT 
+    s.company_name, 
+    SUM(od.final_amount) AS total_revenue, 
+    CASE 
+        WHEN SUM(od.final_amount) > (SELECT AVG(total_revenue) FROM (
+            SELECT 
+                SUM(od.final_amount) AS total_revenue 
+            FROM 
+                info.order_details od 
+            JOIN 
+                info.products p ON od.product_id = p.product_id 
+            JOIN 
+                info.suppliers s ON p.supplier_id = s.supplier_id 
+            GROUP BY 
+                s.supplier_id) AS subquery) THEN 'Top' 
+        WHEN SUM(od.final_amount) = (SELECT AVG(total_revenue) FROM (
+            SELECT 
+                SUM(od.final_amount) AS total_revenue 
+            FROM 
+                info.order_details od 
+            JOIN 
+                info.products p ON od.product_id = p.product_id 
+            JOIN 
+                info.suppliers s ON p.supplier_id = s.supplier_id 
+            GROUP BY 
+                s.supplier_id) AS subquery) THEN 'Average' 
+        ELSE 'Low' 
+    END AS performance_category 
+FROM 
+    info.order_details od 
+JOIN 
+    info.products p ON od.product_id = p.product_id 
+JOIN 
+    info.suppliers s ON p.supplier_id = s.supplier_id 
+GROUP BY 
+    s.supplier_id, 
+    s.company_name 
+ORDER BY 
+    total_revenue DESC;
+2025-06-18 17:29:15,400 - config - INFO - Validating SQL query: SELECT 
+    s.company_name, 
+    SUM(od.final_amount) AS total_revenue, 
+    CASE 
+        WHEN SUM(od.final_amount) > (SELECT AVG(total_revenue) FROM (
+            SELECT 
+                SUM(od.final_amount) AS total_revenue 
+            FROM 
+                info.order_details od 
+            JOIN 
+                info.products p ON od.product_id = p.product_id 
+            JOIN 
+                info.suppliers s ON p.supplier_id = s.supplier_id 
+            GROUP BY 
+                s.supplier_id) AS subquery) THEN 'Top' 
+        WHEN SUM(od.final_amount) = (SELECT AVG(total_revenue) FROM (
+            SELECT 
+                SUM(od.final_amount) AS total_revenue 
+            FROM 
+                info.order_details od 
+            JOIN 
+                info.products p ON od.product_id = p.product_id 
+            JOIN 
+                info.suppliers s ON p.supplier_id = s.supplier_id 
+            GROUP BY 
+                s.supplier_id) AS subquery) THEN 'Average' 
+        ELSE 'Low' 
+    END AS performance_category 
+FROM 
+    info.order_details od 
+JOIN 
+    info.products p ON od.product_id = p.product_id 
+JOIN 
+    info.suppliers s ON p.supplier_id = s.supplier_id 
+GROUP BY 
+    s.supplier_id, 
+    s.company_name 
+ORDER BY 
+    total_revenue DESC;
+2025-06-18 17:29:15,427 - config - INFO - Query result cached successfully
+2025-06-18 17:29:15,428 - config - INFO - Formatting final answer...
+2025-06-18 17:29:18,319 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-18 17:29:18,319 - config - INFO - Formatted Answer: Based on the provided database result, the top performers are all categorized as "Top" performers, with total revenues ranging from $565,582.70 to $317,262.90. There are no "Average" or "Low" performers in this result set.
+
+Download Full Results:
+- CSV: http://localhost:8000/download/b246e8f31cb44e65a58395fb1469c67f.csv
+- Excel: http://localhost:8000/download/b246e8f31cb44e65a58395fb1469c67f.xlsx
+2025-06-18 17:29:18,319 - config - INFO - Final Answer: Based on the provided database result, the top performers are all categorized as "Top" performers, with total revenues ranging from $565,582.70 to $317,262.90. There are no "Average" or "Low" performers in this result set.
+
+Download Full Results:
+- CSV: http://localhost:8000/download/b246e8f31cb44e65a58395fb1469c67f.csv
+- Excel: http://localhost:8000/download/b246e8f31cb44e65a58395fb1469c67f.xlsx
+2025-06-18 17:29:18,319 - config - INFO - NL2SQL application example finished.
+2025-06-18 17:29:54,494 - config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-18 17:29:54,643 - config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-18 17:29:54,643 - config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-18 17:29:55,321 - config - INFO - LLM initialized successfully.
+2025-06-18 17:29:55,321 - config - INFO - Connecting to Redis: localhost:6379
+2025-06-18 17:29:55,331 - config - INFO - Redis connection established successfully.
+2025-06-18 17:29:55,415 - config - INFO - LangGraph workflow compiled successfully.
+2025-06-18 17:30:01,987 - config - INFO - Workflow started.
+2025-06-18 17:30:01,988 - config - INFO - Fetching database schema...
+2025-06-18 17:30:01,989 - config - INFO - Schema loaded from cache
+2025-06-18 17:30:01,989 - config - INFO - Generating SQL query...
+2025-06-18 17:30:03,213 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-18 17:30:03,222 - config - INFO - Generated SQL: SELECT 
+    s.company_name, 
+    SUM(od.final_amount) AS total_revenue, 
+    CASE 
+        WHEN SUM(od.final_amount) > (SELECT AVG(total_revenue) FROM (
+            SELECT 
+                SUM(od.final_amount) AS total_revenue 
+            FROM 
+                info.order_details od 
+            JOIN 
+                info.products p ON od.product_id = p.product_id 
+            JOIN 
+                info.suppliers s ON p.supplier_id = s.supplier_id 
+            GROUP BY 
+                s.supplier_id) AS subquery) THEN 'Top' 
+        WHEN SUM(od.final_amount) = (SELECT AVG(total_revenue) FROM (
+            SELECT 
+                SUM(od.final_amount) AS total_revenue 
+            FROM 
+                info.order_details od 
+            JOIN 
+                info.products p ON od.product_id = p.product_id 
+            JOIN 
+                info.suppliers s ON p.supplier_id = s.supplier_id 
+            GROUP BY 
+                s.supplier_id) AS subquery) THEN 'Average' 
+        ELSE 'Low' 
+    END AS performance_category 
+FROM 
+    info.order_details od 
+JOIN 
+    info.products p ON od.product_id = p.product_id 
+JOIN 
+    info.suppliers s ON p.supplier_id = s.supplier_id 
+GROUP BY 
+    s.supplier_id, 
+    s.company_name 
+ORDER BY 
+    total_revenue DESC;
+2025-06-18 17:30:03,225 - config - INFO - Executing SQL: SELECT 
+    s.company_name, 
+    SUM(od.final_amount) AS total_revenue, 
+    CASE 
+        WHEN SUM(od.final_amount) > (SELECT AVG(total_revenue) FROM (
+            SELECT 
+                SUM(od.final_amount) AS total_revenue 
+            FROM 
+                info.order_details od 
+            JOIN 
+                info.products p ON od.product_id = p.product_id 
+            JOIN 
+                info.suppliers s ON p.supplier_id = s.supplier_id 
+            GROUP BY 
+                s.supplier_id) AS subquery) THEN 'Top' 
+        WHEN SUM(od.final_amount) = (SELECT AVG(total_revenue) FROM (
+            SELECT 
+                SUM(od.final_amount) AS total_revenue 
+            FROM 
+                info.order_details od 
+            JOIN 
+                info.products p ON od.product_id = p.product_id 
+            JOIN 
+                info.suppliers s ON p.supplier_id = s.supplier_id 
+            GROUP BY 
+                s.supplier_id) AS subquery) THEN 'Average' 
+        ELSE 'Low' 
+    END AS performance_category 
+FROM 
+    info.order_details od 
+JOIN 
+    info.products p ON od.product_id = p.product_id 
+JOIN 
+    info.suppliers s ON p.supplier_id = s.supplier_id 
+GROUP BY 
+    s.supplier_id, 
+    s.company_name 
+ORDER BY 
+    total_revenue DESC;
+2025-06-18 17:30:03,228 - config - INFO - Query result loaded from cache
+2025-06-18 17:30:03,229 - config - INFO - Formatting final answer...
+2025-06-18 17:30:06,651 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-18 17:30:06,651 - config - INFO - Formatted Answer: Based on the provided database result, the top performers are all categorized as "Top" performers, with total revenues ranging from $565,582.70 to $317,262.90. There are no "Average" or "Low" performers in this result set.
+
+Download Full Results:
+- CSV: http://localhost:8000/download/7767789e0b914d2aa29e8d12b47f479c.csv
+- Excel: http://localhost:8000/download/7767789e0b914d2aa29e8d12b47f479c.xlsx
+2025-06-18 17:31:14,050 - config - INFO - Workflow started.
+2025-06-18 17:31:14,050 - config - INFO - Fetching database schema...
+2025-06-18 17:31:14,050 - config - INFO - Schema loaded from cache
+2025-06-18 17:31:14,050 - config - INFO - Generating SQL query...
+2025-06-18 17:31:15,389 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-18 17:31:15,395 - config - INFO - Generated SQL: SELECT 
+    p.category AS category, 
+    SUM(p.price * od.quantity) AS total_investment, 
+    SUM(od.final_amount) AS total_return, 
+    (SUM(od.final_amount) / SUM(p.price * od.quantity)) * 100 AS return_on_investment
+FROM 
+info.order_details od 
+ON od.product_id = p.product_id
+JOIN 
+info.products p 
+ON p.product_id = od.product_id
+GROUP BY 
+p.category
+ORDER BY 
+return_on_investment DESC;
+2025-06-18 17:31:15,396 - config - INFO - Executing SQL: SELECT 
+    p.category AS category, 
+    SUM(p.price * od.quantity) AS total_investment, 
+    SUM(od.final_amount) AS total_return, 
+    (SUM(od.final_amount) / SUM(p.price * od.quantity)) * 100 AS return_on_investment
+FROM 
+info.order_details od 
+ON od.product_id = p.product_id
+JOIN 
+info.products p 
+ON p.product_id = od.product_id
+GROUP BY 
+p.category
+ORDER BY 
+return_on_investment DESC;
+2025-06-18 17:31:15,396 - config - INFO - Validating SQL query: SELECT 
+    p.category AS category, 
+    SUM(p.price * od.quantity) AS total_investment, 
+    SUM(od.final_amount) AS total_return, 
+    (SUM(od.final_amount) / SUM(p.price * od.quantity)) * 100 AS return_on_investment
+FROM 
+info.order_details od 
+ON od.product_id = p.product_id
+JOIN 
+info.products p 
+ON p.product_id = od.product_id
+GROUP BY 
+p.category
+ORDER BY 
+return_on_investment DESC;
+2025-06-18 17:31:15,409 - config - ERROR - Error executing query: SELECT 
+    p.category AS category, 
+    SUM(p.price * od.quantity) AS total_investment, 
+    SUM(od.final_amount) AS total_return, 
+    (SUM(od.final_amount) / SUM(p.price * od.quantity)) * 100 AS return_on_investment
+FROM 
+info.order_details od 
+ON od.product_id = p.product_id
+JOIN 
+info.products p 
+ON p.product_id = od.product_id
+GROUP BY 
+p.category
+ORDER BY 
+return_on_investment DESC;
+Error: (psycopg2.errors.SyntaxError) syntax error at or near "ON"
+LINE 8: ON od.product_id = p.product_id
+        ^
+
+[SQL: SELECT 
+    p.category AS category, 
+    SUM(p.price * od.quantity) AS total_investment, 
+    SUM(od.final_amount) AS total_return, 
+    (SUM(od.final_amount) / SUM(p.price * od.quantity)) * 100 AS return_on_investment
+FROM 
+info.order_details od 
+ON od.product_id = p.product_id
+JOIN 
+info.products p 
+ON p.product_id = od.product_id
+GROUP BY 
+p.category
+ORDER BY 
+return_on_investment DESC;]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Traceback (most recent call last):
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.SyntaxError: syntax error at or near "ON"
+LINE 8: ON od.product_id = p.product_id
+        ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\nl2sql_manus\src\db_utils.py", line 174, in safe_db_run
+    result = conn.execute(stmt, params) if params else conn.execute(stmt)
+                                                       ^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1415, in execute
+    return meth(
+           ^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 523, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1637, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1842, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1982, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2351, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.SyntaxError) syntax error at or near "ON"
+LINE 8: ON od.product_id = p.product_id
+        ^
+
+[SQL: SELECT 
+    p.category AS category, 
+    SUM(p.price * od.quantity) AS total_investment, 
+    SUM(od.final_amount) AS total_return, 
+    (SUM(od.final_amount) / SUM(p.price * od.quantity)) * 100 AS return_on_investment
+FROM 
+info.order_details od 
+ON od.product_id = p.product_id
+JOIN 
+info.products p 
+ON p.product_id = od.product_id
+GROUP BY 
+p.category
+ORDER BY 
+return_on_investment DESC;]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-06-18 17:31:15,434 - config - WARNING - Attempting SQL correction (Attempt 1/3)
+2025-06-18 17:31:16,249 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-18 17:31:16,249 - config - INFO - Corrected SQL: SELECT 
+    p.category AS category, 
+    SUM(p.price * od.quantity) AS total_investment, 
+    SUM(od.final_amount) AS total_return, 
+    (SUM(od.final_amount) / SUM(p.price * od.quantity)) * 100 AS return_on_investment
+FROM 
+info.order_details od 
+JOIN 
+info.products p 
+ON od.product_id = od.product_id
+GROUP BY 
+p.category
+ORDER BY 
+return_on_investment DESC;
+2025-06-18 17:31:16,249 - config - INFO - Executing SQL: SELECT 
+    p.category AS category, 
+    SUM(p.price * od.quantity) AS total_investment, 
+    SUM(od.final_amount) AS total_return, 
+    (SUM(od.final_amount) / SUM(p.price * od.quantity)) * 100 AS return_on_investment
+FROM 
+info.order_details od 
+JOIN 
+info.products p 
+ON od.product_id = od.product_id
+GROUP BY 
+p.category
+ORDER BY 
+return_on_investment DESC;
+2025-06-18 17:31:16,256 - config - INFO - Validating SQL query: SELECT 
+    p.category AS category, 
+    SUM(p.price * od.quantity) AS total_investment, 
+    SUM(od.final_amount) AS total_return, 
+    (SUM(od.final_amount) / SUM(p.price * od.quantity)) * 100 AS return_on_investment
+FROM 
+info.order_details od 
+JOIN 
+info.products p 
+ON od.product_id = od.product_id
+GROUP BY 
+p.category
+ORDER BY 
+return_on_investment DESC;
+2025-06-18 17:31:16,893 - config - INFO - Query result cached successfully
+2025-06-18 17:31:16,895 - config - INFO - Formatting final answer...
+2025-06-18 17:31:19,569 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-18 17:31:19,569 - config - INFO - Formatted Answer: The product category with the highest return on stock investment is "Books" with a return on investment of 1730.43.
+
+Download Full Results:
+- CSV: http://localhost:8000/download/d48d9ffc971a4758b79ba22dfd5b001b.csv
+- Excel: http://localhost:8000/download/d48d9ffc971a4758b79ba22dfd5b001b.xlsx
+2025-06-19 19:39:24,638 - config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-19 19:39:24,848 - config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-19 19:39:24,848 - config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-19 19:39:25,558 - config - INFO - LLM initialized successfully.
+2025-06-19 19:39:25,558 - config - INFO - Connecting to Redis: localhost:6379
+2025-06-19 19:39:25,582 - config - INFO - Redis connection established successfully.
+2025-06-19 19:39:25,696 - config - INFO - LangGraph workflow compiled successfully.
+2025-06-19 19:39:50,808 - config - INFO - Workflow started.
+2025-06-19 19:39:50,808 - config - INFO - Fetching database schema...
+2025-06-19 19:39:50,808 - config - INFO - Fetching dynamic schema representation for schema: info
+2025-06-19 19:39:50,808 - config - INFO - Successfully fetched schema for tables: ['customers', 'order_details', 'orders', 'products', 'sales_representative', 'suppliers']
+2025-06-19 19:39:50,808 - config - INFO - Query execution time - schema_fetch: 0.00s
+2025-06-19 19:39:50,808 - config - INFO - Schema cached successfully
+2025-06-19 19:39:50,816 - config - INFO - Generating SQL query...
+2025-06-19 19:39:51,572 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-19 19:39:51,595 - config - INFO - Generated SQL: SELECT customer_id, first_name, last_name, email, city, country, join_date 
+FROM info.customers;
+2025-06-19 19:39:51,597 - config - INFO - Executing SQL: SELECT customer_id, first_name, last_name, email, city, country, join_date 
+FROM info.customers;
+2025-06-19 19:39:51,598 - config - INFO - Validating SQL query: SELECT customer_id, first_name, last_name, email, city, country, join_date 
+FROM info.customers;
+2025-06-19 19:39:51,610 - config - INFO - Query result cached successfully
+2025-06-19 19:39:51,616 - config - INFO - Formatting final answer...
+2025-06-19 19:39:54,938 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-19 19:39:54,938 - config - INFO - Formatted Answer: Here is the customers table data:
+
+The table has 20 rows, with customer IDs ranging from C0001 to C0020. The customers are from various countries including Australia, USA, UK, India, and China. The join dates range from 2020-01-25 to 2023-12-10.
+
+Download Full Results:
+- CSV: http://localhost:8000/download/6e53b7b1ccc449bf84c473d02892fbcf.csv
+- Excel: http://localhost:8000/download/6e53b7b1ccc449bf84c473d02892fbcf.xlsx
+2025-06-19 19:40:55,199 - config - INFO - Validating SQL query: SELECT 1 AS status
+2025-06-19 19:40:55,199 - config - WARNING - SQL blocked - missing required schema prefix 'INFO.'
+2025-06-19 19:40:55,208 - config - CRITICAL - Blocked potentially unsafe query: SELECT 1 AS status
+2025-06-19 19:40:58,118 - config - INFO - Workflow started.
+2025-06-19 19:40:58,118 - config - INFO - Fetching database schema...
+2025-06-19 19:40:58,118 - config - INFO - Schema loaded from cache
+2025-06-19 19:40:58,118 - config - INFO - Generating SQL query...
+2025-06-19 19:40:59,101 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-19 19:40:59,107 - config - INFO - Generated SQL: SELECT customer_id, first_name, last_name, email, city, country, join_date 
+FROM info.customers;
+2025-06-19 19:40:59,108 - config - INFO - Executing SQL: SELECT customer_id, first_name, last_name, email, city, country, join_date 
+FROM info.customers;
+2025-06-19 19:40:59,108 - config - INFO - Query result loaded from cache
+2025-06-19 19:40:59,115 - config - INFO - Formatting final answer...
+2025-06-19 19:41:02,078 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-19 19:41:02,078 - config - INFO - Formatted Answer: Here is the customers table data:
+
+The table has 20 rows, with customer IDs ranging from C0001 to C0020. The customers are from various countries including Australia, USA, UK, India, and China. The join dates range from 2020-01-25 to 2023-12-10.
+
+Download Full Results:
+- CSV: http://localhost:8000/download/7296ec3b617046f99f99be6e45d13bfa.csv
+- Excel: http://localhost:8000/download/7296ec3b617046f99f99be6e45d13bfa.xlsx
+2025-06-19 19:41:05,848 - config - INFO - Validating SQL query: SELECT 1 AS status
+2025-06-19 19:41:05,848 - config - WARNING - SQL blocked - missing required schema prefix 'INFO.'
+2025-06-19 19:41:05,848 - config - CRITICAL - Blocked potentially unsafe query: SELECT 1 AS status
+2025-06-19 19:41:12,528 - config - INFO - Workflow started.
+2025-06-19 19:41:12,528 - config - INFO - Fetching database schema...
+2025-06-19 19:41:12,528 - config - INFO - Schema loaded from cache
+2025-06-19 19:41:12,528 - config - INFO - Generating SQL query...
+2025-06-19 19:41:13,078 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-19 19:41:13,080 - config - INFO - Generated SQL: SELECT customer_id, first_name, last_name, email, city, country, join_date 
+FROM info.customers;
+2025-06-19 19:41:13,080 - config - INFO - Executing SQL: SELECT customer_id, first_name, last_name, email, city, country, join_date 
+FROM info.customers;
+2025-06-19 19:41:13,080 - config - INFO - Query result loaded from cache
+2025-06-19 19:41:13,080 - config - INFO - Formatting final answer...
+2025-06-19 19:41:16,278 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-19 19:41:16,278 - config - INFO - Formatted Answer: Here is the customers table data:
+
+The table has 20 rows, with customer IDs ranging from C0001 to C0020. The customers are from various countries including Australia, USA, UK, India, and China. The join dates range from 2020-01-25 to 2023-12-10.
+
+Download Full Results:
+- CSV: http://localhost:8000/download/4600923fdcef4db9a255a87ead4284f7.csv
+- Excel: http://localhost:8000/download/4600923fdcef4db9a255a87ead4284f7.xlsx
+2025-06-19 22:11:40,319 - config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-19 22:11:40,480 - config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-19 22:11:40,481 - config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-19 22:11:41,201 - config - INFO - LLM initialized successfully.
+2025-06-19 22:11:41,201 - config - INFO - Connecting to Redis: localhost:6379
+2025-06-19 22:11:41,203 - config - INFO - Redis connection established successfully.
+2025-06-19 22:11:41,280 - config - INFO - LangGraph workflow compiled successfully.
+2025-06-19 22:11:54,759 - config - INFO - Workflow started.
+2025-06-19 22:11:54,761 - config - INFO - Fetching database schema...
+2025-06-19 22:11:54,761 - config - INFO - Fetching dynamic schema representation for schema: info
+2025-06-19 22:11:54,764 - config - INFO - Successfully fetched schema for tables: ['customers', 'order_details', 'orders', 'products', 'sales_representative', 'suppliers']
+2025-06-19 22:11:54,764 - config - INFO - Query execution time - schema_fetch: 0.00s
+2025-06-19 22:11:54,765 - config - INFO - Schema cached successfully
+2025-06-19 22:11:54,766 - config - INFO - Generating SQL query...
+2025-06-19 22:11:56,677 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-19 22:11:56,683 - config - INFO - Generated SQL: SELECT customer_id, first_name, last_name, email, city, country, join_date 
+FROM info.customers 
+ORDER BY join_date ASC;
+2025-06-19 22:11:56,685 - config - INFO - Executing SQL: SELECT customer_id, first_name, last_name, email, city, country, join_date 
+FROM info.customers 
+ORDER BY join_date ASC;
+2025-06-19 22:11:56,686 - config - INFO - Validating SQL query: SELECT customer_id, first_name, last_name, email, city, country, join_date 
+FROM info.customers 
+ORDER BY join_date ASC;
+2025-06-19 22:11:56,702 - config - INFO - Query result cached successfully
+2025-06-19 22:11:56,707 - config - INFO - Formatting final answer...
+2025-06-19 22:11:59,787 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-19 22:11:59,788 - config - INFO - Formatted Answer: Here is the customers' data:
+
+There are 20 customers in total. The customers are from various countries including Canada, India, China, UK, Australia, and USA. The earliest join date is January 2, 2020, and the latest join date is January 18, 2020.
+
+Download Full Results:
+- CSV: http://localhost:8000/download/6ee6410763d64f07a459427df2129fe3.csv
+- Excel: http://localhost:8000/download/6ee6410763d64f07a459427df2129fe3.xlsx
+2025-06-19 22:15:51,820 - config - INFO - Workflow started.
+2025-06-19 22:15:51,820 - config - INFO - Fetching database schema...
+2025-06-19 22:15:51,824 - config - INFO - Schema loaded from cache
+2025-06-19 22:15:51,824 - config - INFO - Generating SQL query...
+2025-06-19 22:15:52,977 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-19 22:15:52,980 - config - INFO - Generated SQL: SELECT customer_id, first_name, last_name, email, city, country, join_date 
+FROM info.customers 
+ORDER BY join_date ASC;
+2025-06-19 22:15:52,980 - config - INFO - Executing SQL: SELECT customer_id, first_name, last_name, email, city, country, join_date 
+FROM info.customers 
+ORDER BY join_date ASC;
+2025-06-19 22:15:52,980 - config - INFO - Query result loaded from cache
+2025-06-19 22:15:52,987 - config - INFO - Formatting final answer...
+2025-06-19 22:15:55,812 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-19 22:15:55,812 - config - INFO - Formatted Answer: Here is the customers' data:
+
+There are 20 customers in total. The customers are from various countries including Canada, India, China, UK, Australia, and USA. The earliest join date is January 2, 2020, and the latest join date is January 18, 2020.
+
+Download Full Results:
+- CSV: http://localhost:8000/download/ab6e4faaa02c4f269b7f78336403796e.csv
+- Excel: http://localhost:8000/download/ab6e4faaa02c4f269b7f78336403796e.xlsx
+2025-06-19 22:54:54,487 - config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-19 22:54:54,637 - config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-19 22:54:54,637 - config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-19 22:54:55,347 - config - INFO - LLM initialized successfully.
+2025-06-19 22:54:55,347 - config - INFO - Connecting to Redis: localhost:6379
+2025-06-19 22:54:55,347 - config - INFO - Redis connection established successfully.
+2025-06-19 22:54:55,427 - config - INFO - LangGraph workflow compiled successfully.
+2025-06-19 22:55:13,143 - config - INFO - Workflow started.
+2025-06-19 22:55:13,143 - config - INFO - Fetching database schema...
+2025-06-19 22:55:13,143 - config - INFO - Schema loaded from cache
+2025-06-19 22:55:13,147 - config - INFO - Generating SQL query...
+2025-06-19 22:55:14,310 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-19 22:55:14,547 - config - INFO - Generated SQL: SELECT customer_id, first_name, last_name, email, city, country, join_date 
+FROM info.customers;
+2025-06-19 22:55:14,547 - config - INFO - Executing SQL: SELECT customer_id, first_name, last_name, email, city, country, join_date 
+FROM info.customers;
+2025-06-19 22:55:14,547 - config - INFO - Validating SQL query: SELECT customer_id, first_name, last_name, email, city, country, join_date 
+FROM info.customers;
+2025-06-19 22:55:14,558 - config - INFO - Query result cached successfully
+2025-06-19 22:55:14,564 - config - INFO - Formatting final answer...
+2025-06-19 22:55:18,682 - config - ERROR - Export failed: HTTPSConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /export (Caused by SSLError(SSLError(1, '[SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:1006)')))
+2025-06-19 22:55:19,497 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-19 22:55:19,758 - config - INFO - Formatted Answer: Here is the customers table data:
+
+The table has 20 rows, with customer information including customer ID, first name, last name, email, city, country, and join date. The customers are from various countries such as Australia, USA, India, China, and the UK.
+
+[WARNING] Export service unavailable
+2025-06-19 22:58:37,443 - config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-19 22:58:37,557 - config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-19 22:58:37,557 - config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-19 22:58:38,051 - config - INFO - LLM initialized successfully.
+2025-06-19 22:58:38,051 - config - INFO - Connecting to Redis: localhost:6379
+2025-06-19 22:58:38,069 - config - INFO - Redis connection established successfully.
+2025-06-19 22:58:38,096 - config - INFO - LangGraph workflow compiled successfully.
+2025-06-19 22:58:38,104 - config - INFO - Workflow started.
+2025-06-19 22:58:38,106 - config - INFO - Fetching database schema...
+2025-06-19 22:58:38,107 - config - INFO - Schema loaded from cache
+2025-06-19 22:58:38,108 - config - INFO - Generating SQL query...
+2025-06-19 22:58:38,847 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-19 22:58:38,847 - config - INFO - Generated SQL: SELECT customer_id, first_name, last_name, email, city, country, join_date 
+FROM info.customers;
+2025-06-19 22:58:38,851 - config - INFO - Executing SQL: SELECT customer_id, first_name, last_name, email, city, country, join_date 
+FROM info.customers;
+2025-06-19 22:58:38,851 - config - INFO - Query result loaded from cache
+2025-06-19 22:58:38,857 - config - ERROR - Streamlit execution error: cannot access local variable 'serialized_data' where it is not associated with a value
+Traceback (most recent call last):
+  File "D:\nl2sql_manus\src\streamlit_app.py", line 83, in <module>
+    final_state = app.invoke(initial_state)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\langgraph\pregel\__init__.py", line 2719, in invoke
+    for chunk in self.stream(
+  File "D:\nl2sql_manus\venv\Lib\site-packages\langgraph\pregel\__init__.py", line 2436, in stream
+    for _ in runner.tick(
+  File "D:\nl2sql_manus\venv\Lib\site-packages\langgraph\pregel\runner.py", line 161, in tick
+    run_with_retry(
+  File "D:\nl2sql_manus\venv\Lib\site-packages\langgraph\pregel\retry.py", line 40, in run_with_retry
+    return task.proc.invoke(task.input, config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\langgraph\utils\runnable.py", line 623, in invoke
+    input = context.run(step.invoke, input, config, **kwargs)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\langgraph\utils\runnable.py", line 377, in invoke
+    ret = self.func(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\src\workflow.py", line 189, in format_final_answer_node
+    data=serialized_data,
+         ^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'serialized_data' where it is not associated with a value
+During task with name 'format_answer' and id 'c670489d-77d5-7484-daf3-e226be5bcdfb'
+2025-06-19 22:59:00,627 - config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-19 22:59:00,727 - config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-19 22:59:00,727 - config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-19 22:59:01,229 - config - INFO - LLM initialized successfully.
+2025-06-19 22:59:01,230 - config - INFO - Connecting to Redis: localhost:6379
+2025-06-19 22:59:01,232 - config - INFO - Redis connection established successfully.
+2025-06-19 22:59:01,258 - config - INFO - LangGraph workflow compiled successfully.
+2025-06-19 22:59:01,266 - config - INFO - Workflow started.
+2025-06-19 22:59:01,268 - config - INFO - Fetching database schema...
+2025-06-19 22:59:01,271 - config - INFO - Schema loaded from cache
+2025-06-19 22:59:01,272 - config - INFO - Generating SQL query...
+2025-06-19 22:59:02,443 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-19 22:59:02,663 - config - INFO - Generated SQL: SELECT customer_id, first_name, last_name, email, city, country, join_date 
+FROM info.customers;
+2025-06-19 22:59:02,663 - config - INFO - Executing SQL: SELECT customer_id, first_name, last_name, email, city, country, join_date 
+FROM info.customers;
+2025-06-19 22:59:02,663 - config - INFO - Query result loaded from cache
+2025-06-19 22:59:02,668 - config - INFO - Formatting final answer...
+2025-06-19 22:59:06,748 - config - ERROR - Export failed: HTTPSConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /export (Caused by SSLError(SSLError(1, '[SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:1006)')))
+2025-06-19 22:59:07,667 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-19 22:59:07,937 - config - INFO - Formatted Answer: Here is the customers table data:
+
+The table has 20 rows, with customer information including customer ID, first name, last name, email, city, country, and join date. The customers are from various countries such as Australia, USA, India, China, and the UK.
+
+[WARNING] Export service unavailable
+2025-06-19 23:08:20,397 - config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-19 23:08:20,509 - config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-19 23:08:20,509 - config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-19 23:08:21,008 - config - INFO - LLM initialized successfully.
+2025-06-19 23:08:21,009 - config - INFO - Connecting to Redis: localhost:6379
+2025-06-19 23:08:21,034 - config - INFO - Redis connection established successfully.
+2025-06-19 23:08:21,053 - config - INFO - LangGraph workflow compiled successfully.
+2025-06-19 23:08:21,058 - config - INFO - Workflow started.
+2025-06-19 23:08:21,059 - config - INFO - Fetching database schema...
+2025-06-19 23:08:21,060 - config - INFO - Schema loaded from cache
+2025-06-19 23:08:21,060 - config - INFO - Generating SQL query...
+2025-06-19 23:08:22,343 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-19 23:08:22,377 - config - INFO - Generated SQL: SELECT customer_id, first_name, last_name, email, city, country, join_date 
+FROM info.customers;
+2025-06-19 23:08:22,377 - config - INFO - Executing SQL: SELECT customer_id, first_name, last_name, email, city, country, join_date 
+FROM info.customers;
+2025-06-19 23:08:22,380 - config - INFO - Validating SQL query: SELECT customer_id, first_name, last_name, email, city, country, join_date 
+FROM info.customers;
+2025-06-19 23:08:22,388 - config - INFO - Query result cached successfully
+2025-06-19 23:08:22,394 - config - INFO - Formatting final answer...
+2025-06-19 23:08:22,397 - config - ERROR - Export failed: Object of type date is not JSON serializable
+2025-06-19 23:08:23,335 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-19 23:08:23,335 - config - INFO - Formatted Answer: Here is the customers table data:
+
+The table has 20 rows, with customer information including customer ID, first name, last name, email, city, country, and join date. The customers are from various countries such as Australia, USA, India, China, and the UK.
+
+[WARNING] Export service unavailable
+2025-06-19 23:18:33,597 - config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-19 23:18:33,743 - config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-19 23:18:33,743 - config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-19 23:18:34,457 - config - INFO - LLM initialized successfully.
+2025-06-19 23:18:34,457 - config - INFO - Connecting to Redis: localhost:6379
+2025-06-19 23:18:34,483 - config - INFO - Redis connection established successfully.
+2025-06-19 23:18:34,557 - config - INFO - LangGraph workflow compiled successfully.
+2025-06-19 23:18:50,532 - config - INFO - Workflow started.
+2025-06-19 23:18:50,537 - config - INFO - Fetching database schema...
+2025-06-19 23:18:50,537 - config - INFO - Fetching dynamic schema representation for schema: info
+2025-06-19 23:18:50,537 - config - INFO - Successfully fetched schema for tables: ['customers', 'order_details', 'orders', 'products', 'sales_representative', 'suppliers']
+2025-06-19 23:18:50,537 - config - INFO - Query execution time - schema_fetch: 0.00s
+2025-06-19 23:18:50,537 - config - INFO - Schema cached successfully
+2025-06-19 23:18:50,542 - config - INFO - Generating SQL query...
+2025-06-19 23:18:52,607 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-19 23:18:52,607 - config - INFO - Generated SQL: SELECT customer_id, first_name, last_name, email, city, country, join_date 
+FROM info.customers;
+2025-06-19 23:18:52,619 - config - INFO - Executing SQL: SELECT customer_id, first_name, last_name, email, city, country, join_date 
+FROM info.customers;
+2025-06-19 23:18:52,619 - config - INFO - Validating SQL query: SELECT customer_id, first_name, last_name, email, city, country, join_date 
+FROM info.customers;
+2025-06-19 23:18:52,628 - config - INFO - Query result cached successfully
+2025-06-19 23:18:52,632 - config - INFO - Formatting final answer...
+2025-06-19 23:18:52,637 - config - ERROR - Export failed: Object of type date is not JSON serializable
+2025-06-19 23:18:54,117 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-19 23:18:54,117 - config - INFO - Formatted Answer: Here is the customers table data:
+
+The table has 20 rows, with customer information including customer ID, first name, last name, email, city, country, and join date. The customers are from various countries such as Australia, USA, UK, India, and China.
+
+[WARNING] Export service unavailable
+2025-06-19 23:19:50,217 - config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-19 23:19:50,361 - config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-19 23:19:50,361 - config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-19 23:19:51,047 - config - INFO - LLM initialized successfully.
+2025-06-19 23:19:51,047 - config - INFO - Connecting to Redis: localhost:6379
+2025-06-19 23:19:51,051 - config - INFO - Redis connection established successfully.
+2025-06-19 23:19:51,117 - config - INFO - LangGraph workflow compiled successfully.
+2025-06-19 23:19:51,117 - config - INFO - Starting NL2SQL application example...
+2025-06-19 23:19:51,117 - config - INFO - User Question: Show me the available tabes names in the database
+2025-06-19 23:19:51,127 - config - INFO - Workflow started.
+2025-06-19 23:19:51,127 - config - INFO - Fetching database schema...
+2025-06-19 23:19:51,127 - config - INFO - Schema loaded from cache
+2025-06-19 23:19:51,127 - config - INFO - Generating SQL query...
+2025-06-19 23:19:51,758 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-19 23:19:51,768 - config - INFO - Generated SQL: SELECT table_name 
+FROM information_schema.tables 
+WHERE table_schema = 'info';
+2025-06-19 23:19:51,770 - config - WARNING - SQL blocked - missing required schema prefix 'INFO.'
+2025-06-19 23:19:51,770 - config - CRITICAL - Blocked potentially dangerous SQL query
+2025-06-19 23:19:51,771 - config - INFO - Formatting final answer...
+2025-06-19 23:19:51,771 - config - WARNING - Cannot format answer due to error: Blocked potentially dangerous SQL query
+2025-06-19 23:19:51,772 - config - INFO - Final Answer: Sorry, I encountered an error: Blocked potentially dangerous SQL query
+2025-06-19 23:19:51,772 - config - INFO - NL2SQL application example finished.
+2025-06-19 23:20:58,417 - config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-19 23:20:58,567 - config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-19 23:20:58,567 - config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-19 23:20:59,306 - config - INFO - LLM initialized successfully.
+2025-06-19 23:20:59,306 - config - INFO - Connecting to Redis: localhost:6379
+2025-06-19 23:20:59,308 - config - INFO - Redis connection established successfully.
+2025-06-19 23:20:59,377 - config - INFO - LangGraph workflow compiled successfully.
+2025-06-19 23:20:59,377 - config - INFO - Starting NL2SQL application example...
+2025-06-19 23:20:59,377 - config - INFO - User Question: Show me the customers name who work for this company with 5 years
+2025-06-19 23:20:59,388 - config - INFO - Workflow started.
+2025-06-19 23:20:59,389 - config - INFO - Fetching database schema...
+2025-06-19 23:20:59,389 - config - INFO - Schema loaded from cache
+2025-06-19 23:20:59,389 - config - INFO - Generating SQL query...
+2025-06-19 23:21:01,472 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-19 23:21:01,487 - config - INFO - Generated SQL: SELECT c.first_name, first_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr.sales_rep_id = o.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';
+2025-06-19 23:21:01,487 - config - INFO - Executing SQL: SELECT c.first_name, first_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr.sales_rep_id = o.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';
+2025-06-19 23:21:01,491 - config - INFO - Validating SQL query: SELECT c.first_name, first_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr.sales_rep_id = o.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';
+2025-06-19 23:21:01,495 - config - ERROR - Error executing query: SELECT c.first_name, first_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr.sales_rep_id = o.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';
+Error: (psycopg2.errors.SyntaxError) syntax error at or near "."
+LINE 4: JOIN info.sales_representative sr.sales_rep_id = o.sales_rep...
+                                         ^
+
+[SQL: SELECT c.first_name, first_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr.sales_rep_id = o.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Traceback (most recent call last):
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.SyntaxError: syntax error at or near "."
+LINE 4: JOIN info.sales_representative sr.sales_rep_id = o.sales_rep...
+                                         ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\nl2sql_manus\src\db_utils.py", line 174, in safe_db_run
+    result = conn.execute(stmt, params) if params else conn.execute(stmt)
+                                                       ^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1415, in execute
+    return meth(
+           ^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 523, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1637, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1842, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1982, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2351, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.SyntaxError) syntax error at or near "."
+LINE 4: JOIN info.sales_representative sr.sales_rep_id = o.sales_rep...
+                                         ^
+
+[SQL: SELECT c.first_name, first_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr.sales_rep_id = o.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-06-19 23:21:01,517 - config - WARNING - Attempting SQL correction (Attempt 1/3)
+2025-06-19 23:21:02,111 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-19 23:21:02,128 - config - INFO - Corrected SQL: SELECT c.first_name, c.last_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr ON o.sales_rep_id = sr.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';
+2025-06-19 23:21:02,131 - config - INFO - Executing SQL: SELECT c.first_name, c.last_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr ON o.sales_rep_id = sr.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';
+2025-06-19 23:21:02,131 - config - INFO - Validating SQL query: SELECT c.first_name, c.last_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr ON o.sales_rep_id = sr.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';
+2025-06-19 23:21:02,151 - config - INFO - Query result cached successfully
+2025-06-19 23:21:02,154 - config - INFO - Formatting final answer...
+2025-06-19 23:21:04,195 - config - ERROR - Export API error: 401
+2025-06-19 23:21:05,691 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-19 23:21:05,693 - config - INFO - Formatted Answer: Here are the customers' names who work for this company: Karen Chen, Joshua Liu, Michael Jackson, Donald Wang, Linda Liu, Robert Garcia, Amanda Thompson, Ali Anderson, William Hall, Kimberly Moore, Michael Singh, Xiu Hernandez, Andrew Hernandez, Xiu Gomez, Deborah Singh, Donald Garcia, Carlos Liu, Andrew Liu, and Anthony Sanchez.
+
+[WARNING] Export service error (401)
+2025-06-19 23:21:05,695 - config - INFO - Final Answer: Here are the customers' names who work for this company: Karen Chen, Joshua Liu, Michael Jackson, Donald Wang, Linda Liu, Robert Garcia, Amanda Thompson, Ali Anderson, William Hall, Kimberly Moore, Michael Singh, Xiu Hernandez, Andrew Hernandez, Xiu Gomez, Deborah Singh, Donald Garcia, Carlos Liu, Andrew Liu, and Anthony Sanchez.
+
+[WARNING] Export service error (401)
+2025-06-19 23:21:05,695 - config - INFO - NL2SQL application example finished.
+2025-06-19 23:25:55,097 - config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-19 23:25:55,247 - config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-19 23:25:55,247 - config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-19 23:25:55,942 - config - INFO - LLM initialized successfully.
+2025-06-19 23:25:55,942 - config - INFO - Connecting to Redis: localhost:6379
+2025-06-19 23:25:55,958 - config - INFO - Redis connection established successfully.
+2025-06-19 23:25:56,034 - config - INFO - LangGraph workflow compiled successfully.
+2025-06-19 23:25:56,035 - config - INFO - Starting NL2SQL application example...
+2025-06-19 23:25:56,035 - config - INFO - User Question: Show me the customers name who work for this company with 5 years
+2025-06-19 23:25:56,039 - config - INFO - Workflow started.
+2025-06-19 23:25:56,039 - config - INFO - Fetching database schema...
+2025-06-19 23:25:56,040 - config - INFO - Schema loaded from cache
+2025-06-19 23:25:56,040 - config - INFO - Generating SQL query...
+2025-06-19 23:25:56,747 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-19 23:25:56,758 - config - INFO - Generated SQL: SELECT c.first_name, first_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr.sales_rep_id = o.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';
+2025-06-19 23:25:56,760 - config - INFO - Executing SQL: SELECT c.first_name, first_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr.sales_rep_id = o.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';
+2025-06-19 23:25:56,760 - config - INFO - Validating SQL query: SELECT c.first_name, first_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr.sales_rep_id = o.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';
+2025-06-19 23:25:56,761 - config - ERROR - Error executing query: SELECT c.first_name, first_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr.sales_rep_id = o.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';
+Error: (psycopg2.errors.SyntaxError) syntax error at or near "."
+LINE 4: JOIN info.sales_representative sr.sales_rep_id = o.sales_rep...
+                                         ^
+
+[SQL: SELECT c.first_name, first_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr.sales_rep_id = o.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Traceback (most recent call last):
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.SyntaxError: syntax error at or near "."
+LINE 4: JOIN info.sales_representative sr.sales_rep_id = o.sales_rep...
+                                         ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\nl2sql_manus\src\db_utils.py", line 174, in safe_db_run
+    result = conn.execute(stmt, params) if params else conn.execute(stmt)
+                                                       ^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1415, in execute
+    return meth(
+           ^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 523, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1637, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1842, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1982, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2351, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.SyntaxError) syntax error at or near "."
+LINE 4: JOIN info.sales_representative sr.sales_rep_id = o.sales_rep...
+                                         ^
+
+[SQL: SELECT c.first_name, first_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr.sales_rep_id = o.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-06-19 23:25:56,769 - config - WARNING - Attempting SQL correction (Attempt 1/3)
+2025-06-19 23:25:57,358 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-19 23:25:57,358 - config - INFO - Corrected SQL: SELECT c.first_name, c.last_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr ON o.sales_rep_id = sr.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';
+2025-06-19 23:25:57,358 - config - INFO - Executing SQL: SELECT c.first_name, c.last_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr ON o.sales_rep_id = sr.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';
+2025-06-19 23:25:57,358 - config - INFO - Query result loaded from cache
+2025-06-19 23:25:57,368 - config - INFO - Formatting final answer...
+2025-06-19 23:25:59,430 - config - ERROR - Export API error: 401
+2025-06-19 23:26:00,072 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-19 23:26:00,072 - config - INFO - Formatted Answer: Here are the customers' names who work for this company: Karen Chen, Joshua Liu, Michael Jackson, Donald Wang, Linda Liu, Robert Garcia, Amanda Thompson, Ali Anderson, William Hall, Kimberly Moore, Michael Singh, Xiu Hernandez, Andrew Hernandez, Xiu Gomez, Deborah Singh, Donald Garcia, Carlos Liu, Andrew Liu, and Anthony Sanchez.
+
+[WARNING] Export service error (401)
+2025-06-19 23:26:00,078 - config - INFO - Final Answer: Here are the customers' names who work for this company: Karen Chen, Joshua Liu, Michael Jackson, Donald Wang, Linda Liu, Robert Garcia, Amanda Thompson, Ali Anderson, William Hall, Kimberly Moore, Michael Singh, Xiu Hernandez, Andrew Hernandez, Xiu Gomez, Deborah Singh, Donald Garcia, Carlos Liu, Andrew Liu, and Anthony Sanchez.
+
+[WARNING] Export service error (401)
+2025-06-19 23:26:00,078 - config - INFO - NL2SQL application example finished.
+2025-06-19 23:26:26,847 - config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-19 23:26:26,998 - config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-19 23:26:26,998 - config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-19 23:26:27,693 - config - INFO - LLM initialized successfully.
+2025-06-19 23:26:27,693 - config - INFO - Connecting to Redis: localhost:6379
+2025-06-19 23:26:27,708 - config - INFO - Redis connection established successfully.
+2025-06-19 23:26:27,786 - config - INFO - LangGraph workflow compiled successfully.
+2025-06-19 23:26:27,787 - config - INFO - Starting NL2SQL application example...
+2025-06-19 23:26:27,787 - config - INFO - User Question: Show me the customers name who work for this company with 5 years
+2025-06-19 23:26:27,790 - config - INFO - Workflow started.
+2025-06-19 23:26:27,791 - config - INFO - Fetching database schema...
+2025-06-19 23:26:27,791 - config - INFO - Schema loaded from cache
+2025-06-19 23:26:27,792 - config - INFO - Generating SQL query...
+2025-06-19 23:26:28,418 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-19 23:26:28,434 - config - INFO - Generated SQL: SELECT c.first_name, first_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr.sales_rep_id = o.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';
+2025-06-19 23:26:28,436 - config - INFO - Executing SQL: SELECT c.first_name, first_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr.sales_rep_id = o.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';
+2025-06-19 23:26:28,437 - config - INFO - Validating SQL query: SELECT c.first_name, first_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr.sales_rep_id = o.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';
+2025-06-19 23:26:28,439 - config - ERROR - Error executing query: SELECT c.first_name, first_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr.sales_rep_id = o.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';
+Error: (psycopg2.errors.SyntaxError) syntax error at or near "."
+LINE 4: JOIN info.sales_representative sr.sales_rep_id = o.sales_rep...
+                                         ^
+
+[SQL: SELECT c.first_name, first_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr.sales_rep_id = o.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Traceback (most recent call last):
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.SyntaxError: syntax error at or near "."
+LINE 4: JOIN info.sales_representative sr.sales_rep_id = o.sales_rep...
+                                         ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\nl2sql_manus\src\db_utils.py", line 174, in safe_db_run
+    result = conn.execute(stmt, params) if params else conn.execute(stmt)
+                                                       ^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1415, in execute
+    return meth(
+           ^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 523, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1637, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1842, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1982, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2351, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.SyntaxError) syntax error at or near "."
+LINE 4: JOIN info.sales_representative sr.sales_rep_id = o.sales_rep...
+                                         ^
+
+[SQL: SELECT c.first_name, first_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr.sales_rep_id = o.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-06-19 23:26:28,445 - config - WARNING - Attempting SQL correction (Attempt 1/3)
+2025-06-19 23:26:29,047 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-19 23:26:29,047 - config - INFO - Corrected SQL: SELECT c.first_name, c.last_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr ON o.sales_rep_id = sr.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';
+2025-06-19 23:26:29,047 - config - INFO - Executing SQL: SELECT c.first_name, c.last_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr ON o.sales_rep_id = sr.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';
+2025-06-19 23:26:29,047 - config - INFO - Validating SQL query: SELECT c.first_name, c.last_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr ON o.sales_rep_id = sr.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';
+2025-06-19 23:26:29,058 - config - INFO - Query result cached successfully
+2025-06-19 23:26:29,066 - config - INFO - Formatting final answer...
+2025-06-19 23:26:41,096 - config - ERROR - Export failed: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=10)
+2025-06-19 23:26:45,008 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-19 23:26:45,008 - config - INFO - Formatted Answer: Here are the customers' names who work for this company: Karen Chen, Joshua Liu, Michael Jackson, Donald Wang, Linda Liu, Robert Garcia, Amanda Thompson, Ali Anderson, William Hall, Kimberly Moore, Michael Singh, Xiu Hernandez, Andrew Hernandez, Xiu Gomez, Deborah Singh, Donald Garcia, Carlos Liu, Andrew Liu, and Anthony Sanchez.
+
+[WARNING] Export service unavailable
+2025-06-19 23:26:45,017 - config - INFO - Final Answer: Here are the customers' names who work for this company: Karen Chen, Joshua Liu, Michael Jackson, Donald Wang, Linda Liu, Robert Garcia, Amanda Thompson, Ali Anderson, William Hall, Kimberly Moore, Michael Singh, Xiu Hernandez, Andrew Hernandez, Xiu Gomez, Deborah Singh, Donald Garcia, Carlos Liu, Andrew Liu, and Anthony Sanchez.
+
+[WARNING] Export service unavailable
+2025-06-19 23:26:45,017 - config - INFO - NL2SQL application example finished.
+2025-06-19 23:28:34,787 - config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-19 23:28:34,937 - config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-19 23:28:34,937 - config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-19 23:28:35,627 - config - INFO - LLM initialized successfully.
+2025-06-19 23:28:35,627 - config - INFO - Connecting to Redis: localhost:6379
+2025-06-19 23:28:35,629 - config - INFO - Redis connection established successfully.
+2025-06-19 23:28:35,702 - config - INFO - LangGraph workflow compiled successfully.
+2025-06-19 23:28:35,702 - config - INFO - Starting NL2SQL application example...
+2025-06-19 23:28:35,702 - config - INFO - User Question: Show me the customers name who work for this company with 5 years
+2025-06-19 23:28:35,707 - config - INFO - Workflow started.
+2025-06-19 23:28:35,707 - config - INFO - Fetching database schema...
+2025-06-19 23:28:35,707 - config - INFO - Schema loaded from cache
+2025-06-19 23:28:35,707 - config - INFO - Generating SQL query...
+2025-06-19 23:28:36,828 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-19 23:28:38,384 - config - INFO - Generated SQL: SELECT c.first_name, first_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr.sales_rep_id = o.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';
+2025-06-19 23:28:38,387 - config - INFO - Executing SQL: SELECT c.first_name, first_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr.sales_rep_id = o.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';
+2025-06-19 23:28:38,387 - config - INFO - Validating SQL query: SELECT c.first_name, first_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr.sales_rep_id = o.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';
+2025-06-19 23:28:38,389 - config - ERROR - Error executing query: SELECT c.first_name, first_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr.sales_rep_id = o.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';
+Error: (psycopg2.errors.SyntaxError) syntax error at or near "."
+LINE 4: JOIN info.sales_representative sr.sales_rep_id = o.sales_rep...
+                                         ^
+
+[SQL: SELECT c.first_name, first_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr.sales_rep_id = o.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Traceback (most recent call last):
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.SyntaxError: syntax error at or near "."
+LINE 4: JOIN info.sales_representative sr.sales_rep_id = o.sales_rep...
+                                         ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\nl2sql_manus\src\db_utils.py", line 174, in safe_db_run
+    result = conn.execute(stmt, params) if params else conn.execute(stmt)
+                                                       ^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1415, in execute
+    return meth(
+           ^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 523, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1637, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1842, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1982, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2351, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.SyntaxError) syntax error at or near "."
+LINE 4: JOIN info.sales_representative sr.sales_rep_id = o.sales_rep...
+                                         ^
+
+[SQL: SELECT c.first_name, first_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr.sales_rep_id = o.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-06-19 23:28:38,395 - config - WARNING - Attempting SQL correction (Attempt 1/3)
+2025-06-19 23:28:40,747 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-19 23:28:40,747 - config - INFO - Corrected SQL: SELECT c.first_name, c.last_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr ON o.sales_rep_id = sr.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';
+2025-06-19 23:28:40,747 - config - INFO - Executing SQL: SELECT c.first_name, c.last_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr ON o.sales_rep_id = sr.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';
+2025-06-19 23:28:40,747 - config - INFO - Query result loaded from cache
+2025-06-19 23:28:40,747 - config - INFO - Formatting final answer...
+2025-06-19 23:28:52,818 - config - ERROR - Export failed: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=10)
+2025-06-19 23:28:54,758 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-19 23:28:54,758 - config - INFO - Formatted Answer: Here are the customers' names who work for this company: Karen Chen, Joshua Liu, Michael Jackson, Donald Wang, Linda Liu, Robert Garcia, Amanda Thompson, Ali Anderson, William Hall, Kimberly Moore, Michael Singh, Xiu Hernandez, Andrew Hernandez, Xiu Gomez, Deborah Singh, Donald Garcia, Carlos Liu, Andrew Liu, and Anthony Sanchez.
+
+[WARNING] Export service unavailable
+2025-06-19 23:28:54,758 - config - INFO - Final Answer: Here are the customers' names who work for this company: Karen Chen, Joshua Liu, Michael Jackson, Donald Wang, Linda Liu, Robert Garcia, Amanda Thompson, Ali Anderson, William Hall, Kimberly Moore, Michael Singh, Xiu Hernandez, Andrew Hernandez, Xiu Gomez, Deborah Singh, Donald Garcia, Carlos Liu, Andrew Liu, and Anthony Sanchez.
+
+[WARNING] Export service unavailable
+2025-06-19 23:28:54,758 - config - INFO - NL2SQL application example finished.
+2025-06-19 23:35:48,752 - config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-19 23:35:48,897 - config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-19 23:35:48,897 - config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-19 23:35:49,597 - config - INFO - LLM initialized successfully.
+2025-06-19 23:35:49,597 - config - INFO - Connecting to Redis: localhost:6379
+2025-06-19 23:35:49,608 - config - INFO - Redis connection established successfully.
+2025-06-19 23:35:49,682 - config - INFO - LangGraph workflow compiled successfully.
+2025-06-19 23:35:49,682 - config - INFO - Starting NL2SQL application example...
+2025-06-19 23:35:49,682 - config - INFO - User Question: Show me the customers name who work for this company with 5 years
+2025-06-19 23:35:49,682 - config - INFO - Workflow started.
+2025-06-19 23:35:49,682 - config - INFO - Fetching database schema...
+2025-06-19 23:35:49,687 - config - INFO - Schema loaded from cache
+2025-06-19 23:35:49,687 - config - INFO - Generating SQL query...
+2025-06-19 23:35:50,707 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-19 23:35:51,988 - config - INFO - Generated SQL: SELECT c.first_name, first_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr.sales_rep_id = o.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';
+2025-06-19 23:35:51,992 - config - INFO - Executing SQL: SELECT c.first_name, first_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr.sales_rep_id = o.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';
+2025-06-19 23:35:51,993 - config - INFO - Validating SQL query: SELECT c.first_name, first_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr.sales_rep_id = o.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';
+2025-06-19 23:35:51,994 - config - ERROR - Error executing query: SELECT c.first_name, first_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr.sales_rep_id = o.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';
+Error: (psycopg2.errors.SyntaxError) syntax error at or near "."
+LINE 4: JOIN info.sales_representative sr.sales_rep_id = o.sales_rep...
+                                         ^
+
+[SQL: SELECT c.first_name, first_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr.sales_rep_id = o.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Traceback (most recent call last):
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.SyntaxError: syntax error at or near "."
+LINE 4: JOIN info.sales_representative sr.sales_rep_id = o.sales_rep...
+                                         ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\nl2sql_manus\src\db_utils.py", line 174, in safe_db_run
+    result = conn.execute(stmt, params) if params else conn.execute(stmt)
+                                                       ^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1415, in execute
+    return meth(
+           ^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 523, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1637, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1842, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1982, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2351, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.SyntaxError) syntax error at or near "."
+LINE 4: JOIN info.sales_representative sr.sales_rep_id = o.sales_rep...
+                                         ^
+
+[SQL: SELECT c.first_name, first_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr.sales_rep_id = o.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-06-19 23:35:52,001 - config - WARNING - Attempting SQL correction (Attempt 1/3)
+2025-06-19 23:35:52,593 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-19 23:35:52,593 - config - INFO - Corrected SQL: SELECT c.first_name, c.last_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr ON o.sales_rep_id = sr.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';
+2025-06-19 23:35:52,593 - config - INFO - Executing SQL: SELECT c.first_name, c.last_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr ON o.sales_rep_id = sr.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';
+2025-06-19 23:35:52,593 - config - INFO - Validating SQL query: SELECT c.first_name, c.last_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr ON o.sales_rep_id = sr.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';
+2025-06-19 23:35:52,597 - config - INFO - Query result cached successfully
+2025-06-19 23:35:52,610 - config - INFO - Formatting final answer...
+2025-06-19 23:36:09,693 - config - ERROR - Export failed: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=15)
+2025-06-19 23:36:11,077 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-19 23:36:11,077 - config - INFO - Formatted Answer: Here are the customers' names who work for this company: Karen Chen, Joshua Liu, Michael Jackson, Donald Wang, Linda Liu, Robert Garcia, Amanda Thompson, Ali Anderson, William Hall, Kimberly Moore, Michael Singh, Xiu Hernandez, Andrew Hernandez, Xiu Gomez, Deborah Singh, Donald Garcia, Carlos Liu, Andrew Liu, and Anthony Sanchez.
+
+[WARNING] Export service unavailable
+2025-06-19 23:36:11,077 - config - INFO - Final Answer: Here are the customers' names who work for this company: Karen Chen, Joshua Liu, Michael Jackson, Donald Wang, Linda Liu, Robert Garcia, Amanda Thompson, Ali Anderson, William Hall, Kimberly Moore, Michael Singh, Xiu Hernandez, Andrew Hernandez, Xiu Gomez, Deborah Singh, Donald Garcia, Carlos Liu, Andrew Liu, and Anthony Sanchez.
+
+[WARNING] Export service unavailable
+2025-06-19 23:36:11,077 - config - INFO - NL2SQL application example finished.
+2025-06-19 23:38:32,617 - config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-19 23:38:32,767 - config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-19 23:38:32,767 - config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-19 23:38:33,452 - config - INFO - LLM initialized successfully.
+2025-06-19 23:38:33,452 - config - INFO - Connecting to Redis: localhost:6379
+2025-06-19 23:38:33,469 - config - INFO - Redis connection established successfully.
+2025-06-19 23:38:33,544 - config - INFO - LangGraph workflow compiled successfully.
+2025-06-19 23:38:33,544 - config - INFO - Starting NL2SQL application example...
+2025-06-19 23:38:33,544 - config - INFO - User Question: Show me the customers name who work for this company with 5 years
+2025-06-19 23:38:33,547 - config - INFO - Workflow started.
+2025-06-19 23:38:33,547 - config - INFO - Fetching database schema...
+2025-06-19 23:38:33,547 - config - INFO - Schema loaded from cache
+2025-06-19 23:38:33,547 - config - INFO - Generating SQL query...
+2025-06-19 23:38:34,337 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-19 23:38:34,347 - config - INFO - Generated SQL: SELECT c.first_name, first_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr.sales_rep_id = o.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';
+2025-06-19 23:38:34,351 - config - INFO - Executing SQL: SELECT c.first_name, first_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr.sales_rep_id = o.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';
+2025-06-19 23:38:34,352 - config - INFO - Validating SQL query: SELECT c.first_name, first_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr.sales_rep_id = o.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';
+2025-06-19 23:38:34,353 - config - ERROR - Error executing query: SELECT c.first_name, first_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr.sales_rep_id = o.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';
+Error: (psycopg2.errors.SyntaxError) syntax error at or near "."
+LINE 4: JOIN info.sales_representative sr.sales_rep_id = o.sales_rep...
+                                         ^
+
+[SQL: SELECT c.first_name, first_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr.sales_rep_id = o.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Traceback (most recent call last):
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.SyntaxError: syntax error at or near "."
+LINE 4: JOIN info.sales_representative sr.sales_rep_id = o.sales_rep...
+                                         ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\nl2sql_manus\src\db_utils.py", line 174, in safe_db_run
+    result = conn.execute(stmt, params) if params else conn.execute(stmt)
+                                                       ^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1415, in execute
+    return meth(
+           ^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 523, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1637, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1842, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1982, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2351, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.SyntaxError) syntax error at or near "."
+LINE 4: JOIN info.sales_representative sr.sales_rep_id = o.sales_rep...
+                                         ^
+
+[SQL: SELECT c.first_name, first_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr.sales_rep_id = o.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-06-19 23:38:34,361 - config - WARNING - Attempting SQL correction (Attempt 1/3)
+2025-06-19 23:38:34,962 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-19 23:38:34,962 - config - INFO - Corrected SQL: SELECT c.first_name, c.last_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr ON o.sales_rep_id = sr.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';
+2025-06-19 23:38:34,962 - config - INFO - Executing SQL: SELECT c.first_name, c.last_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr ON o.sales_rep_id = sr.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';
+2025-06-19 23:38:34,962 - config - INFO - Query result loaded from cache
+2025-06-19 23:38:34,967 - config - INFO - Formatting final answer...
+2025-06-19 23:38:52,010 - config - ERROR - Export failed: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=15)
+2025-06-19 23:38:53,267 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-19 23:38:53,267 - config - INFO - Formatted Answer: Here are the customers' names who work for this company: Karen Chen, Joshua Liu, Michael Jackson, Donald Wang, Linda Liu, Robert Garcia, Amanda Thompson, Ali Anderson, William Hall, Kimberly Moore, Michael Singh, Xiu Hernandez, Andrew Hernandez, Xiu Gomez, Deborah Singh, Donald Garcia, Carlos Liu, Andrew Liu, and Anthony Sanchez.
+
+[WARNING] Export service unavailable
+2025-06-19 23:38:53,267 - config - INFO - Final Answer: Here are the customers' names who work for this company: Karen Chen, Joshua Liu, Michael Jackson, Donald Wang, Linda Liu, Robert Garcia, Amanda Thompson, Ali Anderson, William Hall, Kimberly Moore, Michael Singh, Xiu Hernandez, Andrew Hernandez, Xiu Gomez, Deborah Singh, Donald Garcia, Carlos Liu, Andrew Liu, and Anthony Sanchez.
+
+[WARNING] Export service unavailable
+2025-06-19 23:38:53,267 - config - INFO - NL2SQL application example finished.
+2025-06-19 23:39:19,250 - config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-19 23:39:19,393 - config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-19 23:39:19,393 - config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-19 23:39:20,115 - config - INFO - LLM initialized successfully.
+2025-06-19 23:39:20,115 - config - INFO - Connecting to Redis: localhost:6379
+2025-06-19 23:39:20,130 - config - INFO - Redis connection established successfully.
+2025-06-19 23:39:20,208 - config - INFO - LangGraph workflow compiled successfully.
+2025-06-19 23:39:20,208 - config - INFO - Starting NL2SQL application example...
+2025-06-19 23:39:20,208 - config - INFO - User Question: Show me the customers name who work for this company with 5 years
+2025-06-19 23:39:20,212 - config - INFO - Workflow started.
+2025-06-19 23:39:20,212 - config - INFO - Fetching database schema...
+2025-06-19 23:39:20,212 - config - INFO - Schema loaded from cache
+2025-06-19 23:39:20,213 - config - INFO - Generating SQL query...
+2025-06-19 23:39:20,802 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-19 23:39:21,027 - config - INFO - Generated SQL: SELECT c.first_name, first_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr.sales_rep_id = o.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';
+2025-06-19 23:39:21,027 - config - INFO - Executing SQL: SELECT c.first_name, first_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr.sales_rep_id = o.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';
+2025-06-19 23:39:21,027 - config - INFO - Validating SQL query: SELECT c.first_name, first_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr.sales_rep_id = o.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';
+2025-06-19 23:39:21,027 - config - ERROR - Error executing query: SELECT c.first_name, first_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr.sales_rep_id = o.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';
+Error: (psycopg2.errors.SyntaxError) syntax error at or near "."
+LINE 4: JOIN info.sales_representative sr.sales_rep_id = o.sales_rep...
+                                         ^
+
+[SQL: SELECT c.first_name, first_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr.sales_rep_id = o.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Traceback (most recent call last):
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.SyntaxError: syntax error at or near "."
+LINE 4: JOIN info.sales_representative sr.sales_rep_id = o.sales_rep...
+                                         ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\nl2sql_manus\src\db_utils.py", line 174, in safe_db_run
+    result = conn.execute(stmt, params) if params else conn.execute(stmt)
+                                                       ^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1415, in execute
+    return meth(
+           ^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 523, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1637, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1842, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1982, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2351, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\nl2sql_manus\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.SyntaxError) syntax error at or near "."
+LINE 4: JOIN info.sales_representative sr.sales_rep_id = o.sales_rep...
+                                         ^
+
+[SQL: SELECT c.first_name, first_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr.sales_rep_id = o.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-06-19 23:39:21,040 - config - WARNING - Attempting SQL correction (Attempt 1/3)
+2025-06-19 23:39:21,547 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-19 23:39:22,266 - config - INFO - Corrected SQL: SELECT c.first_name, c.last_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr ON o.sales_rep_id = sr.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';
+2025-06-19 23:39:22,267 - config - INFO - Executing SQL: SELECT c.first_name, c.last_name
+FROM info.customers c
+JOIN info.orders o ON c.customer_id = o.customer_id
+JOIN info.sales_representative sr ON o.sales_rep_id = sr.sales_rep_id
+WHERE o.order_date >= NOW() - INTERVAL '5 year';
+2025-06-19 23:39:22,267 - config - INFO - Query result loaded from cache
+2025-06-19 23:39:22,272 - config - INFO - Formatting final answer...
+2025-06-19 23:39:25,160 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-19 23:39:25,160 - config - INFO - Formatted Answer: Here are the customers' names who work for this company: Karen Chen, Joshua Liu, Michael Jackson, Donald Wang, Linda Liu, Robert Garcia, Amanda Thompson, Ali Anderson, William Hall, Kimberly Moore, Michael Singh, Xiu Hernandez, Andrew Hernandez, Xiu Gomez, Deborah Singh, Donald Garcia, Carlos Liu, Andrew Liu, and Anthony Sanchez.
+
+Download Full Results:
+- CSV: http://localhost:8000/download/673c696f376f408398c7a226891313bd.csv
+- Excel: http://localhost:8000/download/673c696f376f408398c7a226891313bd.xlsx
+2025-06-19 23:39:25,160 - config - INFO - Final Answer: Here are the customers' names who work for this company: Karen Chen, Joshua Liu, Michael Jackson, Donald Wang, Linda Liu, Robert Garcia, Amanda Thompson, Ali Anderson, William Hall, Kimberly Moore, Michael Singh, Xiu Hernandez, Andrew Hernandez, Xiu Gomez, Deborah Singh, Donald Garcia, Carlos Liu, Andrew Liu, and Anthony Sanchez.
+
+Download Full Results:
+- CSV: http://localhost:8000/download/673c696f376f408398c7a226891313bd.csv
+- Excel: http://localhost:8000/download/673c696f376f408398c7a226891313bd.xlsx
+2025-06-19 23:39:25,160 - config - INFO - NL2SQL application example finished.
+2025-06-19 23:39:40,627 - config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-19 23:39:40,784 - config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-19 23:39:40,785 - config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-19 23:39:41,450 - config - INFO - LLM initialized successfully.
+2025-06-19 23:39:41,454 - config - INFO - Connecting to Redis: localhost:6379
+2025-06-19 23:39:41,455 - config - INFO - Redis connection established successfully.
+2025-06-19 23:39:41,527 - config - INFO - LangGraph workflow compiled successfully.
+2025-06-19 23:40:01,699 - config - INFO - Workflow started.
+2025-06-19 23:40:01,699 - config - INFO - Fetching database schema...
+2025-06-19 23:40:01,699 - config - INFO - Schema loaded from cache
+2025-06-19 23:40:01,699 - config - INFO - Generating SQL query...
+2025-06-19 23:40:03,007 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-19 23:40:03,019 - config - INFO - Generated SQL: SELECT table_name 
+FROM information_schema.tables 
+WHERE table_schema = 'info';
+2025-06-19 23:40:03,020 - config - WARNING - SQL blocked - missing required schema prefix 'INFO.'
+2025-06-19 23:40:03,021 - config - CRITICAL - Blocked potentially dangerous SQL query
+2025-06-19 23:40:03,021 - config - INFO - Formatting final answer...
+2025-06-19 23:40:03,022 - config - WARNING - Cannot format answer due to error: Blocked potentially dangerous SQL query
+2025-06-19 23:40:25,027 - config - INFO - Workflow started.
+2025-06-19 23:40:25,027 - config - INFO - Fetching database schema...
+2025-06-19 23:40:25,027 - config - INFO - Schema loaded from cache
+2025-06-19 23:40:25,027 - config - INFO - Generating SQL query...
+2025-06-19 23:40:25,616 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-19 23:40:25,617 - config - INFO - Generated SQL: SELECT customer_id, first_name, last_name, email, city, country, join_date 
+FROM info.customers;
+2025-06-19 23:40:25,617 - config - INFO - Executing SQL: SELECT customer_id, first_name, last_name, email, city, country, join_date 
+FROM info.customers;
+2025-06-19 23:40:25,617 - config - INFO - Validating SQL query: SELECT customer_id, first_name, last_name, email, city, country, join_date 
+FROM info.customers;
+2025-06-19 23:40:25,632 - config - INFO - Query result cached successfully
+2025-06-19 23:40:25,637 - config - INFO - Formatting final answer...
+2025-06-19 23:40:28,487 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-19 23:40:28,487 - config - INFO - Formatted Answer: Here is the answer to the user's original question:
+
+The customers table contains 20 rows of data, showing information about customers including their customer ID, first name, last name, email, city, country, and join date.
+
+Download Full Results:
+- CSV: http://localhost:8000/download/8799be0d48654712a40020e05564acc0.csv
+- Excel: http://localhost:8000/download/8799be0d48654712a40020e05564acc0.xlsx
