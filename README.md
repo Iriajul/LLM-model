@@ -1,18 +1,20 @@
 # NL2SQL Project with Dynamic Schema and Llama-3-70B
 
-## Overview
+A modern, secure, and modular **Natural Language to SQL** (NL2SQL) application with export and download capabilities, powered by FastAPI, LangGraph, Streamlit, and PostgreSQL.
 
-The NL2SQL Application is a robust system that translates natural language questions into SQL queries, executes them against a PostgreSQL database, and presents results in a user-friendly format. Built with security and efficiency in mind, it features:
+---
 
-    * Natural Language to SQL conversion using LLMs
+## Features
 
-    * Secure query execution with multiple safety layers
-
-    * Redis caching for improved performance
-
-    * Export functionality for result sharing
-
-    * Comprehensive monitoring and health checks
+- **Natural Language to SQL**: Ask questions in plain English and get SQL queries and results.
+- **Secure Export API**: Export query results as CSV or Excel files via authenticated FastAPI endpoints.
+- **JWT Authentication**: Secure login, access token, and refresh token support.
+- **Streamlit Frontend**: User-friendly web interface for querying, exporting, and downloading data.
+- **Database & Redis Integration**: PostgreSQL for data, Redis for caching and token/session management.
+- **LLM Integration**: Uses LLM (e.g., Llama 3) for SQL generation and answer formatting.
+- **Security**: SQL injection protection, query complexity checks, and schema enforcement.
+- **Extensible**: Modular codebase for easy customization and extension.
+---
 
 ## Project Structure
 
@@ -24,14 +26,53 @@ The NL2SQL Application is a robust system that translates natural language quest
 ├── logs/                 # Directory for log files (created automatically)
 └── src/                  # Source code directory
     ├── __init__.py
-    ├── config.py         # Configuration loading, LLM/DB initialization, logging setup
-    ├── export_api.py      #Include FastApi
-    ├── db_utils.py       # Dynamic schema fetching, safe query execution
+    ├── config.py         # Configuration loading, LLM/DB/Redis initialization, logging setup
+    ├── db_utils.py       # Dynamic schema fetching, safe query execution, SQL validation
     ├── prompts.py        # LLM prompt templates
     ├── tools.py          # LangChain tool definitions
     ├── workflow.py       # LangGraph state machine definition
-    └── main.py           # Example entry point for running the workflow
+    ├── main.py           # Example entry point for running the workflow and export
+    ├── monitoring.py     # Monitoring and health checks
+    ├── redis_check.py    # Redis connection check utility
+    ├── test_security.py  # Security and complexity test scripts
+    ├── streamlit_app.py  # Streamlit web UI for interactive querying and export
+    └── export_api/       # FastAPI export and authentication API
+        ├── __init__.py
+        ├── main.py           # FastAPI app and router registration
+        ├── config.py         # Export API-specific config (JWT, export dir)
+        ├── auth.py           # Auth endpoints (login, refresh, logout), JWT logic
+        ├── models.py         # Pydantic models for API requests/responses
+        ├── utils.py          # Utility functions (file cleanup, path safety)
+        └── routers/
+            ├── export.py     # /export endpoint logic
+            └── download.py   # /download endpoint logic
 ```
+## Quick Start
+
+### 1. **Install Dependencies**
+
+```bash
+pip install -r requirements.txt
+```
+
+### 2. **Configure Environment**
+
+- Edit `.env` and `.streamlit/secrets.toml` with your database, Redis, and API credentials.
+
+### 3. **Run the FastAPI Export API**
+
+```bash
+uvicorn src.export_api.main:app --reload --host 127.0.0.1 --port 8000
+```
+
+### 4. **Run the Streamlit App**
+
+```bash
+streamlit run src/streamlit_app.py
+```
+
+---
+
 ## Setup
 
 1.  **Prerequisites:**
@@ -69,29 +110,79 @@ The NL2SQL Application is a robust system that translates natural language quest
         pip install -r requirements.txt
         ```
 
-## Running the Example
 
-1.  Ensure your PostgreSQL database server is running and accessible with the credentials provided in `.env`.
-2.  Make sure your virtual environment is activated.
-3.  Start the Export API service:
-     ```bash
-    uvicorn export_api:app --reload --port 8000
-    ```  
-4.  Run the main script from the project's root directory:
-    ```bash
-    python src/main.py
-    ```
-5.  The script will execute the default example query ("List products with stock level below 50") defined in `src/main.py`. You can modify this query in the `main.py` file to ask different questions.
-6.  The application will log its progress to both the console and the `logs/nl2sql_app.log` file.
-7.  The final natural language answer generated from the database results will be printed to the console.
+## API Endpoints
 
-## How it Works
+| Endpoint                              | Method | Purpose                                      | Auth Required? |
+|---------------------------------------|--------|----------------------------------------------|----------------|
+| `/auth/login`                         | POST   | User login, returns access (JWT) token       | No             |
+| `/auth/refresh`                       | POST   | Get a new access token using refresh token   | Yes (cookie)   |
+| `/auth/logout`                        | POST   | Log out, deletes refresh token               | Yes (cookie)   |
+| `/export`                             | POST   | Export data (CSV/Excel), returns download URI| Yes (JWT)      |
+| `/download/{file_id}.{format}`        | GET    | Download exported file (CSV/Excel)           | Yes (JWT)      |
+| `/health`                             | GET    | Health check/status                          | No             |
+| `/docs`                               | GET    | Swagger/OpenAPI docs                         | No             |
 
-1.  The `main.py` script initiates the LangGraph workflow defined in `workflow.py`.
-2.  The workflow starts by fetching the database schema dynamically using functions in `db_utils.py` and configuration from `config.py`.
-3.  It uses the Llama-3-70B model (via Groq) and prompts from `prompts.py` to generate a PostgreSQL query based on the user's question and the fetched schema.
-4.  The generated query is executed against the database using the tool defined in `tools.py`.
-5.  If the query fails, a correction loop attempts to fix the SQL using the LLM and the error message.
-6.  Once a query executes successfully, the results are passed to the LLM again with a formatting prompt to generate a user-friendly natural language answer.
-7.  And it can now give download link csv/excel for download raw postgresql data.
+---
+
+## Authentication Flow
+
+1. **Login**:  
+   `POST /auth/login` with username/email and password.  
+   Returns JWT access token and sets a refresh token cookie.
+
+2. **Export**:  
+   `POST /export` with JWT in the `Authorization` header.  
+   Returns download URLs for CSV/Excel.
+
+3. **Download**:  
+   `GET /download/{file_id}.{format}` with JWT in the `Authorization` header.
+
+4. **Refresh Token**:  
+   `POST /auth/refresh` with refresh token cookie to get a new access token.
+
+5. **Logout**:  
+   `POST /auth/logout` to invalidate the refresh token.
+
+---
+
+## Security
+
+- **JWT** for all protected endpoints.
+- **Refresh tokens** stored securely in Redis and as HTTP-only cookies.
+- **SQL validation**: Only allows safe, schema-qualified SELECT queries.
+- **Query complexity analysis**: Blocks expensive or dangerous queries.
+- **Password hashing**: All user passwords are hashed with bcrypt.
+
+---
+
+## Customization
+
+- **Add new tables**: Update your database and schema.
+- **Change LLM model**: Edit `.env` and `prompts.py` as needed.
+- **Extend API**: Add new endpoints in `export_api/routers/`.
+
+---
+
+## Development & Testing
+
+- **Unit and security tests**: See `test_security.py`.
+- **Manual DB and schema tests**: Run `db_utils.py` as a script.
+- **Monitoring**: See `monitoring.py` for performance tracking.
+
+---
+
+## Credits
+
+- Built with [FastAPI](https://fastapi.tiangolo.com/), [Streamlit](https://streamlit.io/), [SQLAlchemy](https://www.sqlalchemy.org/), [LangGraph](https://github.com/langchain-ai/langgraph), and [PostgreSQL](https://www.postgresql.org/).
+- LLM integration via [Groq](https://groq.com/) or your configured provider.
+
+---
+
+## License
+
+MIT License
+
+---
+
 

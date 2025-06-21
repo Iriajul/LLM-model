@@ -1,6 +1,8 @@
 import os
 import logging
 import warnings
+import requests
+from datetime import timedelta
 
 from dotenv import load_dotenv
 from sqlalchemy import create_engine
@@ -8,6 +10,7 @@ from sqlalchemy.pool import QueuePool
 from langchain_community.utilities import SQLDatabase
 from langchain_groq import ChatGroq
 import redis
+import os, requests
 
 # Load environment variables
 load_dotenv()
@@ -122,3 +125,23 @@ try:
 except Exception as e:
     logger.warning(f"Redis connection failed: {e}. Caching will be disabled.")
     redis_client = None
+
+# ──────────────────────────────────────────────────────────────────────────────
+# Export API client configuration
+# ──────────────────────────────────────────────────────────────────────────────
+
+EXPORT_API_URL      = os.getenv("EXPORT_API_URL", "http://localhost:8000")
+EXPORT_API_USER     = os.getenv("EXPORT_API_USER")
+EXPORT_API_PASS     = os.getenv("EXPORT_API_PASS")
+JWT_EXPIRE_MINUTES  = int(os.getenv("JWT_EXPIRE_MINUTES", 30))
+ACCESS_TOKEN_EXPIRE = timedelta(minutes=JWT_EXPIRE_MINUTES)
+
+def get_export_token() -> str:
+    """Fetch a JWT from /auth/login using client‐credentials."""
+    resp = requests.post(
+        f"{EXPORT_API_URL}/auth/login",
+        json={"user": EXPORT_API_USER, "password": EXPORT_API_PASS},
+        timeout=5
+    )
+    resp.raise_for_status()
+    return resp.json()["access_token"]

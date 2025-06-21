@@ -7,14 +7,38 @@ from langchain_core.messages import HumanMessage, AIMessage, ToolMessage
 import datetime
 import re
 import json
-from db_utils import cached_query_execution, analyze_query_complexity
-from config import llm, logger, DB_SCHEMA
-from db_utils import get_dynamic_schema_representation, is_safe_sql
-from prompts import sql_generation_prompt, sql_correction_prompt, final_answer_prompt
-from tools import execute_sql_query
+from .db_utils import cached_query_execution, analyze_query_complexity
+from .config import llm, logger, DB_SCHEMA
+from .db_utils import get_dynamic_schema_representation, is_safe_sql
+from .prompts import sql_generation_prompt, sql_correction_prompt, final_answer_prompt
+from .tools import execute_sql_query
+from .config import EXPORT_API_URL
+import requests
 
 import ast
-import requests
+
+# --- NEW: Helper to get access token ---
+def get_access_token():
+    user = os.getenv("EXPORT_API_USER")
+    pw = os.getenv("EXPORT_API_PASS")
+    api_url = os.getenv("EXPORT_API_URL", "http://localhost:8000")
+    if not user or not pw:
+        logger.error("EXPORT_API_USER or EXPORT_API_PASS not set in environment.")
+        return None
+    try:
+        resp = requests.post(
+            f"{api_url}/auth/login",
+            json={"": user, "password": pw},
+            timeout=10
+        )
+        if resp.status_code == 200:
+            return resp.json().get("access_token")
+        else:
+            logger.error(f"Login failed: {resp.status_code} {resp.text}")
+            return None
+    except Exception as e:
+        logger.error(f"Error during login for export: {e}")
+        return None
 
 #  State Definition
 class WorkflowState(TypedDict):
@@ -185,7 +209,7 @@ def execute_sql_node(state: WorkflowState) -> WorkflowState:
 
 def format_final_answer_node(state: WorkflowState) -> WorkflowState:
     logger.info("Formatting final answer...")
-    
+
     # Handle error cases first
     if is_db_error(state.get("db_result")) or state.get("error_message"):
         error = state.get("error_message", "Database operation failed")
@@ -195,82 +219,34 @@ def format_final_answer_node(state: WorkflowState) -> WorkflowState:
             **state,
             "messages": state["messages"] + [AIMessage(content=content)]
         }
-    
-    # Prepare data for export
-    download_links = ""
-    raw_result = state.get("raw_db_result")
-    
-    if raw_result:
-        try:
-            # Custom JSON serializer - UPDATED TO HANDLE DATE OBJECTS
-            def json_serial(obj):
-                if isinstance(obj, (datetime.datetime, datetime.date)):
-                    return obj.isoformat()
-                if isinstance(obj, decimal.Decimal):
-                    return float(obj)
-                return str(obj)  # Fallback for other types
-            
-            # Serialize data with custom serializer
-            serialized_data = json.dumps(
-                {"data": raw_result},
-                default=json_serial,
-                ensure_ascii=False
-            )
-            
-            # Send to export API
-            response = requests.post(
-                f"{EXPORT_API_URL}/export",
-                data=serialized_data,  # Use data not json
-                headers={'Content-Type': 'application/json'},
-                auth=(
-                    os.getenv("EXPORT_API_USER", "admin"),
-                    os.getenv("EXPORT_API_PASS", "securepassword")
-                ),
-                timeout=15
-            )
-            
-            if response.status_code == 200:
-                links = response.json()
-                download_links = (
-                    "\n\nDownload Full Results:\n"
-                    f"- CSV: {EXPORT_API_URL}{links['csv_url']}\n"
-                    f"- Excel: {EXPORT_API_URL}{links['excel_url']}"
-                )
-            else:
-                logger.error(f"Export API error: {response.status_code}")
-                download_links = f"\n\n[WARNING] Export service error ({response.status_code})"
-        except Exception as e:
-            logger.error(f"Export failed: {e}")
-            download_links = "\n\n[WARNING] Export service unavailable"
-    
-    # Generate summary
+
+    # Generate summary for LLM
     truncated_result, notice = truncate_db_result_for_llm(
         state.get("raw_db_result") or state.get("db_result"),
         state
     )
-    
+
     prompt_input = {
         "user_input": state["user_input"],
         "db_result": f"{notice}\n{truncated_result}" if notice else truncated_result
     }
-    
+
     try:
-        llm_response = llm.invoke(final_answer_prompt.invoke(prompt_input))
+        llm_response   = llm.invoke(final_answer_prompt.invoke(prompt_input))
         summary_content = llm_response.content.strip()
-        final_content = f"{summary_content}{download_links}"
+        final_content   = summary_content
     except Exception as e:
         logger.error(f"Answer formatting failed: {e}")
         final_content = (
-            f"Here are your results:\n{truncated_result}"
-            f"{download_links}\n\n[Note: AI formatting failed]"
+            f"Here are your results:\n{truncated_result}\n\n[Note: AI formatting failed]"
         )
-    
+
     # Safe logging
     try:
         logger.info(f"Formatted Answer: {final_content}")
     except UnicodeEncodeError:
         logger.info("Formatted Answer: [Contains non-ASCII characters]")
-    
+
     return {
         **state,
         "messages": state["messages"] + [AIMessage(content=final_content)]

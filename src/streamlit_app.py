@@ -1,17 +1,26 @@
-import streamlit as st
-from workflow import app, WorkflowState
-from config import logger, db
+import sys, os
+from pathlib import Path
+
+# ensure project root on sys.path
+ROOT = Path(__file__).parent.parent
+if str(ROOT) not in sys.path:
+    sys.path.append(str(ROOT))
+
 import time
 import json
-import os
-from pathlib import Path
-import random
+import decimal
+import datetime
+import requests
+import streamlit as st
 
-# Create secrets directory if needed
-secrets_dir = Path(".streamlit")
+from src.workflow import app, WorkflowState
+from src.config   import logger, db
+
+API = os.environ.get("EXPORT_API_URL", "http://localhost:8000")
+
+# — Create .streamlit/secrets.toml if missing —
+secrets_dir  = Path(".streamlit")
 secrets_dir.mkdir(exist_ok=True)
-
-# Create default secrets file if missing
 secrets_file = secrets_dir / "secrets.toml"
 if not secrets_file.exists():
     secrets_file.write_text("""# Add your credentials below
@@ -22,52 +31,86 @@ DB_PASSWORD="Malbro16"
 DB_NAME="postgres"
 DB_SCHEMA="info"
 GROQ_API_KEY="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"
-LLM_MODEL_NAME = "llama3-70b-8192"
+LLM_MODEL_NAME="llama3-70b-8192"
+
+EXPORT_API_URL="http://localhost:8000"
 """)
 
-# Create NLP2SQL animation effect
-def show_nl2sql_animation():
-    container = st.empty()
-    nl2sql_text = "NLP2SQL"
-    animation_text = ""
-    
-    for i in range(len(nl2sql_text) + 1):
-        animation_text = nl2sql_text[:i]
-        container.title(animation_text)
-        time.sleep(0.2)
-    
-    time.sleep(0.5)
-    container.empty()
+# JWT auth state
+if "token" not in st.session_state:
+    st.session_state.token = None
+if "show_register" not in st.session_state:
+    st.session_state.show_register = False
 
-# Show animation only once when app loads
-if 'animation_shown' not in st.session_state:
-    show_nl2sql_animation()
-    st.session_state.animation_shown = True
+# — username/Email/Password login or register —
+if not st.session_state.token:
+    st.title("🔒 Login Required")
+    if not st.session_state.show_register:
+        st.subheader("Login")
+        login_id = st.text_input("Email or Username")
+        login_password = st.text_input("Password", type="password")
+        if st.button("Login"):
+            if not login_id or not login_password:
+                st.error("Please enter both Email/Username and Password.")
+            else:
+                r = requests.post(f"{API}/auth/login", json={"login": login_id, "password": login_password})
+                if r.status_code == 200:
+                    st.session_state.token = r.json()["access_token"]
+                    st.success("Logged in!")
+                    st.rerun()
+                else:
+                    st.error("Login failed. Check your credentials or register below.")
+                    st.session_state.show_register = True
+        st.info("Don't have an account?")
+        if st.button("Go to Register"):
+            st.session_state.show_register = True
+        st.stop()
+    else:
+        st.subheader("Register")
+        reg_username = st.text_input("Username")
+        reg_email = st.text_input("Email")
+        reg_password = st.text_input("Password", type="password")
+        if st.button("Register"):
+            if not reg_username or not reg_email or not reg_password:
+                st.error("Please fill all fields to register.")
+            else:
+                r = requests.post(
+                    f"{API}/auth/register",
+                    json={"username": reg_username, "email": reg_email, "password": reg_password}
+                )
+                if r.status_code in (200, 201):
+                    st.success("Registration successful! Please log in.")
+                    st.session_state.show_register = False
+                else:
+                    st.error(f"Registration failed: {r.text}")
+        if st.button("Back to Login"):
+            st.session_state.show_register = False
+        st.stop()
 
-st.title("NL2SQL Query Interface")
-st.subheader("Ask natural language questions about your database")
+# — Main UI —
+st.title("NL2SQL Query & Export")
+st.subheader("Ask natural-language questions about your database")
 
-# Initialize session state
-if 'history' not in st.session_state:
+# one-time “NLP2SQL” animation
+if "anim" not in st.session_state:
+    for i in range(len("NLP2SQL")+1):
+        st.title("NLP2SQL"[:i])
+        time.sleep(0.1)
+    st.session_state.anim = True
+
+# history
+if "history" not in st.session_state:
     st.session_state.history = []
 
-# Display warning if using placeholder secrets
-if st.secrets.get("DB_HOST") == "your_host":
-    st.warning("⚠️ Please configure your credentials in `.streamlit/secrets.toml`")
+# query form
+with st.form("qf"):
+    question = st.text_area("Your question:", height=100)
+    go = st.form_submit_button("Run & Export")
 
-# User input section
-with st.form("query_form"):
-    question = st.text_area("Enter your question:", 
-                          placeholder="e.g. Show top 10 customers by total purchases",
-                          height=100)
-    submitted = st.form_submit_button("Execute Query")
-
-if submitted and question:
-    with st.spinner("Processing your question..."):
-        start_time = time.time()
-        
-        # Prepare workflow state
-        initial_state = {
+if go and question:
+    with st.spinner("Processing…"):
+        # 1) Run your NL2SQL workflow
+        state = {
             "user_input": question,
             "messages": [],
             "db_schema": "",
@@ -75,122 +118,117 @@ if submitted and question:
             "db_result": None,
             "raw_db_result": None,
             "error_message": None,
-            "correction_attempts": 0
+            "correction_attempts": 0,
+            "token": st.session_state.token
         }
-        
-        try:
-            # Execute workflow
-            final_state = app.invoke(initial_state)
-            elapsed_time = time.time() - start_time
-            
-            # Handle results
-            if final_state.get("messages"):
-                final_message = final_state["messages"][-1]
-                result_content = final_message.content if hasattr(final_message, 'content') else str(final_message)
-                
-                # Store in history
-                history_entry = {
-                    "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
-                    "question": question,
-                    "sql": final_state.get("generated_sql", ""),
-                    "answer": result_content,
-                    "time": f"{elapsed_time:.2f}s"
-                }
-                st.session_state.history.insert(0, history_entry)
-                
-                # Display results
-                st.success("Query executed successfully!")
-                st.subheader("Answer:")
-                st.markdown(result_content)
-                
-                # Show SQL and data preview
-                if sql := final_state.get("generated_sql"):
-                    with st.expander("Generated SQL"):
-                        st.code(sql, language="sql")
-                
-                if raw_result := final_state.get("raw_db_result"):
-                    with st.expander("Data Preview"):
-                        if isinstance(raw_result, list) and len(raw_result) > 0:
-                            st.json(raw_result[:10])  # Show first 10 rows
-                        else:
-                            st.warning("No data returned from query")
-                
-                # Show performance metrics
-                st.caption(f"Execution time: {elapsed_time:.2f} seconds | "
-                          f"Correction attempts: {final_state.get('correction_attempts', 0)}")
-            
-            else:
-                st.error("No results generated")
-        
-        except Exception as e:
-            st.error(f"Processing failed: {str(e)}")
-            logger.error(f"Streamlit execution error: {e}", exc_info=True)
+        final = app.invoke(state)
+        elapsed = time.time() - st.session_state.get("_start", time.time())
+        st.session_state["_start"] = time.time()
 
-# Query history section
+        msgs = final.get("messages") or []
+        if not msgs:
+            st.error("Workflow returned no messages")
+        else:
+            content = msgs[-1].content
+            st.success("✅ Query executed")
+            st.subheader("Answer")
+            st.markdown(content, unsafe_allow_html=True)
+
+            # show SQL & preview
+            if sql := final.get("generated_sql"):
+                with st.expander("Generated SQL"):
+                    st.code(sql, language="sql")
+
+            if raw := final.get("raw_db_result"):
+                with st.expander("Data Preview"):
+                    st.json(raw[:10] if isinstance(raw, list) else raw)
+
+            # 2) Export: sanitize dates/decimals
+            def _serial(o):
+                if isinstance(o, (datetime.date, datetime.datetime)):
+                    return o.isoformat()
+                if isinstance(o, decimal.Decimal):
+                    return float(o)
+                return str(o)
+
+            if not st.session_state.token:
+                st.error("You must be logged in to export data.")
+                st.stop()
+
+            payload = json.dumps({"data": final.get("raw_db_result", [])},
+                                 default=_serial,
+                                 ensure_ascii=False)
+            headers = {
+                "Content-Type": "application/json",
+                "Authorization": f"Bearer {st.session_state.token}"
+            }
+            r = requests.post(f"{API}/export", data=payload, headers=headers, timeout=15)
+            if r.status_code == 403:
+                st.error("Session expired or unauthorized. Please log in again.")
+                st.session_state.token = None
+                st.session_state.show_register = False
+                st.rerun()
+            elif r.status_code != 200:
+                st.error(f"Export failed: {r.status_code} {r.text}")
+            else:
+                meta = r.json()
+                st.info("📦 Export ready")
+
+                # 3) Download protected files
+                for label, path, mime in [
+                    ("CSV", meta["csv_url"], "text/csv"),
+                    ("Excel", meta["excel_url"], "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+                ]:
+                    file_r = requests.get(f"{API}{path}", headers=headers, timeout=15)
+                    if file_r.status_code == 403:
+                        st.error("Session expired or unauthorized. Please log in again.")
+                        st.session_state.token = None
+                        st.session_state.show_register = False
+                        st.rerun()
+                    elif file_r.status_code == 200:
+                        st.download_button(f"⬇️ {label}",
+                                           data=file_r.content,
+                                           file_name=path.split("/")[-1],
+                                           mime=mime)
+                    else:
+                        st.error(f"Failed to fetch {label}: {file_r.status_code}")
+
+            # record history
+            st.session_state.history.insert(0, {
+                "ts": time.strftime("%Y-%m-%d %H:%M:%S"),
+                "q": question,
+                "sql": final.get("generated_sql",""),
+                "ans": content,
+                "t": f"{elapsed:.2f}s"
+            })
+
+# history panel
 if st.session_state.history:
     st.divider()
-    st.subheader("Query History")
-    
-    for i, entry in enumerate(st.session_state.history[:5]):  # Show last 5 entries
-        with st.expander(f"{entry['timestamp']}: {entry['question']}"):
-            st.markdown(f"**Answer:** {entry['answer']}")
-            st.code(f"SQL: {entry['sql']}", language="sql")
-            st.caption(f"Execution time: {entry['time']}")
+    st.subheader("History")
+    for h in st.session_state.history[:5]:
+        with st.expander(f"{h['ts']}: {h['q']}"):
+            st.markdown(f"**Answer:** {h['ans']}")
+            st.code(h["sql"], language="sql")
+            st.caption(f"Time: {h['t']}")
 
-# Sidebar with additional options
+# sidebar
 with st.sidebar:
-    st.header("Configuration")
-    
-    if st.button("Clear Query History"):
+    st.header("Settings & Tools")
+    if st.button("Clear History"):
         st.session_state.history = []
         st.rerun()
-    
-    if st.button("Test Database Connection"):
-        try:
-            from db_utils import safe_db_run
-            # Use your actual schema name from secrets
-            schema_name = st.secrets.get("DB_SCHEMA", "info")
-            test_query = f"SELECT 1 AS status"
-            
-            # Handle both success and error cases
-            test_result = safe_db_run(test_query)
-            
-            if isinstance(test_result, list):
-                st.success("Database connection working")
-                if test_result and len(test_result) > 0:
-                    st.json(test_result[0])  # Show first row as JSON
-                else:
-                    st.write("Test query returned no results")
-            else:
-                st.error(f"Connection test failed: {test_result}")
-        except Exception as e:
-            st.error(f"Connection failed: {str(e)}")
-    
-    # Get available tables and format names
-    try:
-        tables = db.get_usable_table_names()
-        if tables:
-            st.divider()
-            st.subheader("Available Tables")
-            for table in tables:
-                # Format table names: remove underscores and capitalize words
-                clean_name = table.replace('_', ' ').title()
-                st.markdown(f"- **{clean_name}**")
-        else:
-            st.warning("No tables found in the database")
-    except Exception as e:
-        st.error(f"Failed to fetch tables: {str(e)}")
-    
+    if st.button("Logout"):
+        st.session_state.token = None
+        st.session_state.show_register = False
+        st.success("Logged out!")
+        st.rerun()
+    if st.button("Test DB"):
+        from db_utils import safe_db_run
+        res = safe_db_run(f"SELECT 1 AS ok FROM {st.secrets.get('DB_SCHEMA','info')}.users LIMIT 1")
+        if isinstance(res, list): st.success("DB OK"); st.json(res[0])
+        else: st.error(res)
     st.divider()
-    st.caption("NL2SQL Application v1.0")
-    
-    # Handle secrets more gracefully
-    try:
-        model_name = st.secrets.get("LLM_MODEL_NAME", "llama3-70b-8192")
-        schema_name = st.secrets.get("DB_SCHEMA", "public")
-    except Exception:
-        model_name = "llama3-70b-8192"
-        schema_name = "public"
-    
-    st.caption(f"LLM Model: {model_name}")
-    st.caption(f"Database Schema: {schema_name}")
+    st.caption(f"Export API: {API}")
+    st.caption(f"DB Schema: {st.secrets.get('DB_SCHEMA','info')}")
+    st.caption(f"LLM Model: {st.secrets.get('LLM_MODEL_NAME','llama3-70b-8192')}")

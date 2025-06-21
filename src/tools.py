@@ -1,5 +1,5 @@
 from langchain_core.tools import tool
-from db_utils import safe_db_run, logger
+from .db_utils import safe_db_run, logger
 from typing import Union, List, Dict
 
 @tool

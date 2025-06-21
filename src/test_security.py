@@ -85,31 +85,51 @@ class TestSQLSecurity:
 
 class TestQueryComplexity:
     """Test query complexity analysis"""
-    
+
     def test_expensive_operations_detection(self):
-        """Test detection of expensive SQL operations"""
-        expensive_queries = [
-            f"SELECT * FROM {DB_SCHEMA}.users CROSS JOIN {DB_SCHEMA}.orders",
-            f"SELECT * FROM {DB_SCHEMA}.users u JOIN {DB_SCHEMA}.orders o ON u.id = o.user_id JOIN {DB_SCHEMA}.products p ON o.product_id = p.id JOIN {DB_SCHEMA}.categories c ON p.category_id = c.id JOIN {DB_SCHEMA}.suppliers s ON p.supplier_id = s.id"
-        ]
-        
-        for query in expensive_queries:
-            complexity = analyze_query_complexity(query)
-            assert complexity["is_expensive"], f"Should detect expensive query: {query}"
-            assert len(complexity["warnings"]) > 0, f"Should have warnings for: {query}"
-    
+        """Detect CROSS JOIN and queries with >8 joins as expensive"""
+        # 1) CROSS JOIN
+        q1 = f"SELECT * FROM {DB_SCHEMA}.users CROSS JOIN {DB_SCHEMA}.orders"
+
+        # 2) 9 JOINs in a row (i.e. 9 > threshold=8)
+        joins = []
+        for i in range(10):
+            if i == 0:
+                joins.append(f"{DB_SCHEMA}.t0")
+            else:
+                joins.append(f"JOIN {DB_SCHEMA}.t{i} ON t{i-1}.id = t{i}.id")
+        q2 = "SELECT * FROM " + " ".join(joins)
+
+        for query in (q1, q2):
+            comp = analyze_query_complexity(query)
+            assert comp["is_expensive"], f"Should detect expensive query: {query}"
+            assert comp["has_multiple_joins"] or comp["has_cross_join"]
+            assert comp["estimated_cost"] in ("very_high", "high")
+            assert comp["warnings"], f"Should have warnings for: {query}"
+
     def test_moderate_complexity_queries(self):
-        """Test queries with moderate complexity"""
-        moderate_queries = [
-            f"SELECT * FROM {DB_SCHEMA}.users WHERE name LIKE '%test%'",
-            f"SELECT COUNT(*) FROM {DB_SCHEMA}.orders GROUP BY customer_id ORDER BY COUNT(*)"
-        ]
-        
-        for query in moderate_queries:
-            complexity = analyze_query_complexity(query)
-            assert not complexity["is_expensive"], f"Should allow moderate query: {query}"
-            # May or may not have warnings depending on the query
+        """Queries with ≤ 8 joins (and no CROSS JOIN) should be allowed"""
+        # A simple 4‐table JOIN (well under threshold)
+        q_simple = (
+            f"SELECT * FROM {DB_SCHEMA}.users u "
+            f"JOIN {DB_SCHEMA}.orders o ON u.id = o.user_id "
+            f"JOIN {DB_SCHEMA}.products p ON o.product_id = p.id "
+            f"JOIN {DB_SCHEMA}.categories c ON p.category_id = c.id"
+        )
+        # Exactly 8 JOINs
+        joins = []
+        for i in range(9):
+            if i == 0:
+                joins.append(f"{DB_SCHEMA}.t0")
+            else:
+                joins.append(f"JOIN {DB_SCHEMA}.t{i} ON t{i-1}.id = t{i}.id")
+        q_eight = "SELECT * FROM " + " ".join(joins)
+
+        for query in (q_simple, q_eight):
+            comp = analyze_query_complexity(query)
+            assert not comp["is_expensive"], f"Should allow moderate query: {query}"
+            # join_count should reflect actual joins
+            assert comp["join_count"] <= 8
 
 if __name__ == "__main__":
-    # Run tests
     pytest.main([__file__, "-v"])

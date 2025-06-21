@@ -1,6 +1,7 @@
+
 from sqlalchemy import text
 from typing import Union, List, Dict
-from config import db, logger, DB_SCHEMA, engine, redis_client
+from src.config import db, logger, DB_SCHEMA, engine, redis_client
 import os
 import re
 import time
@@ -10,10 +11,39 @@ from functools import wraps
 from contextlib import contextmanager
 
 # ==============================
+# User Management
+# ==============================
+def get_user_by_email(email: str):
+    """Fetch user by email from info.users table."""
+    with engine.connect() as conn:
+        sql = text(f"SELECT id, email, username, hashed_password FROM {DB_SCHEMA}.users WHERE email = :email")
+        row = conn.execute(sql, {"email": email}).first()
+        if not row:
+            return None
+        return type("User", (), dict(id=row.id, email=row.email, username=row.username, hashed_password=row.hashed_password))
+
+def get_user_by_username(username: str):
+    """Fetch user by username from info.users table."""
+    with engine.connect() as conn:
+        sql = text(f"SELECT id, email, username, hashed_password FROM {DB_SCHEMA}.users WHERE username = :username")
+        row = conn.execute(sql, {"username": username}).first()
+        if not row:
+            return None
+        return type("User", (), dict(id=row.id, email=row.email, username=row.username, hashed_password=row.hashed_password))
+
+def create_user(username: str, email: str, hashed_password: str):
+    """Insert new user into info.users table."""
+    with engine.connect() as conn:
+        sql = text(f"INSERT INTO {DB_SCHEMA}.users (username, email, hashed_password) VALUES (:username, :email, :hpwd)")
+        conn.execute(sql, {"username": username, "email": email, "hpwd": hashed_password})
+        conn.commit()
+        return get_user_by_email(email)
+
+# ==============================
 # Configuration
 # ==============================
 QUERY_TIMEOUT = int(os.getenv("QUERY_TIMEOUT", "30"))
-MAX_COMPLEXITY = int(os.getenv("MAX_QUERY_COMPLEXITY", 15))
+MAX_COMPLEXITY = int(os.getenv("MAX_QUERY_COMPLEXITY", "15"))
 
 # ==============================
 # SQL Safety Patterns
@@ -54,7 +84,8 @@ def get_query_hash(query: str) -> str:
 # ==============================
 def analyze_query_complexity(query: str) -> Dict:
     query_upper = query.upper()
-    query_upper = re.sub(r'\(.*?\)', '', query_upper) 
+    # strip out parenthetical sub-expressions to simplify join count
+    query_upper = re.sub(r'\(.*?\)', '', query_upper)
     warnings = []
 
     complexity = {
@@ -66,12 +97,14 @@ def analyze_query_complexity(query: str) -> Dict:
         "warnings": warnings
     }
 
+    # detect any CROSS JOIN
     if re.search(r'\bCROSS\s+JOIN\b', query_upper):
         complexity["has_cross_join"] = True
         complexity["is_expensive"] = True
         complexity["estimated_cost"] = "very_high"
         warnings.append("Cross join detected")
 
+    # count all join keywords
     join_patterns = [
         r'\bINNER\s+JOIN\b', r'\bLEFT\s+JOIN\b',
         r'\bRIGHT\s+JOIN\b', r'\bFULL\s+JOIN\b', r'\bJOIN\b'
@@ -79,12 +112,15 @@ def analyze_query_complexity(query: str) -> Dict:
     total_joins = sum(len(re.findall(p, query_upper)) for p in join_patterns)
     complexity["join_count"] = total_joins
 
-    if total_joins >= 8:
+    # treat more than 3 joins as expensive
+    MAX_JOINS_THRESHOLD = 8
+    if total_joins > MAX_JOINS_THRESHOLD:
         complexity["has_multiple_joins"] = True
         complexity["is_expensive"] = True
         complexity["estimated_cost"] = "high"
-        warnings.append("Multiple joins detected")
+        warnings.append(f"Multiple joins detected ({total_joins})")
 
+    # detect expensive subquery patterns
     expensive_patterns = [
         r'SELECT\s+\*.*FROM.*WHERE.*IN\s*\(\s*SELECT',
         r'EXISTS\s*\(\s*SELECT.*FROM.*WHERE'
