@@ -15483,3 +15483,612 @@ The table contains 20 customers, with customer IDs ranging from C0001 to C0020. 
 2025-06-21 22:12:58,688 - src.config - INFO - LLM initialized successfully.
 2025-06-21 22:12:58,688 - src.config - INFO - Connecting to Redis: localhost:6379
 2025-06-21 22:12:58,690 - src.config - INFO - Redis connection established successfully.
+2025-06-21 23:54:20,682 - src.config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-21 23:54:20,885 - src.config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-21 23:54:20,885 - src.config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-21 23:54:21,610 - src.config - INFO - LLM initialized successfully.
+2025-06-21 23:54:21,610 - src.config - INFO - Connecting to Redis: localhost:6379
+2025-06-21 23:54:21,623 - src.config - INFO - Redis connection established successfully.
+2025-06-21 23:54:35,265 - src.config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-21 23:54:35,423 - src.config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-21 23:54:35,423 - src.config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-21 23:54:36,138 - src.config - INFO - LLM initialized successfully.
+2025-06-21 23:54:36,144 - src.config - INFO - Connecting to Redis: localhost:6379
+2025-06-21 23:54:36,165 - src.config - INFO - Redis connection established successfully.
+2025-06-21 23:54:36,253 - src.config - INFO - LangGraph workflow compiled successfully.
+2025-06-21 23:55:19,132 - src.config - INFO - Workflow started.
+2025-06-21 23:55:19,132 - src.config - INFO - Fetching database schema...
+2025-06-21 23:55:19,132 - src.config - INFO - Fetching dynamic schema representation for schema: info
+2025-06-21 23:55:19,141 - src.config - INFO - Successfully fetched schema for tables: ['customers', 'order_details', 'orders', 'products', 'sales_representative', 'suppliers', 'users']
+2025-06-21 23:55:19,141 - src.config - INFO - Query execution time - schema_fetch: 0.01s
+2025-06-21 23:55:19,142 - src.config - INFO - Schema cached successfully
+2025-06-21 23:55:19,143 - src.config - INFO - Generating SQL query...
+2025-06-21 23:55:19,986 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-21 23:55:20,003 - src.config - INFO - Generated SQL: SELECT join_date FROM info.customers;
+2025-06-21 23:55:20,005 - src.config - INFO - Executing SQL: SELECT join_date FROM info.customers;
+2025-06-21 23:55:20,006 - src.config - INFO - Validating SQL query: SELECT join_date FROM info.customers;
+2025-06-21 23:55:20,014 - src.config - INFO - Query result cached successfully
+2025-06-21 23:55:20,017 - src.config - INFO - Formatting final answer...
+2025-06-21 23:55:21,058 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-21 23:55:21,058 - src.config - INFO - Formatted Answer: Here are the join dates for the customers: December 31, 2021; January 27, 2021; September 8, 2020; October 29, 2023; October 19, 2022; July 14, 2023; June 11, 2021; April 20, 2022; December 18, 2020; June 21, 2020; January 25, 2020; August 4, 2022; April 23, 2021; December 10, 2023; December 14, 2020; June 18, 2021; October 4, 2020; July 20, 2021; July 13, 2023; and May 19, 2021.
+2025-06-21 23:55:23,114 - export_api.utils - INFO - Removed old file: 0cf439661b184ca5aabc0df47b00fa22.csv
+2025-06-21 23:55:23,114 - export_api.utils - INFO - Removed old file: 0cf439661b184ca5aabc0df47b00fa22.xlsx
+2025-06-21 23:55:23,116 - export_api.utils - INFO - Removed old file: 1d06c8fa34d84b829a85aef6849f3223.csv
+2025-06-21 23:55:23,117 - export_api.utils - INFO - Removed old file: 1d06c8fa34d84b829a85aef6849f3223.xlsx
+2025-06-21 23:55:23,119 - export_api.utils - INFO - Removed old file: 371d1af64a1c4e0f9ce5fa9710c0f447.csv
+2025-06-21 23:55:23,119 - export_api.utils - INFO - Removed old file: 371d1af64a1c4e0f9ce5fa9710c0f447.xlsx
+2025-06-21 23:55:23,124 - export_api.utils - INFO - Removed old file: 4bcec135ff404d258c25012f96361907.csv
+2025-06-21 23:55:23,125 - export_api.utils - INFO - Removed old file: 4bcec135ff404d258c25012f96361907.xlsx
+2025-06-21 23:55:23,133 - export_api.utils - INFO - Removed old file: bb9feb6a1fde4f7ba5682ce925b34028.csv
+2025-06-21 23:55:23,134 - export_api.utils - INFO - Removed old file: bb9feb6a1fde4f7ba5682ce925b34028.xlsx
+2025-06-23 21:28:25,996 - src.config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-23 21:28:26,220 - src.config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-23 21:28:26,220 - src.config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-23 21:28:26,937 - src.config - INFO - LLM initialized successfully.
+2025-06-23 21:28:26,937 - src.config - INFO - Connecting to Redis: localhost:6379
+2025-06-23 21:28:26,939 - src.config - INFO - Redis connection established successfully.
+2025-06-23 21:28:34,780 - src.config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-23 21:28:34,931 - src.config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-23 21:28:34,931 - src.config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-23 21:28:35,636 - src.config - INFO - LLM initialized successfully.
+2025-06-23 21:28:35,636 - src.config - INFO - Connecting to Redis: localhost:6379
+2025-06-23 21:28:35,650 - src.config - INFO - Redis connection established successfully.
+2025-06-23 21:28:35,766 - src.config - INFO - LangGraph workflow compiled successfully.
+2025-06-23 21:29:08,791 - src.config - INFO - Validating SQL query: SELECT 1 AS ok FROM info.users LIMIT 1
+2025-06-23 21:29:09,909 - src.config - INFO - Validating SQL query: SELECT 1 AS ok FROM info.users LIMIT 1
+2025-06-23 21:29:44,246 - src.config - INFO - Workflow started.
+2025-06-23 21:29:44,248 - src.config - INFO - Fetching database schema...
+2025-06-23 21:29:44,249 - src.config - INFO - Fetching dynamic schema representation for schema: info
+2025-06-23 21:29:44,251 - src.config - INFO - Successfully fetched schema for tables: ['customers', 'order_details', 'orders', 'products', 'sales_representative', 'suppliers', 'users']
+2025-06-23 21:29:44,252 - src.config - INFO - Query execution time - schema_fetch: 0.00s
+2025-06-23 21:29:44,252 - src.config - INFO - Schema cached successfully
+2025-06-23 21:29:44,254 - src.config - INFO - Generating SQL query...
+2025-06-23 21:29:45,226 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-23 21:29:45,233 - src.config - INFO - Generated SQL: SELECT 
+    DATE_TRUNC('month', o.order_date) AS month, 
+    sr.sales_rep_id, 
+    sr.first_name, 
+    sr.last_name, 
+    SUM(o.total_amount * sr.commission_rate) AS monthly_commission
+FROM 
+    info.orders o
+JOIN 
+    info.sales_representative sr ON o.sales_rep_id = sr.sales_rep_id
+GROUP BY 
+    1, 2, 3, 4
+ORDER BY 
+    1, 5 DESC;
+2025-06-23 21:29:45,235 - src.config - INFO - Executing SQL: SELECT 
+    DATE_TRUNC('month', o.order_date) AS month, 
+    sr.sales_rep_id, 
+    sr.first_name, 
+    sr.last_name, 
+    SUM(o.total_amount * sr.commission_rate) AS monthly_commission
+FROM 
+    info.orders o
+JOIN 
+    info.sales_representative sr ON o.sales_rep_id = sr.sales_rep_id
+GROUP BY 
+    1, 2, 3, 4
+ORDER BY 
+    1, 5 DESC;
+2025-06-23 21:29:45,236 - src.config - INFO - Validating SQL query: SELECT 
+    DATE_TRUNC('month', o.order_date) AS month, 
+    sr.sales_rep_id, 
+    sr.first_name, 
+    sr.last_name, 
+    SUM(o.total_amount * sr.commission_rate) AS monthly_commission
+FROM 
+    info.orders o
+JOIN 
+    info.sales_representative sr ON o.sales_rep_id = sr.sales_rep_id
+GROUP BY 
+    1, 2, 3, 4
+ORDER BY 
+    1, 5 DESC;
+2025-06-23 21:29:45,261 - src.config - INFO - Query result cached successfully
+2025-06-23 21:29:45,266 - src.config - INFO - Formatting final answer...
+2025-06-23 21:29:46,212 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-23 21:29:46,241 - src.config - INFO - Formatted Answer: Here is the employers' monthly commission:
+
+The list shows the monthly commission for 20 sales representatives, with the highest commission being $140,620.55 for Andrew Davis (SR005) in January 2022, and the lowest being $8,656.53 for Steven Ramirez (SR015) in January 2022. There are also results for February 2022, with Linda Anderson (SR017) having a monthly commission of $164,784.36.
+2025-06-23 21:29:48,276 - export_api.utils - INFO - Removed old file: 0b6a2880f49f4e698e512b77df2d6af9.csv
+2025-06-23 21:29:48,277 - export_api.utils - INFO - Removed old file: 0b6a2880f49f4e698e512b77df2d6af9.xlsx
+2025-06-23 21:29:48,278 - export_api.utils - INFO - Removed old file: 0c73a5477e714e7d92b9611422f29d41.csv
+2025-06-23 21:29:48,278 - export_api.utils - INFO - Removed old file: 0c73a5477e714e7d92b9611422f29d41.xlsx
+2025-06-23 21:29:48,279 - export_api.utils - INFO - Removed old file: 0f9df2775fe04679abb9f431f77f68ec.csv
+2025-06-23 21:29:48,280 - export_api.utils - INFO - Removed old file: 0f9df2775fe04679abb9f431f77f68ec.xlsx
+2025-06-23 21:29:48,280 - export_api.utils - INFO - Removed old file: 18716d5677b84a2f9118854274585898.csv
+2025-06-23 21:29:48,281 - export_api.utils - INFO - Removed old file: 18716d5677b84a2f9118854274585898.xlsx
+2025-06-23 21:29:48,282 - export_api.utils - INFO - Removed old file: 1cc9b781f5aa427bbf2f56d726774179.csv
+2025-06-23 21:29:48,283 - export_api.utils - INFO - Removed old file: 1cc9b781f5aa427bbf2f56d726774179.xlsx
+2025-06-23 21:29:48,284 - export_api.utils - INFO - Removed old file: 2153f5a66f434a3c81313a915026173a.csv
+2025-06-23 21:29:48,285 - export_api.utils - INFO - Removed old file: 2153f5a66f434a3c81313a915026173a.xlsx
+2025-06-23 21:29:48,286 - export_api.utils - INFO - Removed old file: 2417bfa61fb641b9abd3a32861f6004c.csv
+2025-06-23 21:29:48,286 - export_api.utils - INFO - Removed old file: 2417bfa61fb641b9abd3a32861f6004c.xlsx
+2025-06-23 21:29:48,287 - export_api.utils - INFO - Removed old file: 24dfce5cb97a4838bcd2babd07747891.csv
+2025-06-23 21:29:48,288 - export_api.utils - INFO - Removed old file: 24dfce5cb97a4838bcd2babd07747891.xlsx
+2025-06-23 21:29:48,289 - export_api.utils - INFO - Removed old file: 2e4c34aaffc94646a1fb48dd768967a5.csv
+2025-06-23 21:29:48,290 - export_api.utils - INFO - Removed old file: 2e4c34aaffc94646a1fb48dd768967a5.xlsx
+2025-06-23 21:29:48,290 - export_api.utils - INFO - Removed old file: 33923033e5c64af9aa3482e04e4f9a7d.csv
+2025-06-23 21:29:48,291 - export_api.utils - INFO - Removed old file: 33923033e5c64af9aa3482e04e4f9a7d.xlsx
+2025-06-23 21:29:48,292 - export_api.utils - INFO - Removed old file: 368179293b6c4c6b8768069d38ae3728.csv
+2025-06-23 21:29:48,293 - export_api.utils - INFO - Removed old file: 368179293b6c4c6b8768069d38ae3728.xlsx
+2025-06-23 21:29:48,293 - export_api.utils - INFO - Removed old file: 459d3ad2b3bf4b8c8ba8a9c7287ce677.csv
+2025-06-23 21:29:48,294 - export_api.utils - INFO - Removed old file: 459d3ad2b3bf4b8c8ba8a9c7287ce677.xlsx
+2025-06-23 21:29:48,295 - export_api.utils - INFO - Removed old file: 467e8cbbc0104b99b5e322093ddfca99.csv
+2025-06-23 21:29:48,296 - export_api.utils - INFO - Removed old file: 467e8cbbc0104b99b5e322093ddfca99.xlsx
+2025-06-23 21:29:48,297 - export_api.utils - INFO - Removed old file: 522a16a7a20847e791b29cab528204d9.csv
+2025-06-23 21:29:48,298 - export_api.utils - INFO - Removed old file: 522a16a7a20847e791b29cab528204d9.xlsx
+2025-06-23 21:29:48,298 - export_api.utils - INFO - Removed old file: 53d8326a57f1475992ae42e02a7d4e13.csv
+2025-06-23 21:29:48,299 - export_api.utils - INFO - Removed old file: 53d8326a57f1475992ae42e02a7d4e13.xlsx
+2025-06-23 21:29:48,300 - export_api.utils - INFO - Removed old file: 5648d4f7879c4b128af81c7646f6b6d0.csv
+2025-06-23 21:29:48,300 - export_api.utils - INFO - Removed old file: 5648d4f7879c4b128af81c7646f6b6d0.xlsx
+2025-06-23 21:29:48,301 - export_api.utils - INFO - Removed old file: 630009002c944d79bf0ad9578400db33.csv
+2025-06-23 21:29:48,301 - export_api.utils - INFO - Removed old file: 630009002c944d79bf0ad9578400db33.xlsx
+2025-06-23 21:29:48,303 - export_api.utils - INFO - Removed old file: 673c696f376f408398c7a226891313bd.csv
+2025-06-23 21:29:48,303 - export_api.utils - INFO - Removed old file: 673c696f376f408398c7a226891313bd.xlsx
+2025-06-23 21:29:48,304 - export_api.utils - INFO - Removed old file: 6f61a12171064d5db287bef0c504f922.csv
+2025-06-23 21:29:48,305 - export_api.utils - INFO - Removed old file: 6f61a12171064d5db287bef0c504f922.xlsx
+2025-06-23 21:29:48,305 - export_api.utils - INFO - Removed old file: 80deb1efef4241d0b3c5e21900f7343c.csv
+2025-06-23 21:29:48,306 - export_api.utils - INFO - Removed old file: 80deb1efef4241d0b3c5e21900f7343c.xlsx
+2025-06-23 21:29:48,306 - export_api.utils - INFO - Removed old file: 84104273dd4246728a95cdbe61660e8e.csv
+2025-06-23 21:29:48,307 - export_api.utils - INFO - Removed old file: 84104273dd4246728a95cdbe61660e8e.xlsx
+2025-06-23 21:29:48,308 - export_api.utils - INFO - Removed old file: 8799be0d48654712a40020e05564acc0.csv
+2025-06-23 21:29:48,309 - export_api.utils - INFO - Removed old file: 8799be0d48654712a40020e05564acc0.xlsx
+2025-06-23 21:29:48,310 - export_api.utils - INFO - Removed old file: 8c27a838ad7349f7bca58682aa975cb2.csv
+2025-06-23 21:29:48,310 - export_api.utils - INFO - Removed old file: 8c27a838ad7349f7bca58682aa975cb2.xlsx
+2025-06-23 21:29:48,311 - export_api.utils - INFO - Removed old file: 8f4d7a4ef03a4956a313fabe68859725.csv
+2025-06-23 21:29:48,312 - export_api.utils - INFO - Removed old file: 8f4d7a4ef03a4956a313fabe68859725.xlsx
+2025-06-23 21:29:48,312 - export_api.utils - INFO - Removed old file: 8f9d6f299f234defb4650262c7e00198.csv
+2025-06-23 21:29:48,313 - export_api.utils - INFO - Removed old file: 8f9d6f299f234defb4650262c7e00198.xlsx
+2025-06-23 21:29:48,314 - export_api.utils - INFO - Removed old file: 9f32ba09abf84d069ca79650c021b893.csv
+2025-06-23 21:29:48,315 - export_api.utils - INFO - Removed old file: 9f32ba09abf84d069ca79650c021b893.xlsx
+2025-06-23 21:29:48,315 - export_api.utils - INFO - Removed old file: a4dc80512ec44e038e1bbd1e5d03711d.csv
+2025-06-23 21:29:48,316 - export_api.utils - INFO - Removed old file: a4dc80512ec44e038e1bbd1e5d03711d.xlsx
+2025-06-23 21:29:48,317 - export_api.utils - INFO - Removed old file: c23884968def417bb1b19ce49453f24a.csv
+2025-06-23 21:29:48,318 - export_api.utils - INFO - Removed old file: c23884968def417bb1b19ce49453f24a.xlsx
+2025-06-23 21:29:48,318 - export_api.utils - INFO - Removed old file: c5776f1e5f514a3686d52aabbcc4489b.csv
+2025-06-23 21:29:48,319 - export_api.utils - INFO - Removed old file: c5776f1e5f514a3686d52aabbcc4489b.xlsx
+2025-06-23 21:29:48,320 - export_api.utils - INFO - Removed old file: c85d9e6d9d8643618b3ebb049315f9b5.csv
+2025-06-23 21:29:48,320 - export_api.utils - INFO - Removed old file: c85d9e6d9d8643618b3ebb049315f9b5.xlsx
+2025-06-23 21:29:48,321 - export_api.utils - INFO - Removed old file: cbd59a50a74546d89abf5d0235ec4a81.csv
+2025-06-23 21:29:48,322 - export_api.utils - INFO - Removed old file: cbd59a50a74546d89abf5d0235ec4a81.xlsx
+2025-06-23 21:29:48,323 - export_api.utils - INFO - Removed old file: cd271b6bf7014dfca13f5ce3908c1584.csv
+2025-06-23 21:29:48,324 - export_api.utils - INFO - Removed old file: cd271b6bf7014dfca13f5ce3908c1584.xlsx
+2025-06-23 21:29:48,324 - export_api.utils - INFO - Removed old file: d14b60f6b25640bf8ec322642ee50d11.csv
+2025-06-23 21:29:48,325 - export_api.utils - INFO - Removed old file: d14b60f6b25640bf8ec322642ee50d11.xlsx
+2025-06-23 21:29:48,325 - export_api.utils - INFO - Removed old file: d426608c296846d18a5096655147b12b.csv
+2025-06-23 21:29:48,326 - export_api.utils - INFO - Removed old file: d426608c296846d18a5096655147b12b.xlsx
+2025-06-23 21:29:48,326 - export_api.utils - INFO - Removed old file: de677fdc3d114c5299a56de17a4950cd.csv
+2025-06-23 21:29:48,327 - export_api.utils - INFO - Removed old file: de677fdc3d114c5299a56de17a4950cd.xlsx
+2025-06-23 21:29:48,328 - export_api.utils - INFO - Removed old file: debec2c1f46146159fe61e294784d72b.csv
+2025-06-23 21:29:48,329 - export_api.utils - INFO - Removed old file: debec2c1f46146159fe61e294784d72b.xlsx
+2025-06-23 21:29:48,330 - export_api.utils - INFO - Removed old file: e2187645ddff46e693d41bc3b9ab16b7.csv
+2025-06-23 21:29:48,330 - export_api.utils - INFO - Removed old file: e2187645ddff46e693d41bc3b9ab16b7.xlsx
+2025-06-23 21:29:48,331 - export_api.utils - INFO - Removed old file: e5862d166d044c2cb56dd0680a7cc1f0.csv
+2025-06-23 21:29:48,332 - export_api.utils - INFO - Removed old file: e5862d166d044c2cb56dd0680a7cc1f0.xlsx
+2025-06-23 21:29:48,333 - export_api.utils - INFO - Removed old file: e8352d9574bd4a59948878ac55341600.csv
+2025-06-23 21:29:48,333 - export_api.utils - INFO - Removed old file: e8352d9574bd4a59948878ac55341600.xlsx
+2025-06-23 21:29:48,334 - export_api.utils - INFO - Removed old file: fbdbbfc2dcf14d5097d57a1b3f679d37.csv
+2025-06-23 21:29:48,335 - export_api.utils - INFO - Removed old file: fbdbbfc2dcf14d5097d57a1b3f679d37.xlsx
+2025-06-23 21:31:24,762 - src.config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-23 21:31:24,912 - src.config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-23 21:31:24,912 - src.config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-23 21:31:25,660 - src.config - INFO - LLM initialized successfully.
+2025-06-23 21:31:25,660 - src.config - INFO - Connecting to Redis: localhost:6379
+2025-06-23 21:31:25,672 - src.config - INFO - Redis connection established successfully.
+2025-06-23 21:31:25,752 - src.config - INFO - LangGraph workflow compiled successfully.
+2025-06-23 21:31:25,752 - src.config - INFO - Starting NL2SQL application example...
+2025-06-23 21:31:25,752 - src.config - INFO - User Question: List each customer’s most recent order along with their previous order date
+2025-06-23 21:31:25,756 - src.config - INFO - Workflow started.
+2025-06-23 21:31:25,756 - src.config - INFO - Fetching database schema...
+2025-06-23 21:31:25,756 - src.config - INFO - Schema loaded from cache
+2025-06-23 21:31:25,756 - src.config - INFO - Generating SQL query...
+2025-06-23 21:31:27,580 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-23 21:31:27,804 - src.config - INFO - Generated SQL: SELECT c.customer_id, c.first_name, c.last_name, o1.order_date AS most_recent_order_date, 
+       LAG(o2.order_date, 1, NULL) OVER (PARTITION BY o2.customer_id ORDER BY o2.order_date DESC) AS previous_order_date
+FROM info.customers c
+JOIN info.orders o1 ON c.customer_id = o1.customer_id
+JOIN info.orders o2 ON c.customer_id = o2.customer_id
+WHERE o1.order_date = (SELECT MAX(order_date) FROM info.orders o3 WHERE o3.customer_id = c.customer_id)
+ORDER BY c.customer_id;
+2025-06-23 21:31:27,805 - src.config - INFO - Executing SQL: SELECT c.customer_id, c.first_name, c.last_name, o1.order_date AS most_recent_order_date, 
+       LAG(o2.order_date, 1, NULL) OVER (PARTITION BY o2.customer_id ORDER BY o2.order_date DESC) AS previous_order_date
+FROM info.customers c
+JOIN info.orders o1 ON c.customer_id = o1.customer_id
+JOIN info.orders o2 ON c.customer_id = o2.customer_id
+WHERE o1.order_date = (SELECT MAX(order_date) FROM info.orders o3 WHERE o3.customer_id = c.customer_id)
+ORDER BY c.customer_id;
+2025-06-23 21:31:27,805 - src.config - INFO - Validating SQL query: SELECT c.customer_id, c.first_name, c.last_name, o1.order_date AS most_recent_order_date, 
+       LAG(o2.order_date, 1, NULL) OVER (PARTITION BY o2.customer_id ORDER BY o2.order_date DESC) AS previous_order_date
+FROM info.customers c
+JOIN info.orders o1 ON c.customer_id = o1.customer_id
+JOIN info.orders o2 ON c.customer_id = o2.customer_id
+WHERE o1.order_date = (SELECT MAX(order_date) FROM info.orders o3 WHERE o3.customer_id = c.customer_id)
+ORDER BY c.customer_id;
+2025-06-23 21:31:28,155 - src.config - INFO - Query result cached successfully
+2025-06-23 21:31:28,162 - src.config - INFO - Formatting final answer...
+2025-06-23 21:31:29,187 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-23 21:31:29,187 - src.config - INFO - Formatted Answer: Here is the list of each customer's most recent order along with their previous order date:
+
+* James Diaz (C0001): Most recent order on 2022-12-25, previous order on 2022-11-09
+* Matthew Gonzalez (C0002): Most recent order on 2022-06-04, no previous order
+* Karen Davis (C0003): Most recent order on 2023-11-05, no previous order
+* Kevin Liu (C0004): Most recent order on 2023-12-15, previous order on 2023-06-23
+* Kumar Sharma (C0005): Most recent order on 2023-07-19, previous order on 2023-06-08
+* Robert Gonzalez (C0006): Most recent order on 2023-11-13, no previous order
+* Christopher Wang (C0007): Most recent order on 2023-12-19, previous order on 2022-12-15
+* Elizabeth Hall (C0008): Most recent order on 2023-06-20, no previous order
+2025-06-23 21:31:29,190 - src.config - INFO - Final Answer: Here is the list of each customer's most recent order along with their previous order date:
+
+* James Diaz (C0001): Most recent order on 2022-12-25, previous order on 2022-11-09
+* Matthew Gonzalez (C0002): Most recent order on 2022-06-04, no previous order
+* Karen Davis (C0003): Most recent order on 2023-11-05, no previous order
+* Kevin Liu (C0004): Most recent order on 2023-12-15, previous order on 2023-06-23
+* Kumar Sharma (C0005): Most recent order on 2023-07-19, previous order on 2023-06-08
+* Robert Gonzalez (C0006): Most recent order on 2023-11-13, no previous order
+* Christopher Wang (C0007): Most recent order on 2023-12-19, previous order on 2022-12-15
+* Elizabeth Hall (C0008): Most recent order on 2023-06-20, no previous order
+2025-06-23 21:31:37,809 - src.config - INFO - NL2SQL application example finished.
+2025-06-23 21:36:19,759 - src.config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-23 21:36:19,928 - src.config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-23 21:36:19,928 - src.config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-23 21:36:20,660 - src.config - INFO - LLM initialized successfully.
+2025-06-23 21:36:20,660 - src.config - INFO - Connecting to Redis: localhost:6379
+2025-06-23 21:36:20,674 - src.config - INFO - Redis connection established successfully.
+2025-06-23 21:36:25,057 - src.config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-23 21:36:25,218 - src.config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-23 21:36:25,218 - src.config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-23 21:36:25,933 - src.config - INFO - LLM initialized successfully.
+2025-06-23 21:36:25,934 - src.config - INFO - Connecting to Redis: localhost:6379
+2025-06-23 21:36:25,953 - src.config - INFO - Redis connection established successfully.
+2025-06-23 21:40:25,141 - src.config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-23 21:40:25,301 - src.config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-23 21:40:25,301 - src.config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-23 21:40:26,102 - src.config - INFO - LLM initialized successfully.
+2025-06-23 21:40:26,102 - src.config - INFO - Connecting to Redis: localhost:6379
+2025-06-23 21:40:26,131 - src.config - INFO - Redis connection established successfully.
+2025-06-23 21:40:30,558 - src.config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-23 21:40:30,711 - src.config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-23 21:40:30,711 - src.config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-23 21:40:31,395 - src.config - INFO - LLM initialized successfully.
+2025-06-23 21:40:31,395 - src.config - INFO - Connecting to Redis: localhost:6379
+2025-06-23 21:40:31,408 - src.config - INFO - Redis connection established successfully.
+2025-06-23 21:40:35,352 - src.config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-23 21:40:35,506 - src.config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-23 21:40:35,507 - src.config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-23 21:40:36,197 - src.config - INFO - LLM initialized successfully.
+2025-06-23 21:40:36,197 - src.config - INFO - Connecting to Redis: localhost:6379
+2025-06-23 21:40:36,199 - src.config - INFO - Redis connection established successfully.
+2025-06-23 21:41:09,569 - src.config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-23 21:41:09,724 - src.config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-23 21:41:09,734 - src.config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-23 21:41:10,434 - src.config - INFO - LLM initialized successfully.
+2025-06-23 21:41:10,434 - src.config - INFO - Connecting to Redis: localhost:6379
+2025-06-23 21:41:10,434 - src.config - INFO - Redis connection established successfully.
+2025-06-23 21:41:25,532 - src.config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-23 21:41:25,684 - src.config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-23 21:41:25,684 - src.config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-23 21:41:26,418 - src.config - INFO - LLM initialized successfully.
+2025-06-23 21:41:26,418 - src.config - INFO - Connecting to Redis: localhost:6379
+2025-06-23 21:41:26,420 - src.config - INFO - Redis connection established successfully.
+2025-06-23 21:41:33,942 - src.config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-23 21:41:34,102 - src.config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-23 21:41:34,102 - src.config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-23 21:41:34,835 - src.config - INFO - LLM initialized successfully.
+2025-06-23 21:41:34,835 - src.config - INFO - Connecting to Redis: localhost:6379
+2025-06-23 21:41:34,835 - src.config - INFO - Redis connection established successfully.
+2025-06-23 21:41:34,910 - src.config - INFO - LangGraph workflow compiled successfully.
+2025-06-23 21:41:34,910 - src.config - INFO - Starting NL2SQL application example...
+2025-06-23 21:41:34,910 - src.config - INFO - User Question: List each customer’s most recent order along with their previous order date
+2025-06-23 21:41:34,910 - src.config - INFO - Workflow started.
+2025-06-23 21:41:34,910 - src.config - INFO - Fetching database schema...
+2025-06-23 21:41:34,926 - src.config - INFO - Schema loaded from cache
+2025-06-23 21:41:34,927 - src.config - INFO - Generating SQL query...
+2025-06-23 21:41:36,401 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-23 21:41:36,403 - src.config - INFO - Generated SQL: SELECT c.customer_id, c.first_name, c.last_name, o1.order_date AS most_recent_order_date, 
+       LAG(o2.order_date, 1, NULL) OVER (PARTITION BY o2.customer_id ORDER BY o2.order_date DESC) AS previous_order_date
+FROM info.customers c
+JOIN info.orders o1 ON c.customer_id = o1.customer_id
+JOIN info.orders o2 ON c.customer_id = o2.customer_id
+WHERE o1.order_date = (SELECT MAX(order_date) FROM info.orders o3 WHERE o3.customer_id = c.customer_id)
+ORDER BY c.customer_id;
+2025-06-23 21:41:36,408 - src.config - INFO - Executing SQL: SELECT c.customer_id, c.first_name, c.last_name, o1.order_date AS most_recent_order_date, 
+       LAG(o2.order_date, 1, NULL) OVER (PARTITION BY o2.customer_id ORDER BY o2.order_date DESC) AS previous_order_date
+FROM info.customers c
+JOIN info.orders o1 ON c.customer_id = o1.customer_id
+JOIN info.orders o2 ON c.customer_id = o2.customer_id
+WHERE o1.order_date = (SELECT MAX(order_date) FROM info.orders o3 WHERE o3.customer_id = c.customer_id)
+ORDER BY c.customer_id;
+2025-06-23 21:41:36,409 - src.config - INFO - Validating SQL query: SELECT c.customer_id, c.first_name, c.last_name, o1.order_date AS most_recent_order_date, 
+       LAG(o2.order_date, 1, NULL) OVER (PARTITION BY o2.customer_id ORDER BY o2.order_date DESC) AS previous_order_date
+FROM info.customers c
+JOIN info.orders o1 ON c.customer_id = o1.customer_id
+JOIN info.orders o2 ON c.customer_id = o2.customer_id
+WHERE o1.order_date = (SELECT MAX(order_date) FROM info.orders o3 WHERE o3.customer_id = c.customer_id)
+ORDER BY c.customer_id;
+2025-06-23 21:41:36,734 - src.config - INFO - Query result cached successfully
+2025-06-23 21:41:36,736 - src.config - INFO - Formatting final answer...
+2025-06-23 21:41:37,780 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-23 21:41:37,780 - src.config - INFO - Formatted Answer: Here is the list of each customer's most recent order along with their previous order date:
+
+* James Diaz (C0001): Most recent order on 2022-12-25, previous order on 2022-11-09
+* Matthew Gonzalez (C0002): Most recent order on 2022-06-04, no previous order
+* Karen Davis (C0003): Most recent order on 2023-11-05, no previous order
+* Kevin Liu (C0004): Most recent order on 2023-12-15, previous order on 2023-06-23
+* Kumar Sharma (C0005): Most recent order on 2023-07-19, previous order on 2023-06-08
+* Robert Gonzalez (C0006): Most recent order on 2023-11-13, no previous order
+* Christopher Wang (C0007): Most recent order on 2023-12-19, previous order on 2022-12-15
+* Elizabeth Hall (C0008): Most recent order on 2023-06-20, no previous order
+2025-06-23 21:41:37,780 - src.config - INFO - Final Answer: Here is the list of each customer's most recent order along with their previous order date:
+
+* James Diaz (C0001): Most recent order on 2022-12-25, previous order on 2022-11-09
+* Matthew Gonzalez (C0002): Most recent order on 2022-06-04, no previous order
+* Karen Davis (C0003): Most recent order on 2023-11-05, no previous order
+* Kevin Liu (C0004): Most recent order on 2023-12-15, previous order on 2023-06-23
+* Kumar Sharma (C0005): Most recent order on 2023-07-19, previous order on 2023-06-08
+* Robert Gonzalez (C0006): Most recent order on 2023-11-13, no previous order
+* Christopher Wang (C0007): Most recent order on 2023-12-19, previous order on 2022-12-15
+* Elizabeth Hall (C0008): Most recent order on 2023-06-20, no previous order
+2025-06-23 21:41:46,676 - src.config - INFO - NL2SQL application example finished.
+2025-06-23 21:42:13,913 - src.config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-23 21:42:14,128 - src.config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-23 21:42:14,129 - src.config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-23 21:42:14,998 - src.config - INFO - LLM initialized successfully.
+2025-06-23 21:42:14,998 - src.config - INFO - Connecting to Redis: localhost:6379
+2025-06-23 21:42:15,020 - src.config - INFO - Redis connection established successfully.
+2025-06-23 21:42:18,385 - src.config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-23 21:42:18,662 - src.config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-23 21:42:18,662 - src.config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-23 21:42:19,428 - src.config - INFO - LLM initialized successfully.
+2025-06-23 21:42:19,428 - src.config - INFO - Connecting to Redis: localhost:6379
+2025-06-23 21:42:19,441 - src.config - INFO - Redis connection established successfully.
+2025-06-23 21:42:19,530 - src.config - INFO - LangGraph workflow compiled successfully.
+2025-06-23 21:42:19,530 - src.config - INFO - Starting NL2SQL application example...
+2025-06-23 21:42:19,530 - src.config - INFO - User Question: List each customer’s most recent order along with their previous order date
+2025-06-23 21:42:19,532 - src.config - INFO - Workflow started.
+2025-06-23 21:42:19,532 - src.config - INFO - Fetching database schema...
+2025-06-23 21:42:19,536 - src.config - INFO - Schema loaded from cache
+2025-06-23 21:42:19,537 - src.config - INFO - Generating SQL query...
+2025-06-23 21:42:20,961 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-23 21:42:20,971 - src.config - INFO - Generated SQL: SELECT c.customer_id, c.first_name, c.last_name, o1.order_date AS most_recent_order_date, 
+       LAG(o2.order_date, 1, NULL) OVER (PARTITION BY o2.customer_id ORDER BY o2.order_date DESC) AS previous_order_date
+FROM info.customers c
+JOIN info.orders o1 ON c.customer_id = o1.customer_id
+JOIN info.orders o2 ON c.customer_id = o2.customer_id
+WHERE o1.order_date = (SELECT MAX(order_date) FROM info.orders o3 WHERE o3.customer_id = c.customer_id)
+ORDER BY c.customer_id;
+2025-06-23 21:42:20,974 - src.config - INFO - Executing SQL: SELECT c.customer_id, c.first_name, c.last_name, o1.order_date AS most_recent_order_date, 
+       LAG(o2.order_date, 1, NULL) OVER (PARTITION BY o2.customer_id ORDER BY o2.order_date DESC) AS previous_order_date
+FROM info.customers c
+JOIN info.orders o1 ON c.customer_id = o1.customer_id
+JOIN info.orders o2 ON c.customer_id = o2.customer_id
+WHERE o1.order_date = (SELECT MAX(order_date) FROM info.orders o3 WHERE o3.customer_id = c.customer_id)
+ORDER BY c.customer_id;
+2025-06-23 21:42:20,975 - src.config - INFO - Query result loaded from cache
+2025-06-23 21:42:20,982 - src.config - INFO - Formatting final answer...
+2025-06-23 21:42:22,017 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-23 21:42:22,021 - src.config - INFO - Formatted Answer: Here is the list of each customer's most recent order along with their previous order date:
+
+* James Diaz (C0001): Most recent order on 2022-12-25, previous order on 2022-11-09
+* Matthew Gonzalez (C0002): Most recent order on 2022-06-04, no previous order
+* Karen Davis (C0003): Most recent order on 2023-11-05, no previous order
+* Kevin Liu (C0004): Most recent order on 2023-12-15, previous order on 2023-06-23
+* Kumar Sharma (C0005): Most recent order on 2023-07-19, previous order on 2023-06-08
+* Robert Gonzalez (C0006): Most recent order on 2023-11-13, no previous order
+* Christopher Wang (C0007): Most recent order on 2023-12-19, previous order on 2022-12-15
+* Elizabeth Hall (C0008): Most recent order on 2023-06-20, no previous order
+2025-06-23 21:42:22,024 - src.config - INFO - Final Answer: Here is the list of each customer's most recent order along with their previous order date:
+
+* James Diaz (C0001): Most recent order on 2022-12-25, previous order on 2022-11-09
+* Matthew Gonzalez (C0002): Most recent order on 2022-06-04, no previous order
+* Karen Davis (C0003): Most recent order on 2023-11-05, no previous order
+* Kevin Liu (C0004): Most recent order on 2023-12-15, previous order on 2023-06-23
+* Kumar Sharma (C0005): Most recent order on 2023-07-19, previous order on 2023-06-08
+* Robert Gonzalez (C0006): Most recent order on 2023-11-13, no previous order
+* Christopher Wang (C0007): Most recent order on 2023-12-19, previous order on 2022-12-15
+* Elizabeth Hall (C0008): Most recent order on 2023-06-20, no previous order
+2025-06-23 21:43:24,552 - src.config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-23 21:43:24,719 - src.config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-23 21:43:24,719 - src.config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-23 21:43:25,514 - src.config - INFO - LLM initialized successfully.
+2025-06-23 21:43:25,514 - src.config - INFO - Connecting to Redis: localhost:6379
+2025-06-23 21:43:25,517 - src.config - INFO - Redis connection established successfully.
+2025-06-23 21:43:25,602 - src.config - INFO - LangGraph workflow compiled successfully.
+2025-06-23 21:43:25,603 - src.config - INFO - Starting NL2SQL application example...
+2025-06-23 21:43:25,603 - src.config - INFO - User Question: List each customer’s most recent order along with their previous order date
+2025-06-23 21:43:25,607 - src.config - INFO - Workflow started.
+2025-06-23 21:43:25,607 - src.config - INFO - Fetching database schema...
+2025-06-23 21:43:25,608 - src.config - INFO - Schema loaded from cache
+2025-06-23 21:43:25,609 - src.config - INFO - Generating SQL query...
+2025-06-23 21:43:26,448 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-23 21:43:26,455 - src.config - INFO - Generated SQL: SELECT c.customer_id, c.first_name, c.last_name, o1.order_date AS most_recent_order_date, 
+       LAG(o2.order_date, 1, NULL) OVER (PARTITION BY o2.customer_id ORDER BY o2.order_date DESC) AS previous_order_date
+FROM info.customers c
+JOIN info.orders o1 ON c.customer_id = o1.customer_id
+JOIN info.orders o2 ON c.customer_id = o2.customer_id
+WHERE o1.order_date = (SELECT MAX(order_date) FROM info.orders o3 WHERE o3.customer_id = c.customer_id)
+ORDER BY c.customer_id;
+2025-06-23 21:43:26,458 - src.config - INFO - Executing SQL: SELECT c.customer_id, c.first_name, c.last_name, o1.order_date AS most_recent_order_date, 
+       LAG(o2.order_date, 1, NULL) OVER (PARTITION BY o2.customer_id ORDER BY o2.order_date DESC) AS previous_order_date
+FROM info.customers c
+JOIN info.orders o1 ON c.customer_id = o1.customer_id
+JOIN info.orders o2 ON c.customer_id = o2.customer_id
+WHERE o1.order_date = (SELECT MAX(order_date) FROM info.orders o3 WHERE o3.customer_id = c.customer_id)
+ORDER BY c.customer_id;
+2025-06-23 21:43:26,459 - src.config - INFO - Query result loaded from cache
+2025-06-23 21:43:26,467 - src.config - INFO - Formatting final answer...
+2025-06-23 21:43:27,512 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-23 21:43:27,512 - src.config - INFO - Formatted Answer: Here is the list of each customer's most recent order along with their previous order date:
+
+* James Diaz (C0001): Most recent order on 2022-12-25, previous order on 2022-11-09
+* Matthew Gonzalez (C0002): Most recent order on 2022-06-04, no previous order
+* Karen Davis (C0003): Most recent order on 2023-11-05, no previous order
+* Kevin Liu (C0004): Most recent order on 2023-12-15, previous order on 2023-06-23
+* Kumar Sharma (C0005): Most recent order on 2023-07-19, previous order on 2023-06-08
+* Robert Gonzalez (C0006): Most recent order on 2023-11-13, no previous order
+* Christopher Wang (C0007): Most recent order on 2023-12-19, previous order on 2022-12-15
+* Elizabeth Hall (C0008): Most recent order on 2023-06-20, no previous order
+2025-06-23 21:43:27,514 - src.config - INFO - Final Answer: Here is the list of each customer's most recent order along with their previous order date:
+
+* James Diaz (C0001): Most recent order on 2022-12-25, previous order on 2022-11-09
+* Matthew Gonzalez (C0002): Most recent order on 2022-06-04, no previous order
+* Karen Davis (C0003): Most recent order on 2023-11-05, no previous order
+* Kevin Liu (C0004): Most recent order on 2023-12-15, previous order on 2023-06-23
+* Kumar Sharma (C0005): Most recent order on 2023-07-19, previous order on 2023-06-08
+* Robert Gonzalez (C0006): Most recent order on 2023-11-13, no previous order
+* Christopher Wang (C0007): Most recent order on 2023-12-19, previous order on 2022-12-15
+* Elizabeth Hall (C0008): Most recent order on 2023-06-20, no previous order
+2025-06-23 21:43:54,432 - src.config - ERROR - An error occurred during workflow execution: ('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+Traceback (most recent call last):
+  File "D:\nl2sql_manus\venv\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\urllib3\connectionpool.py", line 534, in _make_request
+    response = conn.getresponse()
+               ^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\urllib3\connection.py", line 516, in getresponse
+    httplib_response = super().getresponse()
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AORUS\AppData\Local\Programs\Python\Python311\Lib\http\client.py", line 1395, in getresponse
+    response.begin()
+  File "C:\Users\AORUS\AppData\Local\Programs\Python\Python311\Lib\http\client.py", line 325, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AORUS\AppData\Local\Programs\Python\Python311\Lib\http\client.py", line 286, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AORUS\AppData\Local\Programs\Python\Python311\Lib\socket.py", line 706, in readinto
+    return self._sock.recv_into(b)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\nl2sql_manus\venv\Lib\site-packages\requests\adapters.py", line 667, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\urllib3\util\retry.py", line 474, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\urllib3\util\util.py", line 38, in reraise
+    raise value.with_traceback(tb)
+  File "D:\nl2sql_manus\venv\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\urllib3\connectionpool.py", line 534, in _make_request
+    response = conn.getresponse()
+               ^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\urllib3\connection.py", line 516, in getresponse
+    httplib_response = super().getresponse()
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AORUS\AppData\Local\Programs\Python\Python311\Lib\http\client.py", line 1395, in getresponse
+    response.begin()
+  File "C:\Users\AORUS\AppData\Local\Programs\Python\Python311\Lib\http\client.py", line 325, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AORUS\AppData\Local\Programs\Python\Python311\Lib\http\client.py", line 286, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AORUS\AppData\Local\Programs\Python\Python311\Lib\socket.py", line 706, in readinto
+    return self._sock.recv_into(b)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.ProtocolError: ('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\nl2sql_manus\src\main.py", line 55, in <module>
+    resp = requests.post(f"{API}/auth/login", json=login_payload)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\nl2sql_manus\venv\Lib\site-packages\requests\adapters.py", line 682, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+2025-06-23 21:43:54,579 - src.config - INFO - NL2SQL application example finished.
+2025-06-23 21:43:57,667 - src.config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-23 21:43:57,865 - src.config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-23 21:43:57,865 - src.config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-23 21:43:58,754 - src.config - INFO - LLM initialized successfully.
+2025-06-23 21:43:58,754 - src.config - INFO - Connecting to Redis: localhost:6379
+2025-06-23 21:43:58,754 - src.config - INFO - Redis connection established successfully.
+2025-06-23 21:44:02,658 - src.config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-23 21:44:02,821 - src.config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-23 21:44:02,821 - src.config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-23 21:44:03,561 - src.config - INFO - LLM initialized successfully.
+2025-06-23 21:44:03,561 - src.config - INFO - Connecting to Redis: localhost:6379
+2025-06-23 21:44:03,565 - src.config - INFO - Redis connection established successfully.
+2025-06-23 21:44:15,316 - src.config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-23 21:44:15,477 - src.config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-23 21:44:15,478 - src.config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-23 21:44:16,282 - src.config - INFO - LLM initialized successfully.
+2025-06-23 21:44:16,282 - src.config - INFO - Connecting to Redis: localhost:6379
+2025-06-23 21:44:16,306 - src.config - INFO - Redis connection established successfully.
+2025-06-23 21:44:19,186 - src.config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-23 21:44:19,348 - src.config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-23 21:44:19,348 - src.config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-23 21:44:20,110 - src.config - INFO - LLM initialized successfully.
+2025-06-23 21:44:20,111 - src.config - INFO - Connecting to Redis: localhost:6379
+2025-06-23 21:44:20,112 - src.config - INFO - Redis connection established successfully.
+2025-06-23 21:44:20,203 - src.config - INFO - LangGraph workflow compiled successfully.
+2025-06-23 21:44:20,203 - src.config - INFO - Starting NL2SQL application example...
+2025-06-23 21:44:20,203 - src.config - INFO - User Question: List each customer’s most recent order along with their previous order date
+2025-06-23 21:44:20,208 - src.config - INFO - Workflow started.
+2025-06-23 21:44:20,209 - src.config - INFO - Fetching database schema...
+2025-06-23 21:44:20,209 - src.config - INFO - Schema loaded from cache
+2025-06-23 21:44:20,210 - src.config - INFO - Generating SQL query...
+2025-06-23 21:44:22,443 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-23 21:44:22,665 - src.config - INFO - Generated SQL: SELECT c.customer_id, c.first_name, c.last_name, o1.order_date AS most_recent_order_date, 
+       LAG(o2.order_date, 1, NULL) OVER (PARTITION BY o2.customer_id ORDER BY o2.order_date DESC) AS previous_order_date
+FROM info.customers c
+JOIN info.orders o1 ON c.customer_id = o1.customer_id
+JOIN info.orders o2 ON c.customer_id = o2.customer_id
+WHERE o1.order_date = (SELECT MAX(order_date) FROM info.orders o3 WHERE o3.customer_id = c.customer_id)
+ORDER BY c.customer_id;
+2025-06-23 21:44:22,669 - src.config - INFO - Executing SQL: SELECT c.customer_id, c.first_name, c.last_name, o1.order_date AS most_recent_order_date, 
+       LAG(o2.order_date, 1, NULL) OVER (PARTITION BY o2.customer_id ORDER BY o2.order_date DESC) AS previous_order_date
+FROM info.customers c
+JOIN info.orders o1 ON c.customer_id = o1.customer_id
+JOIN info.orders o2 ON c.customer_id = o2.customer_id
+WHERE o1.order_date = (SELECT MAX(order_date) FROM info.orders o3 WHERE o3.customer_id = c.customer_id)
+ORDER BY c.customer_id;
+2025-06-23 21:44:22,671 - src.config - INFO - Query result loaded from cache
+2025-06-23 21:44:22,678 - src.config - INFO - Formatting final answer...
+2025-06-23 21:44:23,795 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-23 21:44:23,796 - src.config - INFO - Formatted Answer: Here is the list of each customer's most recent order along with their previous order date:
+
+* James Diaz (C0001): Most recent order on 2022-12-25, previous order on 2022-11-09
+* Matthew Gonzalez (C0002): Most recent order on 2022-06-04, no previous order
+* Karen Davis (C0003): Most recent order on 2023-11-05, no previous order
+* Kevin Liu (C0004): Most recent order on 2023-12-15, previous order on 2023-06-23
+* Kumar Sharma (C0005): Most recent order on 2023-07-19, previous order on 2023-06-08
+* Robert Gonzalez (C0006): Most recent order on 2023-11-13, no previous order
+* Christopher Wang (C0007): Most recent order on 2023-12-19, previous order on 2022-12-15
+* Elizabeth Hall (C0008): Most recent order on 2023-06-20, no previous order
+2025-06-23 21:44:23,798 - src.config - INFO - Final Answer: Here is the list of each customer's most recent order along with their previous order date:
+
+* James Diaz (C0001): Most recent order on 2022-12-25, previous order on 2022-11-09
+* Matthew Gonzalez (C0002): Most recent order on 2022-06-04, no previous order
+* Karen Davis (C0003): Most recent order on 2023-11-05, no previous order
+* Kevin Liu (C0004): Most recent order on 2023-12-15, previous order on 2023-06-23
+* Kumar Sharma (C0005): Most recent order on 2023-07-19, previous order on 2023-06-08
+* Robert Gonzalez (C0006): Most recent order on 2023-11-13, no previous order
+* Christopher Wang (C0007): Most recent order on 2023-12-19, previous order on 2022-12-15
+* Elizabeth Hall (C0008): Most recent order on 2023-06-20, no previous order
+2025-06-23 21:44:32,692 - src.config - INFO - NL2SQL application example finished.
