@@ -16092,3 +16092,470 @@ ORDER BY c.customer_id;
 * Christopher Wang (C0007): Most recent order on 2023-12-19, previous order on 2022-12-15
 * Elizabeth Hall (C0008): Most recent order on 2023-06-20, no previous order
 2025-06-23 21:44:32,692 - src.config - INFO - NL2SQL application example finished.
+2025-06-25 15:49:27,193 - src.config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-25 15:49:27,658 - src.config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-25 15:49:27,658 - src.config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-25 15:49:28,400 - src.config - INFO - LLM initialized successfully.
+2025-06-25 15:49:28,400 - src.config - INFO - Connecting to Redis: localhost:6379
+2025-06-25 15:49:28,416 - src.config - INFO - Redis connection established successfully.
+2025-06-25 15:49:28,517 - src.config - INFO - LangGraph workflow compiled successfully.
+2025-06-25 15:49:55,841 - src.config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-25 15:49:56,005 - src.config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-25 15:49:56,006 - src.config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-25 15:49:56,680 - src.config - INFO - LLM initialized successfully.
+2025-06-25 15:49:56,680 - src.config - INFO - Connecting to Redis: localhost:6379
+2025-06-25 15:49:56,693 - src.config - INFO - Redis connection established successfully.
+2025-06-25 15:52:40,838 - src.config - INFO - Workflow started.
+2025-06-25 15:52:40,842 - src.config - INFO - Fetching database schema...
+2025-06-25 15:52:40,843 - src.config - INFO - Fetching dynamic schema representation for schema: info
+2025-06-25 15:52:40,843 - src.config - INFO - Successfully fetched schema for tables: ['customers', 'order_details', 'orders', 'products', 'sales_representative', 'suppliers', 'users']
+2025-06-25 15:52:40,843 - src.config - INFO - Query execution time - schema_fetch: 0.00s
+2025-06-25 15:52:40,843 - src.config - INFO - Schema cached successfully
+2025-06-25 15:52:40,848 - src.config - INFO - Generating SQL query...
+2025-06-25 15:52:42,708 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-06-25 15:52:42,712 - src.config - ERROR - SQL generation failed: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+2025-06-25 15:52:42,712 - src.config - CRITICAL - Blocked potentially dangerous SQL query
+2025-06-25 15:52:42,712 - src.config - INFO - Formatting final answer...
+2025-06-25 15:52:42,712 - src.config - WARNING - Cannot format answer due to error: Blocked potentially dangerous SQL query
+2025-06-25 15:53:18,649 - src.config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-25 15:53:18,814 - src.config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-25 15:53:18,814 - src.config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-25 15:53:19,510 - src.config - INFO - LLM initialized successfully.
+2025-06-25 15:53:19,510 - src.config - INFO - Connecting to Redis: localhost:6379
+2025-06-25 15:53:19,510 - src.config - INFO - Redis connection established successfully.
+2025-06-25 15:53:34,613 - src.config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-25 15:53:34,763 - src.config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-25 15:53:34,763 - src.config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-25 15:53:35,463 - src.config - INFO - LLM initialized successfully.
+2025-06-25 15:53:35,463 - src.config - INFO - Connecting to Redis: localhost:6379
+2025-06-25 15:53:35,473 - src.config - INFO - Redis connection established successfully.
+2025-06-25 15:53:35,548 - src.config - INFO - LangGraph workflow compiled successfully.
+2025-06-25 15:54:49,793 - src.config - INFO - Workflow started.
+2025-06-25 15:54:49,802 - src.config - INFO - Fetching database schema...
+2025-06-25 15:54:49,802 - src.config - INFO - Schema loaded from cache
+2025-06-25 15:54:49,802 - src.config - INFO - Generating SQL query...
+2025-06-25 15:54:50,961 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-06-25 15:54:50,961 - src.config - ERROR - SQL generation failed: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+2025-06-25 15:54:50,961 - src.config - CRITICAL - Blocked potentially dangerous SQL query
+2025-06-25 15:54:50,961 - src.config - INFO - Formatting final answer...
+2025-06-25 15:54:50,961 - src.config - WARNING - Cannot format answer due to error: Blocked potentially dangerous SQL query
+2025-06-25 15:55:37,952 - src.config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-25 15:55:38,102 - src.config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-25 15:55:38,102 - src.config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-25 15:55:38,812 - src.config - INFO - LLM initialized successfully.
+2025-06-25 15:55:38,812 - src.config - INFO - Connecting to Redis: localhost:6379
+2025-06-25 15:55:38,814 - src.config - INFO - Redis connection established successfully.
+2025-06-25 15:55:38,883 - src.config - INFO - LangGraph workflow compiled successfully.
+2025-06-25 15:55:38,883 - src.config - INFO - Starting NL2SQL application example...
+2025-06-25 15:55:38,883 - src.config - INFO - User Question: List each customer’s most recent order along with their previous order date
+2025-06-25 15:55:38,892 - src.config - INFO - Workflow started.
+2025-06-25 15:55:38,893 - src.config - INFO - Fetching database schema...
+2025-06-25 15:55:38,893 - src.config - INFO - Schema loaded from cache
+2025-06-25 15:55:38,893 - src.config - INFO - Generating SQL query...
+2025-06-25 15:55:39,043 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-06-25 15:55:39,043 - src.config - ERROR - SQL generation failed: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+2025-06-25 15:55:39,043 - src.config - CRITICAL - Blocked potentially dangerous SQL query
+2025-06-25 15:55:39,043 - src.config - INFO - Formatting final answer...
+2025-06-25 15:55:39,043 - src.config - WARNING - Cannot format answer due to error: Blocked potentially dangerous SQL query
+2025-06-25 15:55:39,043 - src.config - INFO - Final Answer: Sorry, I encountered an error: Blocked potentially dangerous SQL query
+2025-06-25 15:55:39,043 - src.config - INFO - NL2SQL application example finished.
+2025-06-25 15:56:33,669 - src.config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-25 15:56:33,824 - src.config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-25 15:56:33,825 - src.config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-25 15:56:34,601 - src.config - INFO - LLM initialized successfully.
+2025-06-25 15:56:34,602 - src.config - INFO - Connecting to Redis: localhost:6379
+2025-06-25 15:56:34,615 - src.config - INFO - Redis connection established successfully.
+2025-06-25 15:56:34,691 - src.config - INFO - LangGraph workflow compiled successfully.
+2025-06-25 15:56:34,691 - src.config - INFO - Starting NL2SQL application example...
+2025-06-25 15:56:34,691 - src.config - INFO - User Question: List each customer’s most recent order along with their previous order date
+2025-06-25 15:56:34,694 - src.config - INFO - Workflow started.
+2025-06-25 15:56:34,694 - src.config - INFO - Fetching database schema...
+2025-06-25 15:56:34,695 - src.config - INFO - Schema loaded from cache
+2025-06-25 15:56:34,696 - src.config - INFO - Generating SQL query...
+2025-06-25 15:56:34,781 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-06-25 15:56:34,782 - src.config - ERROR - SQL generation failed: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+2025-06-25 15:56:34,782 - src.config - CRITICAL - Blocked potentially dangerous SQL query
+2025-06-25 15:56:34,783 - src.config - INFO - Formatting final answer...
+2025-06-25 15:56:34,783 - src.config - WARNING - Cannot format answer due to error: Blocked potentially dangerous SQL query
+2025-06-25 15:56:34,784 - src.config - INFO - Final Answer: Sorry, I encountered an error: Blocked potentially dangerous SQL query
+2025-06-25 15:56:34,784 - src.config - INFO - NL2SQL application example finished.
+2025-06-25 15:57:12,790 - src.config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-25 15:57:12,942 - src.config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-25 15:57:12,942 - src.config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-25 15:57:13,643 - src.config - INFO - LLM initialized successfully.
+2025-06-25 15:57:13,644 - src.config - INFO - Connecting to Redis: localhost:6379
+2025-06-25 15:57:13,660 - src.config - INFO - Redis connection established successfully.
+2025-06-25 15:57:27,682 - src.config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-25 15:57:27,835 - src.config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-25 15:57:27,835 - src.config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-25 15:57:28,580 - src.config - INFO - LLM initialized successfully.
+2025-06-25 15:57:28,580 - src.config - INFO - Connecting to Redis: localhost:6379
+2025-06-25 15:57:28,591 - src.config - INFO - Redis connection established successfully.
+2025-06-25 15:57:28,660 - src.config - INFO - LangGraph workflow compiled successfully.
+2025-06-25 15:57:28,660 - src.config - INFO - Starting NL2SQL application example...
+2025-06-25 15:57:28,660 - src.config - INFO - User Question: List each customer’s most recent order along with their previous order date
+2025-06-25 15:57:28,660 - src.config - INFO - Workflow started.
+2025-06-25 15:57:28,670 - src.config - INFO - Fetching database schema...
+2025-06-25 15:57:28,670 - src.config - INFO - Schema loaded from cache
+2025-06-25 15:57:28,671 - src.config - INFO - Generating SQL query...
+2025-06-25 15:57:29,093 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-06-25 15:57:29,093 - src.config - ERROR - SQL generation failed: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+2025-06-25 15:57:29,101 - src.config - CRITICAL - Blocked potentially dangerous SQL query
+2025-06-25 15:57:29,101 - src.config - INFO - Formatting final answer...
+2025-06-25 15:57:29,101 - src.config - WARNING - Cannot format answer due to error: Blocked potentially dangerous SQL query
+2025-06-25 15:57:29,101 - src.config - INFO - Final Answer: Sorry, I encountered an error: Blocked potentially dangerous SQL query
+2025-06-25 15:57:29,101 - src.config - INFO - NL2SQL application example finished.
+2025-06-25 16:01:37,481 - src.config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-25 16:01:37,762 - src.config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-25 16:01:37,762 - src.config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-25 16:01:38,547 - src.config - INFO - LLM initialized successfully.
+2025-06-25 16:01:38,547 - src.config - INFO - Connecting to Redis: localhost:6379
+2025-06-25 16:01:38,564 - src.config - INFO - Redis connection established successfully.
+2025-06-25 16:01:41,253 - src.config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-25 16:01:41,422 - src.config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-25 16:01:41,423 - src.config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-25 16:01:42,174 - src.config - INFO - LLM initialized successfully.
+2025-06-25 16:01:42,174 - src.config - INFO - Connecting to Redis: localhost:6379
+2025-06-25 16:01:42,175 - src.config - INFO - Redis connection established successfully.
+2025-06-25 16:01:42,252 - src.config - INFO - LangGraph workflow compiled successfully.
+2025-06-25 16:01:42,252 - src.config - INFO - Starting NL2SQL application example...
+2025-06-25 16:01:42,257 - src.config - INFO - User Question: List each customers most recent order along with their previous order date
+2025-06-25 16:01:42,257 - src.config - INFO - Workflow started.
+2025-06-25 16:01:42,261 - src.config - INFO - Fetching database schema...
+2025-06-25 16:01:42,261 - src.config - INFO - Schema loaded from cache
+2025-06-25 16:01:42,262 - src.config - INFO - Generating SQL query...
+2025-06-25 16:01:44,628 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-25 16:01:46,162 - src.config - INFO - Generated SQL: SELECT c.customer_id, c.first_name, c.last_name, o1.order_date AS recent_order_date, 
+       LAG(o2.order_date, 1, NULL) OVER (PARTITION BY o2.customer_id ORDER BY o2.order_date DESC) AS previous_order_date
+FROM info.customers c
+JOIN info.orders o1 ON c.customer_id = o1.customer_id
+LEFT JOIN info.orders o2 ON c.customer_id = o2.customer_id AND o2.order_date < o1.order_date
+WHERE o1.order_date = (SELECT MAX(order_date) FROM info.orders o3 WHERE o3.customer_id = c.customer_id)
+ORDER BY c.customer_id;
+2025-06-25 16:01:46,165 - src.config - INFO - Executing SQL: SELECT c.customer_id, c.first_name, c.last_name, o1.order_date AS recent_order_date, 
+       LAG(o2.order_date, 1, NULL) OVER (PARTITION BY o2.customer_id ORDER BY o2.order_date DESC) AS previous_order_date
+FROM info.customers c
+JOIN info.orders o1 ON c.customer_id = o1.customer_id
+LEFT JOIN info.orders o2 ON c.customer_id = o2.customer_id AND o2.order_date < o1.order_date
+WHERE o1.order_date = (SELECT MAX(order_date) FROM info.orders o3 WHERE o3.customer_id = c.customer_id)
+ORDER BY c.customer_id;
+2025-06-25 16:01:46,165 - src.config - INFO - Validating SQL query: SELECT c.customer_id, c.first_name, c.last_name, o1.order_date AS recent_order_date, 
+       LAG(o2.order_date, 1, NULL) OVER (PARTITION BY o2.customer_id ORDER BY o2.order_date DESC) AS previous_order_date
+FROM info.customers c
+JOIN info.orders o1 ON c.customer_id = o1.customer_id
+LEFT JOIN info.orders o2 ON c.customer_id = o2.customer_id AND o2.order_date < o1.order_date
+WHERE o1.order_date = (SELECT MAX(order_date) FROM info.orders o3 WHERE o3.customer_id = c.customer_id)
+ORDER BY c.customer_id;
+2025-06-25 16:01:46,502 - src.config - INFO - Query result cached successfully
+2025-06-25 16:01:46,510 - src.config - INFO - Formatting final answer...
+2025-06-25 16:01:47,692 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-25 16:01:47,693 - src.config - INFO - Formatted Answer: Here is the list of each customer's most recent order along with their previous order date:
+
+* James Diaz (C0001): Most recent order on 2022-12-25, previous order on 2022-11-09
+* Matthew Gonzalez (C0002): Most recent order on 2022-06-04, no previous order
+* Karen Davis (C0003): Most recent order on 2023-11-05, no previous order
+* Kevin Liu (C0004): Most recent order on 2023-12-15, previous order on 2023-06-23
+* Kumar Sharma (C0005): Most recent order on 2023-07-19, previous order on 2023-06-08
+* Robert Gonzalez (C0006): Most recent order on 2023-11-13, no previous order
+* Christopher Wang (C0007): Most recent order on 2023-12-19, previous order on 2022-12-15
+* Elizabeth Hall (C0008): Most recent order on 2023-06-20, previous order on 2022-11-15
+* Carol Flores (C0010): Most recent order on 2023-09-28, previous order on 2023-03-09
+* Michael Gomez (C0011): Most recent order on 2023-08-18, previous order on 2023-01-09
+* Amanda Thompson (C0013): Most recent order on 2023-07-30, no previous order
+* Melissa Williams (C0014): Most recent order on 2022-11-28, no previous order
+2025-06-25 16:01:47,693 - src.config - INFO - Final Answer: Here is the list of each customer's most recent order along with their previous order date:
+
+* James Diaz (C0001): Most recent order on 2022-12-25, previous order on 2022-11-09
+* Matthew Gonzalez (C0002): Most recent order on 2022-06-04, no previous order
+* Karen Davis (C0003): Most recent order on 2023-11-05, no previous order
+* Kevin Liu (C0004): Most recent order on 2023-12-15, previous order on 2023-06-23
+* Kumar Sharma (C0005): Most recent order on 2023-07-19, previous order on 2023-06-08
+* Robert Gonzalez (C0006): Most recent order on 2023-11-13, no previous order
+* Christopher Wang (C0007): Most recent order on 2023-12-19, previous order on 2022-12-15
+* Elizabeth Hall (C0008): Most recent order on 2023-06-20, previous order on 2022-11-15
+* Carol Flores (C0010): Most recent order on 2023-09-28, previous order on 2023-03-09
+* Michael Gomez (C0011): Most recent order on 2023-08-18, previous order on 2023-01-09
+* Amanda Thompson (C0013): Most recent order on 2023-07-30, no previous order
+* Melissa Williams (C0014): Most recent order on 2022-11-28, no previous order
+2025-06-25 16:01:52,052 - export_api.utils - INFO - Removed old file: 812faafbd518400393df91ef02a9113b.csv
+2025-06-25 16:01:52,052 - export_api.utils - INFO - Removed old file: 812faafbd518400393df91ef02a9113b.xlsx
+2025-06-25 16:01:52,052 - export_api.utils - INFO - Removed old file: c91ea0d2de174359b16d7612c2bd1190.csv
+2025-06-25 16:01:52,052 - export_api.utils - INFO - Removed old file: c91ea0d2de174359b16d7612c2bd1190.xlsx
+2025-06-25 16:01:56,601 - src.config - INFO - NL2SQL application example finished.
+2025-06-25 16:02:16,968 - src.config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-25 16:02:17,121 - src.config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-25 16:02:17,127 - src.config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-25 16:02:17,864 - src.config - INFO - LLM initialized successfully.
+2025-06-25 16:02:17,864 - src.config - INFO - Connecting to Redis: localhost:6379
+2025-06-25 16:02:17,885 - src.config - INFO - Redis connection established successfully.
+2025-06-25 16:02:17,962 - src.config - INFO - LangGraph workflow compiled successfully.
+2025-06-25 16:03:09,946 - src.config - INFO - Workflow started.
+2025-06-25 16:03:09,946 - src.config - INFO - Fetching database schema...
+2025-06-25 16:03:09,946 - src.config - INFO - Schema loaded from cache
+2025-06-25 16:03:09,946 - src.config - INFO - Generating SQL query...
+2025-06-25 16:03:10,103 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-06-25 16:03:10,103 - src.config - ERROR - SQL generation failed: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+2025-06-25 16:03:10,103 - src.config - CRITICAL - Blocked potentially dangerous SQL query
+2025-06-25 16:03:10,103 - src.config - INFO - Formatting final answer...
+2025-06-25 16:03:10,103 - src.config - WARNING - Cannot format answer due to error: Blocked potentially dangerous SQL query
+2025-06-25 16:05:06,521 - src.config - INFO - Workflow started.
+2025-06-25 16:05:06,521 - src.config - INFO - Fetching database schema...
+2025-06-25 16:05:06,522 - src.config - INFO - Schema loaded from cache
+2025-06-25 16:05:06,523 - src.config - INFO - Generating SQL query...
+2025-06-25 16:05:06,659 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-06-25 16:05:06,660 - src.config - ERROR - SQL generation failed: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+2025-06-25 16:05:06,661 - src.config - CRITICAL - Blocked potentially dangerous SQL query
+2025-06-25 16:05:06,661 - src.config - INFO - Formatting final answer...
+2025-06-25 16:05:06,662 - src.config - WARNING - Cannot format answer due to error: Blocked potentially dangerous SQL query
+2025-06-25 16:05:29,333 - src.config - INFO - Workflow started.
+2025-06-25 16:05:29,333 - src.config - INFO - Fetching database schema...
+2025-06-25 16:05:29,333 - src.config - INFO - Schema loaded from cache
+2025-06-25 16:05:29,339 - src.config - INFO - Generating SQL query...
+2025-06-25 16:05:29,634 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-06-25 16:05:29,634 - src.config - ERROR - SQL generation failed: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+2025-06-25 16:05:29,634 - src.config - CRITICAL - Blocked potentially dangerous SQL query
+2025-06-25 16:05:29,642 - src.config - INFO - Formatting final answer...
+2025-06-25 16:05:29,642 - src.config - WARNING - Cannot format answer due to error: Blocked potentially dangerous SQL query
+2025-06-25 16:06:20,811 - src.config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-25 16:06:20,958 - src.config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-25 16:06:20,958 - src.config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-25 16:06:21,659 - src.config - INFO - LLM initialized successfully.
+2025-06-25 16:06:21,659 - src.config - INFO - Connecting to Redis: localhost:6379
+2025-06-25 16:06:21,688 - src.config - INFO - Redis connection established successfully.
+2025-06-25 16:06:21,782 - src.config - INFO - LangGraph workflow compiled successfully.
+2025-06-25 16:06:53,531 - src.config - INFO - Workflow started.
+2025-06-25 16:06:53,532 - src.config - INFO - Fetching database schema...
+2025-06-25 16:06:53,533 - src.config - INFO - Schema loaded from cache
+2025-06-25 16:06:53,533 - src.config - INFO - Generating SQL query...
+2025-06-25 16:06:53,842 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-25 16:06:53,842 - src.config - INFO - Generated SQL: SELECT CONCAT(first_name, ' ', last_name) AS full_name FROM info.customers;
+2025-06-25 16:06:53,851 - src.config - INFO - Executing SQL: SELECT CONCAT(first_name, ' ', last_name) AS full_name FROM info.customers;
+2025-06-25 16:06:53,852 - src.config - INFO - Validating SQL query: SELECT CONCAT(first_name, ' ', last_name) AS full_name FROM info.customers;
+2025-06-25 16:06:53,864 - src.config - INFO - Query result cached successfully
+2025-06-25 16:06:53,866 - src.config - INFO - Formatting final answer...
+2025-06-25 16:06:54,279 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-25 16:06:54,279 - src.config - INFO - Formatted Answer: Here are the customers' full names: James Diaz, Matthew Gonzalez, Karen Davis, Kevin Liu, Kumar Sharma, Robert Gonzalez, Christopher Wang, Elizabeth Hall, Ahmed Martinez, Carol Flores, Michael Gomez, William Zhang, Amanda Thompson, Melissa Williams, George Zhou, Carol Liu, Robert Williams, Mary Martin, and Deborah Mitchell.
+2025-06-25 17:59:56,841 - src.config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-25 17:59:57,040 - src.config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-25 17:59:57,040 - src.config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-25 17:59:57,731 - src.config - INFO - LLM initialized successfully.
+2025-06-25 17:59:57,735 - src.config - INFO - Connecting to Redis: localhost:6379
+2025-06-25 17:59:57,756 - src.config - INFO - Redis connection established successfully.
+2025-06-25 18:20:44,756 - src.config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-25 18:20:44,917 - src.config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-25 18:20:44,918 - src.config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-25 18:20:45,629 - src.config - INFO - LLM initialized successfully.
+2025-06-25 18:20:45,629 - src.config - INFO - Connecting to Redis: localhost:6379
+2025-06-25 18:20:45,630 - src.config - INFO - Redis connection established successfully.
+2025-06-25 18:20:45,724 - src.config - INFO - LangGraph workflow compiled successfully.
+2025-06-25 18:20:45,724 - src.config - INFO - Starting NL2SQL application example...
+2025-06-25 18:20:45,724 - src.config - INFO - User Question: List each customers most recent order along with their previous order date
+2025-06-25 18:20:45,728 - src.config - INFO - Workflow started.
+2025-06-25 18:20:45,729 - src.config - INFO - Fetching database schema...
+2025-06-25 18:20:45,729 - src.config - INFO - Fetching dynamic schema representation for schema: info
+2025-06-25 18:20:45,732 - src.config - INFO - Successfully fetched schema for tables: ['customers', 'order_details', 'orders', 'products', 'sales_representative', 'suppliers', 'users']
+2025-06-25 18:20:45,732 - src.config - INFO - Query execution time - schema_fetch: 0.00s
+2025-06-25 18:20:45,732 - src.config - INFO - Schema cached successfully
+2025-06-25 18:20:45,733 - src.config - INFO - Generating SQL query...
+2025-06-25 18:20:46,468 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-25 18:20:46,478 - src.config - INFO - Generated SQL: SELECT c.customer_id, c.first_name, c.last_name, o1.order_date AS recent_order_date, 
+       LAG(o2.order_date, 1, NULL) OVER (PARTITION BY o2.customer_id ORDER BY o2.order_date DESC) AS previous_order_date
+FROM info.customers c
+JOIN info.orders o1 ON c.customer_id = o1.customer_id
+LEFT JOIN info.orders o2 ON c.customer_id = o2.customer_id AND o2.order_date < o1.order_date
+WHERE o1.order_date = (SELECT MAX(order_date) FROM info.orders o3 WHERE o3.customer_id = c.customer_id)
+ORDER BY c.customer_id;
+2025-06-25 18:20:46,487 - src.config - INFO - Executing SQL: SELECT c.customer_id, c.first_name, c.last_name, o1.order_date AS recent_order_date, 
+       LAG(o2.order_date, 1, NULL) OVER (PARTITION BY o2.customer_id ORDER BY o2.order_date DESC) AS previous_order_date
+FROM info.customers c
+JOIN info.orders o1 ON c.customer_id = o1.customer_id
+LEFT JOIN info.orders o2 ON c.customer_id = o2.customer_id AND o2.order_date < o1.order_date
+WHERE o1.order_date = (SELECT MAX(order_date) FROM info.orders o3 WHERE o3.customer_id = c.customer_id)
+ORDER BY c.customer_id;
+2025-06-25 18:20:46,488 - src.config - INFO - Validating SQL query: SELECT c.customer_id, c.first_name, c.last_name, o1.order_date AS recent_order_date, 
+       LAG(o2.order_date, 1, NULL) OVER (PARTITION BY o2.customer_id ORDER BY o2.order_date DESC) AS previous_order_date
+FROM info.customers c
+JOIN info.orders o1 ON c.customer_id = o1.customer_id
+LEFT JOIN info.orders o2 ON c.customer_id = o2.customer_id AND o2.order_date < o1.order_date
+WHERE o1.order_date = (SELECT MAX(order_date) FROM info.orders o3 WHERE o3.customer_id = c.customer_id)
+ORDER BY c.customer_id;
+2025-06-25 18:20:46,839 - src.config - INFO - Query result cached successfully
+2025-06-25 18:20:46,849 - src.config - INFO - Formatting final answer...
+2025-06-25 18:20:48,072 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-25 18:20:48,072 - src.config - INFO - Formatted Answer: Here is the list of each customer's most recent order along with their previous order date:
+
+* James Diaz (C0001): Most recent order on 2022-12-25, previous order on 2022-11-09
+* Matthew Gonzalez (C0002): Most recent order on 2022-06-04, no previous order
+* Karen Davis (C0003): Most recent order on 2023-11-05, no previous order
+* Kevin Liu (C0004): Most recent order on 2023-12-15, previous order on 2023-06-23
+* Kumar Sharma (C0005): Most recent order on 2023-07-19, previous order on 2023-06-08
+* Robert Gonzalez (C0006): Most recent order on 2023-11-13, no previous order
+* Christopher Wang (C0007): Most recent order on 2023-12-19, previous order on 2022-12-15
+* Elizabeth Hall (C0008): Most recent order on 2023-06-20, previous order on 2022-11-15
+* Carol Flores (C0010): Most recent order on 2023-09-28, previous order on 2023-03-09
+* Michael Gomez (C0011): Most recent order on 2023-08-18, previous order on 2023-01-09
+* Amanda Thompson (C0013): Most recent order on 2023-07-30, no previous order
+* Melissa Williams (C0014): Most recent order on 2022-11-28, no previous order
+2025-06-25 18:20:48,072 - src.config - INFO - Final Answer: Here is the list of each customer's most recent order along with their previous order date:
+
+* James Diaz (C0001): Most recent order on 2022-12-25, previous order on 2022-11-09
+* Matthew Gonzalez (C0002): Most recent order on 2022-06-04, no previous order
+* Karen Davis (C0003): Most recent order on 2023-11-05, no previous order
+* Kevin Liu (C0004): Most recent order on 2023-12-15, previous order on 2023-06-23
+* Kumar Sharma (C0005): Most recent order on 2023-07-19, previous order on 2023-06-08
+* Robert Gonzalez (C0006): Most recent order on 2023-11-13, no previous order
+* Christopher Wang (C0007): Most recent order on 2023-12-19, previous order on 2022-12-15
+* Elizabeth Hall (C0008): Most recent order on 2023-06-20, previous order on 2022-11-15
+* Carol Flores (C0010): Most recent order on 2023-09-28, previous order on 2023-03-09
+* Michael Gomez (C0011): Most recent order on 2023-08-18, previous order on 2023-01-09
+* Amanda Thompson (C0013): Most recent order on 2023-07-30, no previous order
+* Melissa Williams (C0014): Most recent order on 2022-11-28, no previous order
+2025-06-25 18:20:56,966 - src.config - INFO - NL2SQL application example finished.
+2025-06-25 18:21:26,135 - src.config - INFO - Connecting to database: postgresql+psycopg2://postgres:***@localhost:5432/postgres
+2025-06-25 18:21:26,291 - src.config - INFO - Successfully connected to database and initialized SQLDatabase for schema 'info'.
+2025-06-25 18:21:26,292 - src.config - INFO - Initializing LLM: llama3-70b-8192
+2025-06-25 18:21:27,041 - src.config - INFO - LLM initialized successfully.
+2025-06-25 18:21:27,041 - src.config - INFO - Connecting to Redis: localhost:6379
+2025-06-25 18:21:27,058 - src.config - INFO - Redis connection established successfully.
+2025-06-25 18:21:27,170 - src.config - INFO - LangGraph workflow compiled successfully.
+2025-06-25 18:21:58,521 - src.config - INFO - Workflow started.
+2025-06-25 18:21:58,522 - src.config - INFO - Fetching database schema...
+2025-06-25 18:21:58,523 - src.config - INFO - Schema loaded from cache
+2025-06-25 18:21:58,523 - src.config - INFO - Generating SQL query...
+2025-06-25 18:22:01,153 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-25 18:22:01,159 - src.config - INFO - Generated SQL: SELECT CONCAT(first_name, ' ', last_name) AS full_name FROM info.customers;
+2025-06-25 18:22:01,161 - src.config - INFO - Executing SQL: SELECT CONCAT(first_name, ' ', last_name) AS full_name FROM info.customers;
+2025-06-25 18:22:01,161 - src.config - INFO - Validating SQL query: SELECT CONCAT(first_name, ' ', last_name) AS full_name FROM info.customers;
+2025-06-25 18:22:01,166 - src.config - INFO - Query result cached successfully
+2025-06-25 18:22:01,168 - src.config - INFO - Formatting final answer...
+2025-06-25 18:22:01,625 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-25 18:22:01,625 - src.config - INFO - Formatted Answer: Here are the customer full names: James Diaz, Matthew Gonzalez, Karen Davis, Kevin Liu, Kumar Sharma, Robert Gonzalez, Christopher Wang, Elizabeth Hall, Ahmed Martinez, Carol Flores, Michael Gomez, William Zhang, Amanda Thompson, Melissa Williams, George Zhou, Carol Liu, Robert Williams, Mary Martin, Deborah Mitchell, and Kevin Zhou.
+2025-06-25 18:22:43,007 - src.config - INFO - Workflow started.
+2025-06-25 18:22:43,007 - src.config - INFO - Fetching database schema...
+2025-06-25 18:22:43,007 - src.config - INFO - Schema loaded from cache
+2025-06-25 18:22:43,007 - src.config - INFO - Generating SQL query...
+2025-06-25 18:22:43,472 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-25 18:22:43,472 - src.config - INFO - Generated SQL: SELECT 
+    DATE_TRUNC('month', o.order_date) AS month, 
+    SUM(od.final_amount) AS monthly_revenue
+FROM 
+    info.orders o 
+JOIN 
+    info.order_details od ON o.order_id = od.order_id 
+GROUP BY 
+    month 
+ORDER BY 
+    month ASC;
+2025-06-25 18:22:43,472 - src.config - INFO - Executing SQL: SELECT 
+    DATE_TRUNC('month', o.order_date) AS month, 
+    SUM(od.final_amount) AS monthly_revenue
+FROM 
+    info.orders o 
+JOIN 
+    info.order_details od ON o.order_id = od.order_id 
+GROUP BY 
+    month 
+ORDER BY 
+    month ASC;
+2025-06-25 18:22:43,472 - src.config - INFO - Validating SQL query: SELECT 
+    DATE_TRUNC('month', o.order_date) AS month, 
+    SUM(od.final_amount) AS monthly_revenue
+FROM 
+    info.orders o 
+JOIN 
+    info.order_details od ON o.order_id = od.order_id 
+GROUP BY 
+    month 
+ORDER BY 
+    month ASC;
+2025-06-25 18:22:43,501 - src.config - INFO - Query result cached successfully
+2025-06-25 18:22:43,502 - src.config - INFO - Formatting final answer...
+2025-06-25 18:22:43,883 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-25 18:22:43,883 - src.config - INFO - Formatted Answer: Here is the monthly revenue of sellers:
+
+The monthly revenue ranges from approximately 350,607.9 in March 2023 to 936,546.8 in September 2022.
+2025-06-25 18:23:17,015 - src.config - INFO - Workflow started.
+2025-06-25 18:23:17,016 - src.config - INFO - Fetching database schema...
+2025-06-25 18:23:17,017 - src.config - INFO - Schema loaded from cache
+2025-06-25 18:23:17,018 - src.config - INFO - Generating SQL query...
+2025-06-25 18:23:17,591 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-25 18:23:17,592 - src.config - INFO - Generated SQL: SELECT 
+    sr.first_name, 
+    sr.last_name, 
+    DATE_TRUNC('month', o.order_date) AS month, 
+    SUM(od.final_amount) AS monthly_revenue
+FROM 
+    info.orders o 
+JOIN 
+    info.order_details od ON o.order_id = od.order_id 
+JOIN 
+    info.sales_representative sr ON o.sales_rep_id = sr.sales_rep_id 
+GROUP BY 
+    sr.first_name, 
+    sr.last_name, 
+    month 
+ORDER BY 
+    month, 
+    monthly_revenue DESC;
+2025-06-25 18:23:17,594 - src.config - INFO - Executing SQL: SELECT 
+    sr.first_name, 
+    sr.last_name, 
+    DATE_TRUNC('month', o.order_date) AS month, 
+    SUM(od.final_amount) AS monthly_revenue
+FROM 
+    info.orders o 
+JOIN 
+    info.order_details od ON o.order_id = od.order_id 
+JOIN 
+    info.sales_representative sr ON o.sales_rep_id = sr.sales_rep_id 
+GROUP BY 
+    sr.first_name, 
+    sr.last_name, 
+    month 
+ORDER BY 
+    month, 
+    monthly_revenue DESC;
+2025-06-25 18:23:17,594 - src.config - INFO - Validating SQL query: SELECT 
+    sr.first_name, 
+    sr.last_name, 
+    DATE_TRUNC('month', o.order_date) AS month, 
+    SUM(od.final_amount) AS monthly_revenue
+FROM 
+    info.orders o 
+JOIN 
+    info.order_details od ON o.order_id = od.order_id 
+JOIN 
+    info.sales_representative sr ON o.sales_rep_id = sr.sales_rep_id 
+GROUP BY 
+    sr.first_name, 
+    sr.last_name, 
+    month 
+ORDER BY 
+    month, 
+    monthly_revenue DESC;
+2025-06-25 18:23:17,608 - src.config - INFO - Query result cached successfully
+2025-06-25 18:23:17,612 - src.config - INFO - Formatting final answer...
+2025-06-25 18:23:18,980 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-25 18:23:18,980 - src.config - INFO - Formatted Answer: Here is the monthly revenue for each sales person:
+
+Andrew Davis: $85,423.70 in January 2022
+Richard Martin: $82,135.45 in January 2022
+Donna Wilson: $66,208.40 in January 2022
+Michael Lopez: $56,265.54 in January 2022
+Jennifer King: $55,209.45 in January 2022
+Robert Garcia: $50,198.01 in January 2022
+Emily Garcia: $46,945.91 in January 2022
+Michael Clark: $45,855.58 in January 2022
+Helen Anderson: $43,070.59 in January 2022
+Linda Anderson: $39,511.74 in January 2022
+Sandra King: $37,795.50 in January 2022
+Ashley Flores: $25,275.17 in January 2022
+Susan Lopez: $23,898.30 in January 2022
+Jessica Taylor: $21,334.94 in January 2022 and $75,108.44 in February 2022
+James Wilson: $16,817.80 in January 2022
+Mary Smith: $10,497.82 in January 2022
+John Garcia: $9,820.15 in January 2022
+Steven Ramirez: $2,777.71 in January 2022
+Kimberly Lewis: $1,479.44 in January 2022
+2025-06-25 18:23:55,244 - src.config - INFO - Validating SQL query: SELECT 1 AS ok FROM info.users LIMIT 1
+2025-06-25 18:23:56,323 - src.config - INFO - Validating SQL query: SELECT 1 AS ok FROM info.users LIMIT 1
