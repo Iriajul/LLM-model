@@ -2,4 +2,3 @@ __pycache__/
 .streamlit/
 venv/
 .env
-exports
